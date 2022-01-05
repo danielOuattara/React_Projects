@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import data from './data';
 import List from './List';
 
@@ -6,17 +6,16 @@ import List from './List';
 function App() {
 
   const [people, setPeople] = useState(data); 
-  
-  const handleRemoveOnePerson = (id) => {
-    let newPeople = people.filter(person => person.id !== id );
-    setPeople(newPeople);
-    console.log(newPeople)
+
+  const handleRemoveOnePerson = (id) => { 
+    setPeople( () => {  // handles Async behaviour !
+      let newPeople = people.filter(person => person.id !== id );
+      return newPeople;
+    });
   }
 
   const handleRefresh = () => {
     window.location.reload(false);
-    // setPeople({})
-
   }
 
   return (
