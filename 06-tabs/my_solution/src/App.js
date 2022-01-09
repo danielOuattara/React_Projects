@@ -4,42 +4,85 @@ import { FaAngleDoubleRight } from 'react-icons/fa'
 function App() {
   const url = 'https://course-api.com/react-tabs-project';
 
-  const [jobs, setJobs] = useState(null);
+  const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [error, setError] = useState("");
+  const [value, setValue] = useState(0);
 
   const fetchJobs = async () => {
     try {
       const res = await fetch(url);
-      console.log(res)
       if (!res.ok) {
         throw new Error(res.status + " " +  res.statusText);
       }
-      const jobs = await res.json();
-      setIsError(false);
+      const jobsFetched = await res.json();
+      setJobs(jobsFetched);
       setIsLoading(false);
-      setJobs(jobs);
 
     } catch (error) {
       setIsLoading(false);
       setIsError(true);
-      console.log(error)
+      setError(error.message);
     }
   }
 
   useEffect(() => { fetchJobs() }, []);
 
   if (isLoading) {
-    return <div>Loading ...</div>;
-  };
+    return (
+      <section className="section loading">
+        <h1>Loading ...</h1>;
+      </section>
+    ); 
+  }
 
   if (isError) {
-    return <div>{error}</div>;
-  };
+    return (
+      <section className="section loading">
+        <h1>{error}</h1>;
+      </section>
+    ); 
+  }
 
-
+  const { title, dates, duties, company } = jobs[value];
+  
   return (
-    <h2>tabs project setup</h2>
+    <div>
+      <section className="section">
+        <div className='title'>
+          <h2>experience</h2>
+          <div className="underline"></div>
+        </div>
+
+        <div className="jobs-center">
+          {/* job button */}
+          <div className="btn-container">
+            {jobs.map((job, index) => {
+              const { id } = job;
+              return (
+                <button className={`job-btn ${index === value && 'active-btn'}`} key={id} onClick={() => setValue(index)}>{job.company}</button>
+                );
+              })}
+          </div>
+
+            {/* job details */}
+            <article className='job-info'>
+              <h3>{title}</h3>
+              <h4>{company}</h4>
+              <p className="job-date">{dates}</p>
+              {duties.map((duty, index) => {
+                return (
+                  <div key={index} className='job-desc'>
+                    <FaAngleDoubleRight className='job-icon'/>
+                    <p>{duty}</p>
+                    </div>
+                );
+              })} 
+            </article>
+        </div>
+      </section>
+    </div>
   ); 
 }
 
