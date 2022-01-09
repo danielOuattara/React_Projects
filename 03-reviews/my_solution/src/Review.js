@@ -8,7 +8,7 @@ const Review = () => {
   const { name, job, image, text } = people[index];
 
   const checkIndex = (index) => {
-    if(index > people.length-1) {
+    if(index > people.length - 1) {
       return 0;
     } else if(index < 0) {
       return people.length-1;      
