@@ -6,20 +6,32 @@ const url = 'https://course-api.com/react-tours-project';
 
 function App() {
   const [ loading, setLoading ] = useState(true);
+  const [ isError, setIsError ] = useState(false);
+  const [ errorMessage, setErrorMessage ] = useState("")
   const [ tours, setTours ] = useState([]);
 
   const fetchTours = async () => {
+  // async function fetchTours() {
     try {
       const res = await fetch(url);
+      console.log(res)
       if(!res.ok) {
+        setIsError(true);
+        setLoading(false);
+        setErrorMessage(`${res.status} ${res.statusText}`)
         throw Error(`${res.status} ${res.statusText}`)
       }
       const data = await res.json();
+      console.log(data)
       setTours(data);
       setLoading(false);
+      setLoading(false);
+      setErrorMessage("");
 
     } catch (err) {
       setLoading(false);
+      setIsError(true);
+      return err;
     }
   }
 
@@ -28,10 +40,17 @@ function App() {
       return tours.filter(item => item.id !== id);
     });
   }
-
-  useEffect(() => {
-    fetchTours()
-  }, []);
+  
+  useEffect(() => { fetchTours() }, []);
+  if(isError) {
+    return (
+      <main>
+        <div className='title'>
+          <h2>{errorMessage}</h2>
+        </div>
+      </main>
+    );
+  }
 
   if(loading) {
     return ( 

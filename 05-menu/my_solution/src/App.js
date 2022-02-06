@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Menu from './Menu';
-import Categories from './Categories';
+import ListCategories from './ListCategories';
 import items from './data';
 
 
@@ -10,18 +10,17 @@ function App() {
   // const categories = items.reduce((categories, item) => {
   //   return categories.includes(item.category) ? categories : categories.concat(item.category)
   // }, []);
-  
   // categories.unshift('all');
 
-  // method  2 
+  // method  2 , Much more easier and straith forward
   const categories = ["all", ...new Set(items.map(item => item.category))];
   
   const [category, setCategory] = useState('all');
+  const filteredMenus = items.filter(item => item.category === category);
+  const menusToRender = category === 'all' ? items : filteredMenus;
 
   const showCategory = (category) => {
-    setCategory(() => {
-      return category;
-    });
+    return setCategory(() => category);
   }
 
   return (
@@ -30,10 +29,8 @@ function App() {
         <div className="title">
           <h2>our menu</h2>
           <div className='underline'></div>
-
-          <Categories categories={categories} showCategory={showCategory}/>
-
-          <Menu items={items} category={category}/>
+          <ListCategories categories={categories} showCategory={showCategory}/>
+          <Menu menusToRender={menusToRender}/>
         </div>
       </section>
     </main>

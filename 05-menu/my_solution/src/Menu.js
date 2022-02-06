@@ -1,15 +1,11 @@
 import React from 'react';
 
-const Menu = ({items, category}) => {
+const Menu = ({menusToRender}) => {
 
-  const filteredMenus = items.filter(item => item.category === category);
-  
-  const menusToRender = category === 'all' ? items : filteredMenus;
-  
   return (
     <div className='section-center'>
-      {menusToRender.map(item => {
-        const { id, img, title, price, desc} = item;
+      {menusToRender.map(menu => {
+        const { id, img, title, price, desc} = menu;
         return (
           <article key={id} className='menu-item'>
             <img className='photo' src={img} alt={title} />

@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import  { useState } from 'react';
 import data from './data';
 import List from './List';
 
 
 function App() {
-
   const [people, setPeople] = useState(data); 
 
   const handleRemoveOnePerson = (id) => { 

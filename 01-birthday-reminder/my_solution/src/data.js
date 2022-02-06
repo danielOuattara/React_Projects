@@ -1,4 +1,4 @@
- const List = [
+ const data = [
   {
     id: 1,
     name: 'Bertie Yates',
@@ -36,4 +36,4 @@
   },
 ];
 
-export default List;
+export default data;

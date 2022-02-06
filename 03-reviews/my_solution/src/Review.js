@@ -17,31 +17,26 @@ const Review = () => {
     }
   }
 
-  const getNextQuote = () => {
-    setIndex( index => {
-      return checkIndex(index + 1);
-    });
-  }
-
   const getPreviousQuote = () => {
     setIndex(index => {
       return checkIndex(index - 1);
     });
   }
 
+  const getNextQuote = () => {
+    setIndex( index => {
+      return checkIndex(index + 1);
+    });
+  }
+
   const getRandomQuote = () => {
     let randomIndex = Math.floor(Math.random() * people.length);
-
     if(randomIndex === index) {
       randomIndex = checkIndex(randomIndex - 1)
-      return setIndex(() => {
-        return randomIndex;
-      });
-    
-    } else {
-       setIndex(() => {
+    }
+    setIndex(() => {
       return randomIndex;
-    })};
+    });
   }
       
   return (
@@ -54,15 +49,15 @@ const Review = () => {
       <p className="job">{job}</p>
       <p className="info">{text}</p>
       <div className="button-container">
-        <button className='prev-btn' onClick={() => getPreviousQuote()}> 
+        <button className='prev-btn' onClick={getPreviousQuote}> 
           <FaChevronLeft/> 
         </button>
-        <button className='next-btn' onClick={() =>getNextQuote()}> 
+        <button className='next-btn' onClick={getNextQuote}> 
           <FaChevronRight/> 
         </button>
       </div>
       <div className="button-container">
-        <button className="random-btn" onClick={() =>getRandomQuote()}>
+        <button className="random-btn" onClick={getRandomQuote}>
           surprise me
         </button>
       </div>
