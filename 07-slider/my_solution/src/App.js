@@ -66,8 +66,6 @@ function App() {
           <FiChevronRight />
         </button>
       </div>
-
-
     </section>
   );
 

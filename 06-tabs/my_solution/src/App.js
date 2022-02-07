@@ -4,15 +4,16 @@ import JobDetails from './components/JobDetails';
 import useJobsFetch from './useJobsFetch';
 
 
+
 function App() {
 
   const url = 'https://course-api.com/react-tabs-project';
-  const { jobs, value, setValue, isLoading, error} = useJobsFetch(url)
+  const { jobs, value, setValue, isLoading, error} = useJobsFetch(url);
 
   if(isLoading) {
     return (
       <section className="section loading">
-        <h1>Loading ...</h1>;
+        <h1>Loading ...</h1>
       </section>
     ); 
   }
@@ -20,7 +21,7 @@ function App() {
   if(error) {
     return (
       <section className="section loading">
-        <h1>{error}</h1>;
+        <h1>{error}</h1>
       </section>
     ); 
   }
