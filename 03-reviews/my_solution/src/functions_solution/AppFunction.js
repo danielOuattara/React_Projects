@@ -1,7 +1,7 @@
 import React from 'react';
-import Review from './Review';
+import Reviewfunction from './ReviewFunction';
 
-function App() {
+function AppFunction() {
   return (
     <main>
       <section className="container">
@@ -9,10 +9,10 @@ function App() {
           <h2> our reviews</h2>
           <div className="underline"></div>
         </div>
-        <Review />
+        <Reviewfunction />
       </section>
     </main>
   );
 }
 
-export default App;
+export default AppFunction;

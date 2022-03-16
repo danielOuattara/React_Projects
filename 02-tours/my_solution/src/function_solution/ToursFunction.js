@@ -1,5 +1,5 @@
 import React from 'react';
-import TourItem from './TourItem';
+import TourItemFunction from './TourItemFunction';
 
 
 const Tours = ({tours, removeTourItem}) => {
@@ -11,7 +11,7 @@ const Tours = ({tours, removeTourItem}) => {
         <div>
           {tours.map( item => {
             return ( 
-              < TourItem 
+              < TourItemFunction 
                   key={item.id} 
                   {...item}
                   removeTourItem={removeTourItem} 

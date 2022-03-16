@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import AppFunction from './function_solution/AppFunction';
+// import AppClass from './classes_solution/AppClass'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppFunction />
+    {/* <AppClass /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

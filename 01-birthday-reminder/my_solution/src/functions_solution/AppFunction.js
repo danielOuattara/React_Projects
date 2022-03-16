@@ -1,6 +1,6 @@
-import  { useState } from 'react';
-import data from './data';
-import List from './List';
+import React, { useState } from 'react';
+import data from '../data';
+import List from './ListFunction';
 
 
 function App() {

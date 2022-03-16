@@ -1,6 +1,6 @@
 import React from 'react';
-import data from './data';
-import SingleQuestion from './Question';
+import questions from './../data';
+import QuestionFunction from './QuestionFunction';
 
 
 function App() {
@@ -9,11 +9,11 @@ function App() {
       <h3>question and answer about login</h3>
       <section className='info'>
         <ul>
-          {data.map(item => {
+          {questions.map(item => {
             const { id, title, info } = item;
             return (
               <li key={id}>
-                <SingleQuestion title={title} info={info} />
+                <QuestionFunction title={title} info={info} />
               </li>
             );
           })}

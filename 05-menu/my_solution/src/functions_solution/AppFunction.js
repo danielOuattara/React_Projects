@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Menu from './Menu';
-import ListCategories from './ListCategories';
-import items from './data';
+import Menu from './MenuFunction';
+import ListCategoriesFunction from './ListCategoriesFunction';
+import items from './../data';
 
 
-function App() {
+function AppFunction() {
 
   // method 1
   // const categories = items.reduce((categories, item) => {
@@ -19,9 +19,13 @@ function App() {
   const filteredMenus = items.filter(item => item.category === category);
   const menusToRender = category === 'all' ? items : filteredMenus;
 
-  const showCategory = (category) => {
-    return setCategory(() => category);
-  }
+  // const showCategory = (category) => {
+  //     return setCategory(() => category);
+  //   }
+
+  // const showCategory = (category) => setCategory(() => category); // OK
+  
+  const showCategory = (category) => setCategory(category); // OK
 
   return (
     <main>
@@ -29,7 +33,7 @@ function App() {
         <div className="title">
           <h2>our menu</h2>
           <div className='underline'></div>
-          <ListCategories categories={categories} showCategory={showCategory}/>
+          <ListCategoriesFunction categories={categories} showCategory={showCategory}/>
           <Menu menusToRender={menusToRender}/>
         </div>
       </section>
@@ -37,4 +41,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppFunction;

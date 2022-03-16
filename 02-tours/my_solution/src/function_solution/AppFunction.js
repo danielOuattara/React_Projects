@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Loading from './Loading'
-import Tours from './Tours'
+import LoadingFunction from './LoadingFunction'
+import ToursFunction from './ToursFunction'
 
 const url = 'https://course-api.com/react-tours-project';
 
-function App() {
+function AppFunction() {
   const [ loading, setLoading ] = useState(true);
   const [ isError, setIsError ] = useState(false);
   const [ errorMessage, setErrorMessage ] = useState("")
@@ -14,7 +14,6 @@ function App() {
   // async function fetchTours() {
     try {
       const res = await fetch(url);
-      console.log(res)
       if(!res.ok) {
         setIsError(true);
         setLoading(false);
@@ -22,9 +21,7 @@ function App() {
         throw Error(`${res.status} ${res.statusText}`)
       }
       const data = await res.json();
-      console.log(data)
       setTours(data);
-      setLoading(false);
       setLoading(false);
       setErrorMessage("");
 
@@ -55,7 +52,7 @@ function App() {
   if(loading) {
     return ( 
       <main>
-        <Loading />
+        <LoadingFunction />
       </main>
     ); 
   }
@@ -73,7 +70,7 @@ function App() {
 
   return (
     <main>
-      <Tours 
+      <ToursFunction 
         tours={tours} 
         removeTourItem={removeTourItem}
       />
@@ -81,4 +78,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppFunction;
