@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import data from './data';
+import data from './../data';
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
       setText(() => data.slice(0, numberOfParagraph));
-    }
+  }
     
   return (
       <section className='section-center'>
@@ -20,13 +20,12 @@ function App() {
           <input 
             id="numbParagraph"
             type="number" 
-            min="1"
+            min="0"
             max={data.length}
             value={numberOfParagraph}
             onChange={(event) => setNumberOfParagraph(event.target.value)} 
           />
-
-             <button type="submit" className='btn'>Fetch</button> 
+          <button type="submit" className='btn'>Fetch</button> 
         </form>
 
         <article className="lorem-text">

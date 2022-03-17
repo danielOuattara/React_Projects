@@ -12,6 +12,8 @@ function AppFunction() {
   // }, []);
   // categories.unshift('all');
 
+  //---------------------------------------------------
+
   // method  2 , Much more easier and straith forward
   const categories = ["all", ...new Set(items.map(item => item.category))];
   
