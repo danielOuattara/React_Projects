@@ -2,45 +2,24 @@ import React from 'react'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 
 
-const ListFunction = ({itemsList}) => {
-  // console.log(itemsList)
-
-    // let i;
-    // for (i = 0; i < localStorage.length; i++) {
-    //   ListToRender.push(localStorage.getItem(i))
-    //   console.log(ListToRender)
-    // }
-
+const ListFunction = ({itemsList, deleteItem, editItem}) => {
     return (
-      // itemsList.map((item, index) => {
-      //   return (
-      //     <article key={index}>
-      //       <p className='title'>{item}</p>
-      //       <FaEdit className='edit-btn'/>
-      //       <FaTrash className='delete-btn'/>
-      //     </article>
-      //   );
-      // })
-      itemsList.map((item, index) => {
-        return (
-          <article key={index} className='grocery-item'>
-            <p className='title'>{item}</p>
-            <FaEdit className='edit-btn'/>
-            <FaTrash className='delete-btn'/>
-          </article>
-        );
-      })
+      <div className='grocery-list'>
+        {itemsList.map(item => {
+          const { title, id } = item;
+          return (
+            <article key={id} className='grocery-item'>
+              <p className='title'>{title}</p>
+              <div className="btn-container">
+                <FaEdit className='edit-btn' onClick={() => editItem(id)} />
+                <FaTrash className='delete-btn' onClick={() => deleteItem(id)}/>
+              </div>
+            </article>
+          );
+        })
+        }
+      </div>
     );
   }
-
-        // { ListToRender.map((item, index) => {
-        //   return (
-        //     <article  key={index} className='grocery-item'>
-        //       <p className='title'>{item}</p>
-        //       <FaEdit className='edit-btn'/>
-        //       <FaTrash className='delete-btn'/>
-        //     </article>
-        //   );
-        // });
 
 export default ListFunction;
