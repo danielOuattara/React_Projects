@@ -3,17 +3,15 @@ import ListFunction from "./ListFunction";
 import AlertFunction from "./AlertFunction";
 
 const retrieveLocalStorage = () => {
-  // let itemsList = localStorage.getItem('itemsList');
-  // if(itemsList) {
-    return JSON.parse(localStorage.getItem('itemsList'))
-  
-  // } else {
-  //   return []
-  // }
+  let itemsList = localStorage.getItem("itemsList");
+  if (itemsList) {
+    return JSON.parse(localStorage.getItem("itemsList"));
+  } else {
+    return [];
+  }
+};
 
-}
-
-function App() {
+function AppFunction() {
   const [item, setItem] = useState("");
   const [itemsList, setItemsList] = useState(retrieveLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
@@ -23,14 +21,16 @@ function App() {
   const handleSubmitItem = (event) => {
     event.preventDefault();
 
-    if (!item) { //display alert & do nothing
+    if (!item) {
+      //display alert & do nothing
       showAlert(true, "danger", "select a valid item name");
       return 0;
-    } else if (item && isEditing) {  // deal with edit
+    } else if (item && isEditing) {
+      // deal with edit
       setItemsList(() => {
         return itemsList.map((obj) => {
           if (obj.id === editID) {
-            return {...obj, title: item };
+            return { ...obj, title: item };
           }
           return obj;
         });
@@ -69,8 +69,10 @@ function App() {
     showAlert(true, "danger", "emptying list");
   };
 
-  const deleteItem = (id) =>
+  const deleteItem = (id) => {
     setItemsList(itemsList.filter((item) => item.id !== id));
+    showAlert(true, "success", "item successfully removed");
+  }
 
   const editItem = (id) => {
     const editingItem = itemsList.find((item) => item.id === id);
@@ -80,8 +82,8 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem('itemsList', JSON.stringify(itemsList))
-  },[itemsList])
+    localStorage.setItem("itemsList", JSON.stringify(itemsList));
+  }, [itemsList]);
 
   return (
     <section className="section-center ">
@@ -118,4 +120,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppFunction;
