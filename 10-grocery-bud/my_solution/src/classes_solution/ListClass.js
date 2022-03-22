@@ -1,8 +1,10 @@
-import React from 'react'
+
 import { FaEdit, FaTrash } from 'react-icons/fa'
+import React, { Component } from 'react'
 
-
-const ListClass = ({itemsList, deleteItem, editItem}) => {
+export default class ListClass extends Component {
+  render() {
+    const {itemsList, deleteItem, editItem} = this.props;
     return (
       <div className='grocery-list'>
         {itemsList.map(item => {
@@ -21,5 +23,5 @@ const ListClass = ({itemsList, deleteItem, editItem}) => {
       </div>
     );
   }
+}
 
-export default ListClass;
