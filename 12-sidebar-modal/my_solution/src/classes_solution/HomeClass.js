@@ -7,8 +7,7 @@ export default class HomeClass extends Component {
     return (
       <ToggleContext.Consumer>
         {(context) => {
-          const { showModal, showSideBar, toggleModal, toggleSideBar } =
-            context;
+          const { toggleModal, toggleSideBar } = context;
           return (
             <main>
               <button
