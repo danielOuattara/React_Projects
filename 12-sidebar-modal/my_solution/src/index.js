@@ -9,12 +9,12 @@ import { ToggleClassContextProvider } from "./classes_solution/contextClass";
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-      <ToggleClassContextProvider>
         <App />
+    </AppProvider>
         <hr />
+      <ToggleClassContextProvider>
         <AppClass />
       </ToggleClassContextProvider>
-    </AppProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

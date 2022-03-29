@@ -24,8 +24,7 @@ import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
 const Home = () => {
-  const { showModal, setShowModal, showSideBar, setShowSideBar } =
-    useGlobalContext();
+  const { showModal, setShowModal, showSideBar, setShowSideBar } = useGlobalContext();
   return (
     <main>
       <button
