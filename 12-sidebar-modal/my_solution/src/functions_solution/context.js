@@ -6,13 +6,6 @@ const AppProvider = (props) => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-//   const toggleSideBar = () => {
-//     setShowSideBar(!showSideBar);
-//   };
-//   const toggleModal = () => {
-//     setShowModal(!showModal);
-//   };
-
   return (
     <AppContext.Provider
       value={{

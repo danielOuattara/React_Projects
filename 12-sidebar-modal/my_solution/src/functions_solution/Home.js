@@ -24,14 +24,19 @@ import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
 const Home = () => {
-  const { showModal, setShowModal,  showSideBar, setShowSideBar } = useGlobalContext();
-  console.log(showSideBar)
+  const { showModal, setShowModal, showSideBar, setShowSideBar } =
+    useGlobalContext();
   return (
     <main>
-      <button className="sidebar-toggle" onClick={() => setShowSideBar(!showSideBar)}>
+      <button
+        className="sidebar-toggle"
+        onClick={() => setShowSideBar(!showSideBar)}
+      >
         <FaBars />
       </button>
-      <button className="btn" onClick={() => setShowModal(!showModal)}>show modal</button>
+      <button className="btn" onClick={() => setShowModal(!showModal)}>
+        show modal
+      </button>
     </main>
   );
 };
