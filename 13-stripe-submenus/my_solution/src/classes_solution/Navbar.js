@@ -1,14 +1,18 @@
 import React from "react";
 import logo from "./../images/logo.svg";
 import { FaBars } from "react-icons/fa";
-import { useGlobalContext } from "./ContextFunction";
+import { useGlobalContext } from "./ContextClass";
 import sublinks from "../data";
 
 const Navbar = () => {
   const {
+    sideBarOpen,
     setSideBarOpen,
+    subMenuOpen,
     setSubMenuOpen,
+    subMenuLocation,
     setSubMenuLocation,
+    subMenuPageShown,
     setSubMenuPageShown,
   } = useGlobalContext();
 
@@ -23,17 +27,21 @@ const Navbar = () => {
       topPosition: subMenuTopPosition,
     });
 
-    const menuPageToShow = sublinks.find(
-      (item) => item.page === subMenuPageName
-    );
-    setSubMenuPageShown(menuPageToShow);
+    const menuPageToShow = sublinks.find((item) => item.page === subMenuPageName)
+    // console.log('menuPageToShow = ', menuPageToShow)
+    setSubMenuPageShown(menuPageToShow );
   };
 
+  // const hideSubMenu = () => {
+  //   setSubMenuOpen(false)
+  // }
+
   const handleSubMenu = (event) => {
-    if (!event.target.classList.contains("link-btn")) {
-      setSubMenuOpen(false);
+    if(!event.target.classList.contains('link-btn')) {
+      setSubMenuOpen(false)
     }
-  };
+
+  }
 
   return (
     <nav className="nav" onMouseOver={(event) => handleSubMenu(event)}>

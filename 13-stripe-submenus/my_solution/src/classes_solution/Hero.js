@@ -1,9 +1,10 @@
 import React from "react";
 import phoneImg from "./../images/phone.svg";
-import { useGlobalContext } from "./ContextFunction";
+import { useGlobalContext } from "./ContextClass";
 
 const Hero = () => {
-  const { setSubMenuOpen } = useGlobalContext();
+  const { sideBarOpen, setSideBarOpen, subMenuOpen, setSubMenuOpen, subLinks } =
+    useGlobalContext();
 
   return (
     <section className="hero" onMouseOver={() => setSubMenuOpen(false)}>

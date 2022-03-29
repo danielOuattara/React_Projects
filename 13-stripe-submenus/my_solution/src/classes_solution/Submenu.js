@@ -1,18 +1,24 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useGlobalContext } from "./ContextFunction";
+import { useGlobalContext } from "./ContextClass";
 
 const Submenu = () => {
   const {
+    sideBarOpen,
+    setSideBarOpen,
     subMenuOpen,
+    setSubMenuOpen,
     subMenuLocation,
+    setSubMenuLocation,
     subMenuPageShown: { links, page },
+    subMenuPageShown,
+    setSubMenuPageShown,
   } = useGlobalContext();
 
   const container = useRef(null);
-  const [columns, setColumns] = useState("");
+  const [columns, setColumns] = useState('');
 
   useEffect(() => {
-    links.length === 3 ? setColumns("col-3") : setColumns("col-4");
+    links.length === 3 ?  setColumns('col-3'): setColumns('col-4')
     const subMenu = container.current;
     const { centerPosition, topPosition } = subMenuLocation;
     subMenu.style.left = `${centerPosition}px`;
