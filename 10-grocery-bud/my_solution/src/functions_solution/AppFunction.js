@@ -72,7 +72,7 @@ function AppFunction() {
   const deleteItem = (id) => {
     setItemsList(itemsList.filter((item) => item.id !== id));
     showAlert(true, "success", "item successfully removed");
-  }
+  };
 
   const editItem = (id) => {
     const editingItem = itemsList.find((item) => item.id === id);
