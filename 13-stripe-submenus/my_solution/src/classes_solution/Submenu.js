@@ -1,45 +1,63 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useGlobalContext } from "./ContextClass";
+import React, { Component } from "react";
+import { AppContext } from "./ContextClass";
 
-const Submenu = () => {
-  const {
-    sideBarOpen,
-    setSideBarOpen,
-    subMenuOpen,
-    setSubMenuOpen,
-    subMenuLocation,
-    setSubMenuLocation,
-    subMenuPageShown: { links, page },
-    subMenuPageShown,
-    setSubMenuPageShown,
-  } = useGlobalContext();
+const container = React.createRef(null);
+export default class Submenu extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      columns: "col-2",
+    };
+  }
 
-  const container = useRef(null);
-  const [columns, setColumns] = useState('');
+  static contextType = AppContext;
 
-  useEffect(() => {
-    links.length === 3 ?  setColumns('col-3'): setColumns('col-4')
-    const subMenu = container.current;
-    const { centerPosition, topPosition } = subMenuLocation;
-    subMenu.style.left = `${centerPosition}px`;
-    subMenu.style.top = `${topPosition}px`;
-  }, [subMenuLocation, links]);
+  componentDidUpdate(prevState, prevProps) {
+    const {
+      subMenuLocation,
+      subMenuPageShown: { links },
+    } = this.context;
 
-  return (
-    <aside className={subMenuOpen ? "submenu show" : "submenu"} ref={container}>
-      <h4>{page}</h4>
-      <div className={`submenu-center ${columns}`}>
-        {links.map((link, index) => {
-          const { icon, url, label } = link;
+    if (prevProps.subMenuLocation !== this.props.setSubMenuLocation) {
+      links.length === 3
+        ? this.setState({ columns: "col-3" })
+        : this.setState({ columns: "col-4" });
+      const subMenu = container.current;
+      const { centerPosition, topPosition } = subMenuLocation;
+      subMenu.style.left = `${centerPosition}px`;
+      subMenu.style.top = `${topPosition}px`;
+    }
+  }
+
+  render() {
+    return (
+      <AppContext.Consumer>
+        {(context) => {
+          const {
+            subMenuOpen,
+            subMenuPageShown: { links, page },
+          } = context;
+
           return (
-            <a key={index} href={url}>
-              {icon} {label}
-            </a>
+            <aside
+              className={subMenuOpen ? "submenu show" : "submenu"}
+              ref={container}
+            >
+              <h4>{page}</h4>
+              <div className={`submenu-center ${this.state.columns}`}>
+                {links.map((link, index) => {
+                  const { icon, url, label } = link;
+                  return (
+                    <a key={index} href={url}>
+                      {icon} {label}
+                    </a>
+                  );
+                })}
+              </div>
+            </aside>
           );
-        })}
-      </div>
-    </aside>
-  );
-};
-
-export default Submenu;
+        }}
+      </AppContext.Consumer>
+    );
+  }
+}

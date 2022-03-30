@@ -1,37 +1,57 @@
-import React, { useState, useContext } from "react";
-import sublinks from "../data";
+import React from "react";
+import sublinks from "./../data";
 
-const AppContext = React.createContext();
+export const AppContext = React.createContext();
 
-function AppContextProviderFunction(props) {
-  const [sideBarOpen, setSideBarOpen] = useState(false);
-  const [subMenuOpen, setSubMenuOpen] = useState(false);
-  const [subMenuLocation, setSubMenuLocation] = useState({
-    centerPosition: "",
-    topPosition: "",
-  });
-  const [subMenuPageShown, setSubMenuPageShown] = useState({page:'', links:[]});
+export default class AppContextProviderClass extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sideBarOpen: false,
+      subMenuOpen: false,
+      subMenuLocation: {
+        centerPosition: "",
+        topPosition: "",
+      },
+      subMenuPageShown: { page: "", links: [] },
+    };
+  }
 
-  return (
-    <AppContext.Provider
-      value={{
-        sideBarOpen,
-        setSideBarOpen,
-        subMenuOpen,
-        setSubMenuOpen,
-        subMenuLocation,
-        setSubMenuLocation,
-        subMenuPageShown,
-        setSubMenuPageShown,
-      }}
-    >
-      {props.children}
-    </AppContext.Provider>
-  );
+  handleSetSideBarOpen = (value) => {
+    this.setState({ sideBarOpen: value });
+  };
+
+  handleSetSubMenuOpen = (value) => {
+    this.setState({ subMenuOpen: value });
+  };
+
+  handleSetSubMenuLocation = (value1, value2) => {
+    this.setState({
+      subMenuLocation: {
+        centerPosition: value1,
+        topPosition: value2,
+      },
+    });
+  };
+
+  handleSetSubMenuPageShown = (value) => {
+    this.setState({ subMenuPageShown: value });
+  };
+
+  render() {
+    console.log(this.state.subMenuLocation);
+    return (
+      <AppContext.Provider
+        value={{
+          ...this.state,
+          handleSetSideBarOpen: this.handleSetSideBarOpen,
+          handleSetSubMenuOpen: this.handleSetSubMenuOpen,
+          handleSetSubMenuLocation: this.handleSetSubMenuLocation,
+          handleSetSubMenuPageShown: this.handleSetSubMenuPageShown,
+        }}
+      >
+        {this.props.children}
+      </AppContext.Provider>
+    );
+  }
 }
-export default AppContextProviderFunction;
-
-// custom hook method
-export const useGlobalContext = () => {
-  return useContext(AppContext);
-};
