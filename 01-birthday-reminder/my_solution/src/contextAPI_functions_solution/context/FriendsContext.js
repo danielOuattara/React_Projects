@@ -1,3 +1,6 @@
+/* ---Context.Consumer 
+------------------------ */
+
 import React, { useState, createContext } from "react";
 import data from "./../../data";
 
