@@ -11,7 +11,7 @@ function Container() {
           <main>
             <section className="container">
               <h3>{people.length} birthdays today</h3>
-              <span>contextAPI + useContext</span>
+              <span> function component: contextAPI + useContext</span>
               <ListContextAPI />
               {people.length !== 0 && (
                 <button

@@ -5,8 +5,8 @@ import { FriendsContext } from "./context/FriendsContext";
 function Container() {
   const { people, dispatch } = useContext(FriendsContext);
 
-  const handleRemoveAllFriends = (id) => {
-    dispatch({type: "REMOVE_ALL_FRIENDS"})
+  const handleRemoveAllFriends = () => {
+    dispatch({ type: "REMOVE_ALL_FRIENDS" });
   };
 
   const handleRefresh = () => {
@@ -20,13 +20,16 @@ function Container() {
         <span>useReducer</span>
         <ListContextAPI />
         {people.length !== 0 && (
-          <button onClick={() => handleRemoveAllFriends()} style={{ marginTop: "50px" }}>
+          <button
+            onClick={() => handleRemoveAllFriends()}
+            style={{ marginTop: "50px" }}
+          >
             {" "}
             Clear all
           </button>
         )}
         {people.length === 0 && (
-          <button onClick={()=>handleRefresh()} style={{ marginTop: "50px" }}>
+          <button onClick={() => handleRefresh()} style={{ marginTop: "50px" }}>
             {" "}
             Refresh
           </button>
