@@ -1,42 +1,34 @@
 /* ---Context.Consumer 
 ------------------------ */
 
-import React from "react";
+import React, { useContext } from "react";
 import { FriendsContext } from "./context/FriendsContext";
 
 const ListContextAPI = () => {
+  const { people, handleRemoveOnePerson } = useContext(FriendsContext);
   return (
-    <FriendsContext.Consumer>
-      {(context) => {
-        const { people, handleRemoveOnePerson } = context;
+    <>
+      {people.length > 1 && <h2 style={h2_styled}>friends to contact</h2>}
+      {people.length === 1 && <h2 style={h2_styled}>friend to contact</h2>}
+      {people.map((person) => {
+        const { id, name, age, image } = person;
         return (
-          <>
-            {people.length > 1 && <h2 style={h2_styled}>friends to contact</h2>}
-            {people.length === 1 && (
-              <h2 style={h2_styled}>friend to contact</h2>
-            )}
-            {people.map((person) => {
-              const { id, name, age, image } = person;
-              return (
-                <article key={id} className="person" style={article_styled}>
-                  <img src={image} alt={"picture of " + name} />
-                  <div>
-                    <h4>{name}</h4>
-                    <p>{age} years</p>
-                    <button
-                      style={btn_style}
-                      onClick={() => handleRemoveOnePerson(id)}
-                    >
-                      Event Finished
-                    </button>
-                  </div>
-                </article>
-              );
-            })}
-          </>
+          <article key={id} className="person" style={article_styled}>
+            <img src={image} alt={"picture of " + name} />
+            <div>
+              <h4>{name}</h4>
+              <p>{age} years</p>
+              <button
+                style={btn_style}
+                onClick={() => handleRemoveOnePerson(id)}
+              >
+                Event Finished
+              </button>
+            </div>
+          </article>
         );
-      }}
-    </FriendsContext.Consumer>
+      })}
+    </>
   );
 };
 
