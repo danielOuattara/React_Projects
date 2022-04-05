@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-export default class LoadingClass extends Component {
+export default class Error extends Component {
   render() {
     return (
       <main>
-        <div className="loading">
-          <h1>loading...</h1>
+        <div className="title">
+          <h2>{this.props.errorMessage}</h2>
         </div>
       </main>
     );

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { ToursContext } from "./../context/ToursContext";
 
-const TourItem = ({ id, image, info, price, name, removeTourItem }) => {
+
+const TourItem = ({ id, image, info, price, name }) => {
   const [readMore, setReadMore] = useState(false);
+  const {removeTourItem} = React.useContext(ToursContext)
+
 
   return (
     <article className="single-tour">

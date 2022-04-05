@@ -1,29 +1,29 @@
-import React, { Component } from 'react'
-import TourItemClass from './TourItemClass';
-
+import React, { Component } from "react";
+import TourItemClass from "./TourItemClass";
 
 export default class ToursClass extends Component {
   render() {
-    const {tours, removeTourItem} = this.props;
+    const { tours, removeTourItem } = this.props;
     return (
-      <section>
-        <div className='title'>
-          <h2>ours tours</h2>
-          <div className="underline"></div>
-          <div>
-            {tours.map( item => {
-              return ( 
-                < TourItemClass 
-                    key={item.id} 
+      <main>
+        <section>
+          <div className="title">
+            <h2>ours tours</h2>
+            <div className="underline"></div>
+            <div>
+              {tours.map((item) => {
+                return (
+                  <TourItemClass
+                    key={item.id}
                     {...item}
-                    removeTourItem={removeTourItem} 
-                />
-              );
-            })}
+                    removeTourItem={removeTourItem}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     );
   }
 }
-

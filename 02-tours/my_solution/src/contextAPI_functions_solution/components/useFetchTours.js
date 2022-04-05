@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from "react";
-import Error from "./Error";
-import LoadingFunction from "./LoadingFunction";
-import ResetTours from "./ResetTours";
-import ToursFunction from "./ToursFunction";
+import {useEffect, useState} from "react";
 
-const url = "https://course-api.com/react-tours-project";
-
-function AppFunction() {
+function useFetchTours(url) {
   const [loading, setLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [tours, setTours] = useState([]);
 
   const fetchTours = async () => {
-    // async function fetchTours() {
+    // async function fetchTours() {s
     try {
       const res = await fetch(url);
       if (!res.ok) {
@@ -33,29 +27,20 @@ function AppFunction() {
     }
   };
 
-  useEffect(() => {
-    fetchTours();
-  }, []);
-
   const removeTourItem = (id) => {
     setTours((tours) => {
       return tours.filter((item) => item.id !== id);
     });
   };
 
-  if (isError) {
-    return <Error errorMessage={errorMessage} />;
+  return {
+    loading, isError, errorMessage, tours, fetchTours, removeTourItem
   }
-
-  if (loading) {
-    return <LoadingFunction />;
-  }
-
-  if (tours.length === 0) {
-    return <ResetTours fetchTours={fetchTours} />;
-  }
-
-  return <ToursFunction tours={tours} removeTourItem={removeTourItem} />;
 }
 
-export default AppFunction;
+export default useFetchTours;
+
+
+
+
+

@@ -1,7 +1,10 @@
 import React from "react";
-import TourItemFunction from "./TourItemFunction";
+import { ToursContext } from "./../context/ToursContext";
+import TourItemFunction from "./TourItem";
 
-const Tours = ({ tours, removeTourItem }) => {
+const Tours = () => {
+
+  const {tours} = React.useContext(ToursContext)
   return (
     <main>
       <section>
@@ -14,7 +17,6 @@ const Tours = ({ tours, removeTourItem }) => {
                 <TourItemFunction
                   key={item.id}
                   {...item}
-                  removeTourItem={removeTourItem}
                 />
               );
             })}
