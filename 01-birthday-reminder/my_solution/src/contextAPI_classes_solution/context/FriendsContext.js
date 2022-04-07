@@ -1,5 +1,5 @@
 import React, { Component, createContext } from "react";
-import data from "./../../data";
+import data from "../../data";
 
 export const FriendsContext = createContext();
 
