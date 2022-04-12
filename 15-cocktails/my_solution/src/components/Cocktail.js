@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context";
 
 const Cocktail = ({ image, name, id, info, glass }) => {
+  const { setSingleCocktail, cocktails } = useGlobalContext();
+
+  const findSingleCocktail = (id) => {
+    return setSingleCocktail(cocktails.find((item) => item.id === id));
+  };
   return (
     <article className="cocktail">
       <div className="img-container">
@@ -11,7 +17,7 @@ const Cocktail = ({ image, name, id, info, glass }) => {
         <h3>{name}</h3>
         <h4>{glass}</h4>
         <p>{info}</p>
-        <Link to={`/coktail/${id}`} className="btn btn-primary">
+        <Link to={`/coktail/${id}`} onClick={()=>findSingleCocktail(id)} className="btn btn-primary">
           details
         </Link>
       </div>
