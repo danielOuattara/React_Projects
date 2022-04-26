@@ -40,7 +40,7 @@ Variables
   --spacing: 0.1rem;
   --radius: 0.25rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.319);
   --max-width: 1170px;
   --fixed-width: 620px;
 }
@@ -58,8 +58,8 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: var(--clr-grey-10);
   color: var(--clr-grey-1);
   line-height: 1.5;
@@ -139,11 +139,10 @@ p {
 Markdown
 ===============
 */
- .markdown {
+.markdown {
   padding: 4rem;
   display: grid;
   row-gap: 4rem;
-
 }
 .input {
   border-color: transparent;
@@ -152,7 +151,7 @@ Markdown
   line-height: 2;
   box-shadow: var(--dark-shadow);
   min-height: 30vh;
-
+  outline: none;
 }
 .input,
 .result {
@@ -191,4 +190,4 @@ pre {
   padding: 1rem 2rem;
   color: yellow;
   margin-bottom: 1.5rem;
-} 
+}

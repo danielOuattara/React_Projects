@@ -11,7 +11,26 @@ function App() {
     if (!loading) {
       setFollowers(data[page]);
     }
-  }, [loading]);
+  }, [loading, page]);
+
+  const handlePreviousPage = () => {
+    setPage((previousPage) => {
+      if (previousPage - 1 < 0) {
+        return data.length - 1;
+      }
+      return previousPage - 1;
+    });
+  };
+
+  const handleNextPage = () => {
+    setPage((previousPage) => {
+      if (previousPage + 1 >= data.length) {
+        return 0;
+      }
+      return previousPage + 1;
+    });
+  };
+
   return (
     <main>
       <div className="section-title">
@@ -24,6 +43,29 @@ function App() {
             return <Follower key={person.id} {...person} />;
           })}
         </div>
+        {!loading && (
+          <div className="btn-container">
+            <button className="prev-btn" onClick={handlePreviousPage}>
+              Previews
+            </button>
+            {data.map((item, index) => {
+              return (
+                <button
+                  key={index}
+                  className={
+                    page === index ? "page-btn active-btn" : "page-btn"
+                  }
+                  onClick={() => setPage(index)}
+                >
+                  {index + 1}
+                </button>
+              );
+            })}
+            <button className="next-btn" onClick={handleNextPage}>
+              Next
+            </button>
+          </div>
+        )}
       </section>
     </main>
   );
