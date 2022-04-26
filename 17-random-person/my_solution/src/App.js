@@ -9,6 +9,7 @@ function App() {
   const [person, setPerson] = useState(null);
   const [title, setTitle] = useState("name");
   const [value, setValue] = useState("random person");
+  // const [continueFetch, setContinueFetch] = useState(true);
 
   const handleValue = (event) => {
     if (event.target.classList.contains("icon")) {
@@ -17,7 +18,14 @@ function App() {
     }
   };
 
-  const fetchUser = async () => {
+  // const stopContiniousFetching = (event) => {
+  //   console.log(event.target.classList);
+  //   if (event.target.classList.contains("container")) {
+  //     setContinueFetch(false);
+  //   }
+  // };
+
+  const fetchPerson = async () => {
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -27,12 +35,12 @@ function App() {
 
       const data = await response.json();
       const person = data.results[0];
-      const { first, last } = person.name;
-      const { age } = person.dob;
-      const { email, phone } = person;
-      const { password } = person.login;
       const { large: image } = person.picture;
+      const { first, last } = person.name;
+      const { email, phone } = person;
+      const { age } = person.dob;
       const { number, name } = person.location.street;
+      const { password } = person.login;
 
       const newPerson = {
         name: `${first} ${last}`,
@@ -53,18 +61,28 @@ function App() {
     }
   };
 
+  // Is ok, but on over container, stop fetching (TODO)
+  // useEffect(() => {
+  //   if (continueFetch) {
+  //     let timer = setInterval(() => fetchPerson(), 3000);
+  //     return () => {
+  //       clearInterval(timer);
+  //     };
+  //   }
+  // }, []);
+
   useEffect(() => {
-    fetchUser();
+    fetchPerson();
   }, []);
 
   return (
     <main>
       <div className="block bcg-black"></div>
       <div className="block">
-        <div className="container">
+        <div className="container" /* onMouseOver={stopContiniousFetching} */>
           <img
             src={(person && person.image) || defaultImage}
-            alt="random user"
+            alt={(person && person.name) || "random user"}
             className="user-img"
           />
           <p className="user-title">Hi, My {title} is</p>
@@ -81,7 +99,7 @@ function App() {
               </button>
             ))}
           </div>
-          <button className="btn" type="button" onClick={fetchUser}>
+          <button className="btn" type="button" onClick={fetchPerson}>
             {loading ? "loading..." : "random user"}
           </button>
         </div>
