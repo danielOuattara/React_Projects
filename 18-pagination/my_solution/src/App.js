@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useFetch } from "./useFetch";
 import Follower from "./Follower";
+import PersonPerPage from "./PersonPerPage";
 
 function App() {
-  const { loading, data } = useFetch();
+  const [personPerPage, setPersonPerPage] = useState(5);
+  const { loading, data } = useFetch(personPerPage);
   const [page, setPage] = useState(0);
-  const [followers, setFollowers] = useState([]);
+  const [followersPerPage, setFollowersPerPage] = useState([]);
 
   useEffect(() => {
     if (!loading) {
-      setFollowers(data[page]);
+      setFollowersPerPage(data[page]);
     }
-  }, [loading, page]);
+  }, [loading, page, data]);
 
   const handlePreviousPage = () => {
     setPage((previousPage) => {
@@ -31,18 +33,24 @@ function App() {
     });
   };
 
+  const handlePersonsPerPage = (event) => {
+    setPersonPerPage(Number(event.target.value));
+  };
+
   return (
     <main>
       <div className="section-title">
         <h1> {loading ? "loading..." : "pagination"}</h1>
         <div className="underline"></div>
       </div>
+      <PersonPerPage handlePersonsPerPage={handlePersonsPerPage} />
       <section className="followers">
         <div className="container">
-          {followers.map((person) => {
+          {followersPerPage.map((person) => {
             return <Follower key={person.id} {...person} />;
           })}
         </div>
+
         {!loading && (
           <div className="btn-container">
             <button className="prev-btn" onClick={handlePreviousPage}>
@@ -52,15 +60,14 @@ function App() {
               return (
                 <button
                   key={index}
-                  className={
-                    page === index ? "page-btn active-btn" : "page-btn"
-                  }
+                  className={`page-btn ${page === index ? "active-btn" : null}`}
                   onClick={() => setPage(index)}
                 >
                   {index + 1}
                 </button>
               );
             })}
+
             <button className="next-btn" onClick={handleNextPage}>
               Next
             </button>

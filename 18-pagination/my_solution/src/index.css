@@ -97,6 +97,13 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+
+.select-persons {
+  margin-left: 20vw;
+  font-size: 1.5rem;
+}
+
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 3rem;
