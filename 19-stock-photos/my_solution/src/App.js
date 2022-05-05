@@ -15,8 +15,8 @@ function App() {
       let url;
       url = `${mainUrl}${clientID}`;
       const response = await fetch(url);
-      if(!response.ok) {
-        throw new Error (`${response.statusText} ${response.status} `)
+      if (!response.ok) {
+        throw new Error(`${response.statusText} ${response.status} `);
       }
       const data = await response.json();
 
@@ -24,12 +24,30 @@ function App() {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error.message)
+      console.log(error.message);
     }
   };
 
   useEffect(() => {
     fetchImages();
+  }, []);
+
+  useEffect(() => {
+    const event = window.addEventListener("scroll", () => {
+      // console.log(`inner height ${window.innerHeight}`);
+      // console.log(`scroll_Y ${window.scrollY}`);
+      // console.log(`body_height ${window.document.body.scrollHeight}`);
+      const margin = 400;
+      if (
+       !loading && window.innerHeight + window.scrollY + margin >=
+        window.document.body.scrollHeight
+        ) {
+        setLoading(true)
+        console.log("===>  Waiting for Next Fetch");
+      }
+    });
+
+    return () => window.removeEventListener("scroll", event);
   }, []);
 
   const handleSubmit = (event) => {
