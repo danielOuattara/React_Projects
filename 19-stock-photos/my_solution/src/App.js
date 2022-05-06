@@ -4,32 +4,46 @@ import Photo from "./Photo";
 
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 const mainUrl = `https://api.unsplash.com/photos/`;
-// const searchUrl = `https://api.unsplash.com/search/photos/`;
+const searchUrl = `https://api.unsplash.com/search/photos/`;
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
-  console.log("page = ", page);
+  const [query, setQuery] = useState("");
 
   const fetchImages = async () => {
     try {
       setLoading(true);
+      let url = "";
       let nextPages = `&page=${page}`;
-      let url;
-      url = `${mainUrl}${clientID}${nextPages}`;
+      let userQuery = `&query=${query}`;
+      if (query) {
+        url = `${searchUrl}${clientID}${nextPages}${userQuery}`;
+      } else {
+        url = `${mainUrl}${clientID}${nextPages}`;
+      }
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`${response.statusText} ${response.status} `);
       }
       const data = await response.json();
-      setPhotos((previousData) => [...previousData, ...data]);
+      setPhotos((previousData) => {
+        if (query && page === 1) {
+          return [...data.results];
+        } else if (query) {
+          return [...previousData, ...data.results];
+        } else {
+          return [...previousData, ...data];
+        }
+      });
       setLoading(false);
     } catch (error) {
       setLoading(false);
       console.log(error.message);
     }
   };
+  console.log(photos);
 
   useEffect(() => {
     fetchImages();
@@ -55,14 +69,24 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Hello");
+    setPage(1)
+    if (!query) return;
+    if (page === 1) {
+      fetchImages();
+    }
   };
 
   return (
     <main>
       <section className="search">
         <form className="search-form">
-          <input type="text" placeholder="search" className="form-input" />
+          <input
+            type="text"
+            placeholder="search"
+            className="form-input"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
           <button type="submit" className="submit-btn" onClick={handleSubmit}>
             <FaSearch />
           </button>
