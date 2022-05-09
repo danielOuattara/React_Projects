@@ -4,6 +4,7 @@ const Photo = (props) => {
   const {
     urls: { regular },
     alt_description,
+    description,
     likes,
     user: {
       name,
@@ -17,7 +18,8 @@ const Photo = (props) => {
       <div className="photo-info">
         <div>
           <h4>{name}</h4>
-          <p>{likes}</p>
+          <p>likes: {likes}</p>
+          <p>{description}</p>
         </div>
         <a href={portfolio_url}>
           <img src={medium} alt={name} className="user-img" />
