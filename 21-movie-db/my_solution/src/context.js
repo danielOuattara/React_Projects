@@ -2,15 +2,17 @@ import React, { useState, useContext, useEffect } from "react";
 
 // make sure to use https
 export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
+export const defaultImage =
+  "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState({ show: false, message: "" });
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("batman");
-  const [results, setResults] = useState(0)
+  const [results, setResults] = useState("");
 
   const fetchMovies = async (url) => {
     try {
@@ -21,10 +23,9 @@ const AppProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      console.log("data = ", data);
       if (data.Response === "True") {
         setMovies(data.Search);
-        setResults(data.totalResults)
+        setResults(data.totalResults);
         setError({ show: false, message: "" });
       } else {
         setError({ show: true, message: data.Error });
@@ -39,13 +40,12 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchMovies(`${API_ENDPOINT}&s=${query}`);
-    // return () => {
-    //   second
-    // }
   }, [query]);
 
   return (
-    <AppContext.Provider value={{ isLoading, error, movies, query, setQuery, results }}>
+    <AppContext.Provider
+      value={{ isLoading, error, movies, query, setQuery, results, defaultImage }}
+    >
       {children}
     </AppContext.Provider>
   );

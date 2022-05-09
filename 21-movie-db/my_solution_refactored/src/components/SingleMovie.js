@@ -1,45 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { API_ENDPOINT, defaultImage } from "./context";
+import useFetch from "./../hooks/useFetch";
+import { useGlobalContext } from "./../context/MovieContext";
 
 const SingleMovie = () => {
   const { id } = useParams();
-  const [movie, setMovie] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState({ show: false, message: "" });
+  const {
+    isLoading,
+    error,
+    fetchData: movie,
+  } = useFetch(`&i=${id}`);
 
-  const fetchOneMovie = async (url) => {
-    try {
-      setIsLoading(true);
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`${response.statusText} ${response.status} `);
-      }
-
-      const data = await response.json();
-      if (data.Response === "True") {
-        setMovie(data);
-        setError({ show: false, message: "" });
-      } else {
-        setError({ show: true, message: data.Error });
-      }
-    } catch (error) {
-      console.log(error);
-      setError({ show: true, message: error });
-    }
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    fetchOneMovie(`${API_ENDPOINT}&i=${id}`);
-  }, [id]);
+  const { defaultImage } = useGlobalContext();
 
   if (isLoading) {
     return <div className="loading"></div>;
   }
   if (error.show) {
     return (
-      <div className="page-error">
+      <div className="error">
         <h1>{error.message}</h1>
         <Link to="/" className="btn">
           back to movies

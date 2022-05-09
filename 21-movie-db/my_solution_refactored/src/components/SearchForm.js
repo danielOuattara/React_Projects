@@ -1,5 +1,6 @@
 import React from "react";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "./../context/MovieContext";
+
 const SearchForm = () => {
   const { query, setQuery, error, results } = useGlobalContext();
 
@@ -13,7 +14,7 @@ const SearchForm = () => {
         onChange={(event) => setQuery(event.target.value)}
       />
       {error.show && <div className="error">{error.message}</div>}
-      <h4>Results: {results}</h4>
+      {!error.show && results && <h4>Results: {results}</h4>}
     </form>
   );
 };

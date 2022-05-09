@@ -35,6 +35,7 @@ function useFetch(urlParams) {
   useEffect(() => {
     fetchMovies(`${API_ENDPOINT}${urlParams}`);
   }, [urlParams]);
+
   return { isLoading, error, fetchData, results };
 }
 

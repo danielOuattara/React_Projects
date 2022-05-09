@@ -2,15 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { AppProvider } from "./context";
+import { MovieContextProvider } from "./context/MovieContext";
 import { BrowserRouter as Router } from "react-router-dom";
+
 ReactDOM.render(
   <React.StrictMode>
-    <AppProvider>
-      <Router>
+    <Router>
+      <MovieContextProvider>
         <App />
-      </Router>
-    </AppProvider>
+      </MovieContextProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
