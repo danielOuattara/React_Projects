@@ -34,8 +34,6 @@ const AppProvider = ({ children }) => {
         throw new Error(`${response.statusText} ${response.status} `);
       }
       const data = await response.json();
-      // console.log("data = ", data);
-      // console.log("before dispatch hits");
       dispatch({
         type: SET_STORIES,
         payload: { hits: data.hits, nbPages: data.nbPages },
@@ -49,9 +47,14 @@ const AppProvider = ({ children }) => {
     fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
   }, []);
 
-  console.log("state =", state);
+  const removeStory = (storyId) => {
+    dispatch({ type: REMOVE_STORY, payload: storyId });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, removeStory }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 // make sure use

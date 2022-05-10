@@ -19,6 +19,12 @@ const reducer = (state, action) => {
         nbPages: action.payload.nbPages,
       };
 
+    case REMOVE_STORY:
+      return {
+        ...state,
+        hits: state.hits.filter((story) => story.objectID !== action.payload),
+      };
+
     // default:
     //   return state;
     default:
