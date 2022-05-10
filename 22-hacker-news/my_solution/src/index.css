@@ -183,7 +183,7 @@ Buttons
 
 .btn-container button {
   margin: 1rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.75rem;
   text-transform: capitalize;
   font-weight: bold;
   border-color: transparent;
@@ -192,6 +192,10 @@ Buttons
   color: var(--clr-white);
   letter-spacing: var(--spacing);
   cursor: pointer;
+}
+
+.btn-container button:hover {
+  background: var(--clr-primary-3);
 }
 .btn-container button:disabled {
   cursor: not-allowed;

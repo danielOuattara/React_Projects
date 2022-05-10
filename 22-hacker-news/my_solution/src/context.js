@@ -34,6 +34,7 @@ const AppProvider = ({ children }) => {
         throw new Error(`${response.statusText} ${response.status} `);
       }
       const data = await response.json();
+      console.log("data = ", data)
       dispatch({
         type: SET_STORIES,
         payload: { hits: data.hits, nbPages: data.nbPages },
@@ -51,12 +52,18 @@ const AppProvider = ({ children }) => {
     dispatch({ type: HANDLE_SEARCH, payload: userQuery });
   };
 
+  const handlePages = (pageRequest) => {
+    dispatch({ type: HANDLE_PAGE, payload: pageRequest });
+  };
+
   useEffect(() => {
     fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
   }, [state.query, state.page]);
 
   return (
-    <AppContext.Provider value={{ ...state, removeStory, handleSearch }}>
+    <AppContext.Provider
+      value={{ ...state, removeStory, handleSearch, handlePages }}
+    >
       {children}
     </AppContext.Provider>
   );

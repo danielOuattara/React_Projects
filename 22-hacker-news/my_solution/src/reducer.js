@@ -26,15 +26,35 @@ const reducer = (state, action) => {
       };
 
     case HANDLE_SEARCH:
-      console.log("userQuery", action.payload)
+      console.log("userQuery", action.payload);
       return {
         ...state,
         query: action.payload,
         page: 0,
       };
 
-    // default:
-    //   return state;
+    case HANDLE_PAGE:
+      if (action.payload === -1) {
+        let PrevPage = state.page + action.payload;
+        if (PrevPage < 0) {
+          PrevPage = state.nbPages - 1;
+        }
+        return {
+          ...state,
+          page: PrevPage,
+        };
+      } else if (action.payload === +1) {
+        let NextPage = state.page + action.payload;
+        if (NextPage > state.nbPages - 1) {
+          NextPage = 0;
+        }
+        return {
+          ...state,
+          page: NextPage,
+        };
+      }
+      break;
+
     default:
       throw new Error(`No matching action type ${action.type} `);
   }
