@@ -25,6 +25,14 @@ const reducer = (state, action) => {
         hits: state.hits.filter((story) => story.objectID !== action.payload),
       };
 
+    case HANDLE_SEARCH:
+      console.log("userQuery", action.payload)
+      return {
+        ...state,
+        query: action.payload,
+        page: 0,
+      };
+
     // default:
     //   return state;
     default:
