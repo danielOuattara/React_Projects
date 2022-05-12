@@ -5,8 +5,26 @@ import Loading from "./Loading";
 import Modal from "./Modal";
 
 function App() {
-  const { waiting, loading, questions, index, correctAnswers } =
-    useGlobalContext();
+  const {
+    waiting,
+    loading,
+    questions,
+    index,
+    correctAnswers,
+    setQuestions,
+    setIndex,
+  } = useGlobalContext();
+
+  const setNextQuestion = () => {
+    setIndex((previousIndex) => {
+      if (previousIndex + 1 > questions.length - 1) {
+        //opendModal()
+        return 0;
+      } else {
+        return previousIndex + 1;
+      }
+    });
+  };
 
   if (waiting) {
     return <SetupForm />;
@@ -14,9 +32,20 @@ function App() {
   if (loading) {
     return <Loading />;
   }
-  const { question, incorrect_answers, correct_answer } = questions[0];
-  console.log(questions[0]);
+  const { question, incorrect_answers, correct_answer } = questions[index];
   const answers = [...incorrect_answers, correct_answer];
+
+  // TODO: create the possibility to randomize answers index in its array
+  // const randomIndexes = (arr) => {
+  //   const set = new Set();
+  //   while (set.size < arr.length) {
+  //     set.add(Math.floor(Math.random() * arr.length));
+  //   }
+  //   return set;
+  // };
+
+  // console.log(randomIndexes(answers))
+
   console.log("answers =", answers);
   return (
     <main>
@@ -39,7 +68,9 @@ function App() {
             })}
           </div>
         </article>
-        <button className="next-question">Next question</button>
+        <button className="next-question" onClick={setNextQuestion}>
+          Next question
+        </button>
       </section>
     </main>
   );

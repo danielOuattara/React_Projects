@@ -58,6 +58,8 @@ const AppProvider = ({ children }) => {
         correctAnswers,
         error,
         isModalOPen,
+        setQuestions,
+        setIndex
       }}
     >
       {children}
