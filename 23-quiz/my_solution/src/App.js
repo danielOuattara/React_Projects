@@ -13,6 +13,7 @@ function App() {
     correctAnswers,
     setQuestions,
     setIndex,
+    setCorrectAnswers,
   } = useGlobalContext();
 
   const setNextQuestion = () => {
@@ -26,6 +27,14 @@ function App() {
     });
   };
 
+  const checkAnswer = (value) => {
+    if (value) {
+      setCorrectAnswers((previousState) => previousState + 1);
+    }
+    setNextQuestion();
+  };
+
+  // rendering
   if (waiting) {
     return <SetupForm />;
   }
@@ -57,12 +66,13 @@ function App() {
         <article className="container">
           <h3 dangerouslySetInnerHTML={{ __html: question }} />
           <div className="btn-container">
-            {answers.map((item, index) => {
+            {answers.map((answer, index) => {
               return (
                 <button
                   key={index}
-                  dangerouslySetInnerHTML={{ __html: item }}
+                  dangerouslySetInnerHTML={{ __html: answer }}
                   className="answer-btn"
+                  onClick={() =>checkAnswer(correct_answer === answer)}
                 />
               );
             })}
