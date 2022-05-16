@@ -7,19 +7,35 @@ import Modal from "./Modal";
 function App() {
   const {
     waiting,
+    setWaiting,
     loading,
-    questions,
+    setLoading,
     index,
-    correctAnswers,
-    setQuestions,
     setIndex,
+    questions,
+    setQuestions,
+    correctAnswers,
     setCorrectAnswers,
+    error,
+    setError,
+    isModalOpen,
+    setIsModalOpen,
   } = useGlobalContext();
+
+  // TODO: create the possibility to randomize answers index in its array
+  // const randomIndexes = (arr) => {
+  //   const set = new Set();
+  //   while (set.size < arr.length) {
+  //     set.add(Math.floor(Math.random() * arr.length));
+  //   }
+  //   return set;
+  // };
+
 
   const setNextQuestion = () => {
     setIndex((previousIndex) => {
       if (previousIndex + 1 > questions.length - 1) {
-        //opendModal()
+        setIsModalOpen(true);
         return 0;
       } else {
         return previousIndex + 1;
@@ -34,28 +50,24 @@ function App() {
     setNextQuestion();
   };
 
-  // rendering
+  const closeModal = () => {
+    setWaiting(true);
+    setCorrectAnswers(0);
+    setIsModalOpen(false);
+  };
+
+  // -------------------------------------------- rendering
+
   if (waiting) {
     return <SetupForm />;
   }
   if (loading) {
     return <Loading />;
   }
+
   const { question, incorrect_answers, correct_answer } = questions[index];
   const answers = [...incorrect_answers, correct_answer];
 
-  // TODO: create the possibility to randomize answers index in its array
-  // const randomIndexes = (arr) => {
-  //   const set = new Set();
-  //   while (set.size < arr.length) {
-  //     set.add(Math.floor(Math.random() * arr.length));
-  //   }
-  //   return set;
-  // };
-
-  // console.log(randomIndexes(answers))
-
-  console.log("answers =", answers);
   return (
     <main>
       <Modal />
@@ -72,7 +84,7 @@ function App() {
                   key={index}
                   dangerouslySetInnerHTML={{ __html: answer }}
                   className="answer-btn"
-                  onClick={() =>checkAnswer(correct_answer === answer)}
+                  onClick={() => checkAnswer(correct_answer === answer)}
                 />
               );
             })}
