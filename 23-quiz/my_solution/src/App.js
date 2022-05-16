@@ -55,6 +55,12 @@ function App() {
     setCorrectAnswers(0);
     setIsModalOpen(false);
   };
+  
+  const restart = () => {
+    setWaiting(true);
+    setCorrectAnswers(0);
+    setIsModalOpen(false);
+  }
 
   // -------------------------------------------- rendering
 
@@ -73,7 +79,7 @@ function App() {
       <Modal />
       <section className="quiz">
         <p className="correct-answers">
-          correct answers: {correctAnswers} / {index}
+          correct answers: {correctAnswers} / {questions.length}
         </p>
         <article className="container">
           <h3 dangerouslySetInnerHTML={{ __html: question }} />
@@ -90,8 +96,12 @@ function App() {
             })}
           </div>
         </article>
+
         <button className="next-question" onClick={setNextQuestion}>
-          Next question
+          Restart
+        </button>
+        <button className="restart" onClick={restart}>
+          Resart game
         </button>
       </section>
     </main>
