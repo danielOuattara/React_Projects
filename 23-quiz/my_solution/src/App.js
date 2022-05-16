@@ -22,16 +22,6 @@ function App() {
     setIsModalOpen,
   } = useGlobalContext();
 
-  // TODO: create the possibility to randomize answers index in its array
-  // const randomIndexes = (arr) => {
-  //   const set = new Set();
-  //   while (set.size < arr.length) {
-  //     set.add(Math.floor(Math.random() * arr.length));
-  //   }
-  //   return set;
-  // };
-
-
   const setNextQuestion = () => {
     setIndex((previousIndex) => {
       if (previousIndex + 1 > questions.length - 1) {
@@ -55,12 +45,12 @@ function App() {
     setCorrectAnswers(0);
     setIsModalOpen(false);
   };
-  
+
   const restart = () => {
     setWaiting(true);
     setCorrectAnswers(0);
     setIsModalOpen(false);
-  }
+  };
 
   // -------------------------------------------- rendering
 
@@ -72,7 +62,16 @@ function App() {
   }
 
   const { question, incorrect_answers, correct_answer } = questions[index];
-  const answers = [...incorrect_answers, correct_answer];
+  const answers = [...incorrect_answers];
+
+  // I generate a random num between 0 and incorrect_answers.length + 1
+  // This a create a random new "slot" index for my correct answer 
+  let correctAnswerRandomIndex = Math.floor(
+    Math.random() * (incorrect_answers.length + 1)
+  );
+
+  // then I insert the correct answer in the new randomly created index.
+  answers.splice(correctAnswerRandomIndex, 0, correct_answer);
 
   return (
     <main>
