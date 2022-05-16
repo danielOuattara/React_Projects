@@ -9,16 +9,11 @@ function App() {
     waiting,
     setWaiting,
     loading,
-    setLoading,
     index,
     setIndex,
     questions,
-    setQuestions,
     correctAnswers,
     setCorrectAnswers,
-    error,
-    setError,
-    isModalOpen,
     setIsModalOpen,
   } = useGlobalContext();
 
@@ -40,11 +35,11 @@ function App() {
     setNextQuestion();
   };
 
-  const closeModal = () => {
-    setWaiting(true);
-    setCorrectAnswers(0);
-    setIsModalOpen(false);
-  };
+  // const closeModal = () => {
+  //   setWaiting(true);
+  //   setCorrectAnswers(0);
+  //   setIsModalOpen(false);
+  // };
 
   const restart = () => {
     setWaiting(true);

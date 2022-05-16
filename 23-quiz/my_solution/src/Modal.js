@@ -3,18 +3,10 @@ import { useGlobalContext } from "./context";
 
 const Modal = () => {
   const {
-    waiting,
     setWaiting,
-    loading,
-    setLoading,
     questions,
-    setQuestions,
-    index,
-    setIndex,
     correctAnswers,
     setCorrectAnswers,
-    error,
-    setError,
     isModalOpen,
     setIsModalOpen,
   } = useGlobalContext();
@@ -30,8 +22,9 @@ const Modal = () => {
       <div className="modal-content">
         <h2 className="modal-content">Congratulations !</h2>
         <p>
-          You answsered correctly to {""} 
-          {((correctAnswers / questions.length) * 100).toFixed(0)} % of questions
+          You answsered correctly to {""}
+          {((correctAnswers / questions.length) * 100).toFixed(0)} % of
+          questions
         </p>
         <button className="close-btn" onClick={closeModal}>
           play again
