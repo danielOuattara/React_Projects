@@ -7,11 +7,11 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact>
-          <Dashboard></Dashboard>
+          <Dashboard />
         </Route>
 
         <Route path="/login">
-          <Login></Login>
+          <Login />
         </Route>
 
         <Route path="*">
