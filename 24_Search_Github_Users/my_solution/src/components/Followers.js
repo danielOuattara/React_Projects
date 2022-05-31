@@ -12,7 +12,7 @@ const Followers = () => {
             <img src={person.avatar_url} alt={person.name} />
             <div>
               <h4>{person.login}</h4>
-            <a href={person.html_url}>{person.html_url}</a>
+              <a href={person.html_url}>{person.html_url}</a>
             </div>
           </article>
         ))}
