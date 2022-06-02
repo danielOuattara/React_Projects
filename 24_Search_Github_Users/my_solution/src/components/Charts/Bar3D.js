@@ -1,7 +1,71 @@
-import React from 'react';
+// STEP 1 - Include Dependencies
+// Include react
+import React from "react";
 
-const Bar3D = () => {
-  return <div>chart</div>;
+// Include the react-fusioncharts component
+import ReactFC from "react-fusioncharts";
+
+// Include the fusioncharts library
+import FusionCharts from "fusioncharts";
+
+// Include the chart type
+import Charts from "fusioncharts/fusioncharts.charts";
+
+// Include the theme as fusion
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+
+// Adding the chart and theme as dependency to the core fusioncharts
+ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
+
+const chartConfigs = {
+  type: "bar3d",
+  width: "100%",
+  height: "400",
+  dataFormat: "json",
+  dataSource: {
+    chart: {
+      caption: "Most Forked Repo by forks",
+      XAxisName: "Repos",
+      XAxisNameFontSize: "16px",
+      yAxisName: "Forks",
+      XAxisNameFontSize: "16px",
+    },
+  },
 };
 
-export default Bar3D;
+//------------------------------------------------------------------
+
+// // using class component
+
+// class ChartComponent extends React.Component {
+//   render() {
+//     const finalChartConfigs = {
+//       ...chartConfigs,
+//       dataSource: {
+//         ...chartConfigs.dataSource,
+//         data: this.props.chartData,
+//       },
+//     };
+//     return <ReactFC {...finalChartConfigs} />;
+//   }
+// }
+
+// export default ChartComponent;
+
+//------------------------------------------------------------------
+
+// Using functionnal components
+
+const ChartComponent = (props) => {
+  const finalChartConfigs = {
+    ...chartConfigs,
+    dataSource: {
+      ...chartConfigs.dataSource,
+      data: props.chartData,
+    },
+  };
+
+  return <ReactFC {...finalChartConfigs} />;
+};
+
+export default ChartComponent;
