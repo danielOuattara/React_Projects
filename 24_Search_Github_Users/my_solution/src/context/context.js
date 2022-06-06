@@ -13,11 +13,44 @@ const GithubProvider = ({ children }) => {
   const [repos, setRepos] = useState(mockRepos);
   const [followers, setFollowers] = useState(mockFollowers);
   const [requests, setRequests] = useState({});
-  const [loading, setLoading] = useState();
-  // error: here
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState({ show: false, message: "" });
 
-  const checkRequets = async () => {
+  //----------------------------------------------------
+  function toggleError(show, message) {
+    setError({ show, message });
+  }
+
+  //----------------------------------------------------
+  async function searchGitHubUser(user) {
     try {
+      setIsLoading(true);
+      const response = await axios(rootUrl + `/users/${user}`);
+      if (response) {
+        setGithubUser(response.data);
+        const { login, followers_url } = response.data;
+        const userRepos = await axios.get(`${rootUrl}/users/${login}/repos?per_page=100`);
+        if (userRepos.data) {
+          setRepos(userRepos.data);
+        }
+        const userFollowers = await axios.get(`${followers_url}`);
+        if (userFollowers.data) {
+          setFollowers(userFollowers.data);
+        }
+      }
+      setIsLoading(false);
+    } catch (error) {
+      toggleError(true, "User Not Found. Try another name");
+    } finally {
+      checkRequets();
+      setIsLoading(false);
+    }
+  }
+
+  //----------------------------------------------------
+  async function checkRequets() {
+    try {
+      setIsLoading(true);
       const response = await axios(rootUrl + "/rate_limit");
       const {
         limit: requestsLimit,
@@ -26,14 +59,18 @@ const GithubProvider = ({ children }) => {
       } = response.data.rate;
       setRequests({ requestsLimit, requestsRemaining, requestTimeReset });
       if (requestsRemaining === 0) {
-        // throw new Error ( request limit reached, try again in 1 hour OR login in with a github account)
+        toggleError(
+          true,
+          "Requests limit reached: try again in 1 hour OR login in with a github account"
+        );
       }
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
-  };
-  // rateLimiter()
+  }
 
+  //----------------------------------------------------
   useEffect(() => {
     checkRequets();
   }, []);
@@ -48,6 +85,9 @@ const GithubProvider = ({ children }) => {
         followers,
         setFollowers,
         requests,
+        searchGitHubUser,
+        error,
+        isLoading,
       }}
     >
       {children}

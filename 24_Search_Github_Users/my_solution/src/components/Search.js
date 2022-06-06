@@ -6,6 +6,9 @@ import { SearchWrapper, SearchErrorWrapper } from "./Wrappers";
 const Search = () => {
   const {
     requests: { requestsRemaining, requestsLimit, requestTimeReset },
+    searchGitHubUser,
+    error,
+    isLoading,
   } = useContext(GithubContext);
   const [user, setUser] = useState("");
 
@@ -14,11 +17,12 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user) {
-      console.log(user);
+      searchGitHubUser(user);
     }
   };
   return (
     <section className="section">
+      <p>{error && error.message}</p>
       <SearchWrapper className="section-center">
         <form onSubmit={handleSubmit}>
           <div className="form-control">
@@ -29,7 +33,7 @@ const Search = () => {
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
-            {requestsRemaining > 0 && <button type="submit">search</button>}
+            {requestsRemaining > 0 && !isLoading && <button type="submit">search</button>}
           </div>
         </form>
         <h3>
