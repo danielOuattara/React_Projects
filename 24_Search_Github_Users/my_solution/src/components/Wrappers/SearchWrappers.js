@@ -74,8 +74,8 @@ h3 {
 const SearchErrorWrapper = styled.article`
 position: absolute;
 width: 90vw;
-top: 0;
-left: 0;
+top: 3rem;
+left: 23rem;
 transform: translateY(-100%);
 text-transform: capitalize;
 p {

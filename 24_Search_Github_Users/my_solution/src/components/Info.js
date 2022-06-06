@@ -5,9 +5,9 @@ import { GoRepo, GoGist } from "react-icons/go";
 import { FiUsers, FiUserPlus } from "react-icons/fi";
 
 const UserInfo = () => {
-  const { githubUser } = useContext(GithubContext);
+  const { gitHubUser } = useContext(GithubContext);
 
-  const { public_repos, followers, following, public_gists } = githubUser;
+  const { public_repos, followers, following, public_gists } = gitHubUser;
   const itemsToShow = [
     {
       id: 1,

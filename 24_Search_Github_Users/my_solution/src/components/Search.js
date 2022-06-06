@@ -22,7 +22,9 @@ const Search = () => {
   };
   return (
     <section className="section">
+      <SearchErrorWrapper>
       <p>{error && error.message}</p>
+      </SearchErrorWrapper>
       <SearchWrapper className="section-center">
         <form onSubmit={handleSubmit}>
           <div className="form-control">
