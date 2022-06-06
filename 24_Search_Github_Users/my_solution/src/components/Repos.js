@@ -2,12 +2,15 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { GithubContext } from "../context/context";
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
+import { ReposWrapper } from "./Wrappers";
+
 const Repos = () => {
   const { repos } = useContext(GithubContext);
 
-  //-----------------------------------------
+  /* Building data for mostUsed
+  ============================== */
 
-  /* method 1: constructing an Object, then change it to 
+  /* method 1: constructing a Data Object of objects, then change it to 
                an Array + sorting + slicing. No 'stargazers_count */
 
   // let mostUsed = repos.reduce((total, item) => {
@@ -29,14 +32,14 @@ const Repos = () => {
 
   //-----------------------------------------
 
-  // method 2: constructing directly an Array + sorting + slicing
+  // method 2: constructing (data) directly an Array of object
 
   let mostUsed = repos.reduce((total, item) => {
     if (!item.language) {
       return total;
     }
 
-    let itemPresent = total.find((obj) => obj.language === item.language);
+    let itemPresent = total.find((element) => element.language === item.language);
     if (itemPresent) {
       itemPresent.languageCount += 1;
       itemPresent.starsCount += item.stargazers_count;
@@ -50,15 +53,15 @@ const Repos = () => {
     return total;
   }, []);
 
+  /* Restructuring data for pie3D & doughnut2d graph 
+  ---------------------------------------------------*/
+
   mostUsed = mostUsed
     .sort((a, b) => {
       return b.starsCount - a.starsCount;
     })
     .slice(0, 5);
-  // console.log("mostUsed = ", mostUsed);
 
-  /* Restructuring data for pie3D graph 
-  -------------------------------------------------*/
   const pie3DData = mostUsed.map((item) => {
     return {
       label: item.language,
@@ -66,8 +69,6 @@ const Repos = () => {
     };
   });
 
-  /* Restructuring data for doughnut2d graph 
-  -------------------------------------------------*/
   const doughnut2dData = mostUsed.map((item) => {
     return {
       label: item.language,
@@ -75,17 +76,20 @@ const Repos = () => {
     };
   });
 
-  let mostPopularOrForkedRepo = repos.reduce(
+  /* Building data for mostPopularOrForkedRepo
+  ============================================== */
+
+  // method 2:
+  let { repoByStars, repoByForks } = repos.reduce(
     (total, item) => {
       total.repoByStars.push({
         label: item.name,
-        starsCount: item.stargazers_count,
+        value: item.stargazers_count,
       });
       total.repoByForks.push({
         label: item.name,
-        forksCount: item.forks,
+        value: item.forks,
       });
-      console.log("total = ", total);
       return total;
     },
     {
@@ -94,75 +98,37 @@ const Repos = () => {
     }
   );
 
-  mostPopularOrForkedRepo.repoByStars = mostPopularOrForkedRepo.repoByStars
-    .sort((a, b) => {
-      return b.starsCount - a.starsCount;
-    })
-    .slice(0, 20);
-
-  mostPopularOrForkedRepo.repoByForks = mostPopularOrForkedRepo.repoByForks
-    .sort((a, b) => {
-      return b.forksCount - a.forksCount;
-    })
-    .slice(0, 20);
-
-  /* Restructuring data for column3d graph 
+  /* Restructuring data for column3d & bar3d graph 
   -------------------------------------------------*/
-  const column3dData = mostPopularOrForkedRepo.repoByStars.map((item) => {
-    return {
-      label: item.name,
-      value: item.starsCount,
-    };
-  });
+  repoByStars = repoByStars
+    .sort((a, b) => {
+      return b.value - a.value;
+    })
+    .slice(0, 10);
 
-  /* Restructuring data bar3d graph 
-  -------------------------------------------------*/
+  repoByForks = repoByForks
+    .sort((a, b) => {
+      return b.value - a.value;
+    })
+    .slice(0, 10);
 
-  const bar3dData = mostPopularOrForkedRepo.repoByForks.map((item) => {
-    return {
-      label: item.name,
-      value: item.forksCount,
-    };
-  });
+  const column3dData = repoByStars;
+  const bar3dData = repoByForks;
 
   // ------------------------------------------
 
   return (
     <section className="section">
-      <Wrapper className="section-center">
+      <ReposWrapper className="section-center">
         {/* <ExampleChart chartData={chartData} />; */}
         <Pie3D chartData={pie3DData} />
         <Column3D chartData={column3dData} />
         {/* <ExampleChart /> */}
         <Doughnut2D chartData={doughnut2dData} />
         <Bar3D chartData={bar3dData} />
-      </Wrapper>
+      </ReposWrapper>
     </section>
   );
 };
-
-const Wrapper = styled.div`
-  display: grid;
-  justify-items: center;
-  gap: 2rem;
-  @media (min-width: 800px) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media (min-width: 1200px) {
-    grid-template-columns: 2fr 3fr;
-  }
-
-  div {
-    width: 100% !important;
-  }
-  .fusioncharts-container {
-    width: 100% !important;
-  }
-  svg {
-    width: 100% !important;
-    border-radius: var(--radius) !important;
-  }
-`;
 
 export default Repos;
