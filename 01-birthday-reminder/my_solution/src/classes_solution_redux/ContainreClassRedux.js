@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import List from "./ListClassRedux";
-import { removeAllFriends } from "./actions/friendsActions";  // optionnal
+import { removeAllFriends } from "./actions/friendsActions"; // optionnal
 
 class ContainerClassRedux extends Component {
   handleRefresh = () => {
@@ -25,7 +25,10 @@ class ContainerClassRedux extends Component {
             </button>
           )}
           {this.props.people.length === 0 && (
-            <button onClick={this.handleRefresh} style={{ marginTop: "50px" }}>
+            <button
+              onClick={this.handleRefresh}
+              style={{ marginTop: "50px" }}
+            >
               {" "}
               Refresh
             </button>

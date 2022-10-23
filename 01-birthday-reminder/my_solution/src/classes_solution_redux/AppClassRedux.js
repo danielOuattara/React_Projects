@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import ContainerClassRedux from "./ContainreClassRedux";
 import { Provider } from "react-redux";
 import store from "./store";

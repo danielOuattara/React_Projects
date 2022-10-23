@@ -26,13 +26,23 @@ export default class App extends Component {
   handleRemoveOnePerson = (id) => {
     // OK !
     return this.setState((prevState) => {
-      return { people: prevState.people.filter((person) => person.id !== id) };
+      return {
+        people: prevState.people.filter((person) => person.id !== id),
+      };
     });
   };
 
-  handleRefresh = () => {
-    window.location.reload(false);
-  };
+  // ----------------------------------
+
+  // handleRefresh = () => this.setState({ people: data });
+
+  // handleRefresh = () => {
+  //   this.setState({
+  //     people: data,
+  //   });
+  // };
+
+  handleRefresh = () => this.setState(() => ({ people: data }));
 
   render() {
     return (
@@ -54,7 +64,10 @@ export default class App extends Component {
             </button>
           )}
           {this.state.people.length === 0 && (
-            <button onClick={this.handleRefresh} style={{ marginTop: "50px" }}>
+            <button
+              onClick={this.handleRefresh}
+              style={{ marginTop: "50px" }}
+            >
               {" "}
               Refresh
             </button>
