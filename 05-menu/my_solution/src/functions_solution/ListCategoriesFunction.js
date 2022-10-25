@@ -1,20 +1,23 @@
-import React from 'react';
+import React from "react";
 
-const ListCategories = ({categories, showCategory}) => {
+const ListCategories = ({ categories, showCategory }) => {
   return (
     <ul className="btn-container">
-      {categories.map( category => {
+      {categories.map((category) => {
         return (
-          <li key={category}> 
-            <button 
-              className='filter-btn' 
-              onClick={() => showCategory(category)}> {category} 
+          <li key={category}>
+            <button
+              className="filter-btn"
+              onClick={() => showCategory(category)}
+            >
+              {" "}
+              {category}
             </button>
           </li>
         );
       })}
     </ul>
-  ); 
+  );
 };
 
 export default ListCategories;
