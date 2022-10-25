@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const TourItem = ({ id, image, info, price, name, removeTourItem }) => {
   const [readMore, setReadMore] = useState(false);
@@ -12,7 +12,7 @@ const TourItem = ({ id, image, info, price, name, removeTourItem }) => {
           <h4 className="tour-price">${price}</h4>
         </div>
         <p>
-          {readMore ? info : info.substring(0, 150) + " ..."}
+          {readMore ? info : info.substring(0, 100) + " ..."}
           <button onClick={() => setReadMore(!readMore)}>
             {readMore ? "show less" : "read more"}
           </button>

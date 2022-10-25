@@ -1,6 +1,6 @@
 import React from "react";
 
-function Error({errorMessage}) {
+function Error({ errorMessage }) {
   return (
     <main>
       <div className="title">

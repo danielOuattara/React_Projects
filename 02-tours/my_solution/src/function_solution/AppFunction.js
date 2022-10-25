@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Error from "./Error";
 import LoadingFunction from "./LoadingFunction";
 import ResetTours from "./ResetTours";
-import ToursFunction from "./ToursFunction";
+import Tours from "./ToursFunction";
 
 const url = "https://course-api.com/react-tours-project";
 
@@ -13,9 +13,9 @@ function AppFunction() {
   const [tours, setTours] = useState([]);
 
   const fetchTours = async () => {
-    // async function fetchTours() {
     try {
       const res = await fetch(url);
+      console.log("res = ", res);
       if (!res.ok) {
         setIsError(true);
         setLoading(false);
@@ -37,11 +37,10 @@ function AppFunction() {
     fetchTours();
   }, []);
 
-  const removeTourItem = (id) => {
+  const removeTourItem = (id) =>
     setTours((tours) => {
       return tours.filter((item) => item.id !== id);
     });
-  };
 
   if (isError) {
     return <Error errorMessage={errorMessage} />;
@@ -55,7 +54,7 @@ function AppFunction() {
     return <ResetTours fetchTours={fetchTours} />;
   }
 
-  return <ToursFunction tours={tours} removeTourItem={removeTourItem} />;
+  return <Tours tours={tours} removeTourItem={removeTourItem} />;
 }
 
 export default AppFunction;
