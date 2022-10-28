@@ -4,14 +4,13 @@ export default function JobAccessButton({ jobs, value, setValue }) {
   return (
     <div className="btn-container">
       {jobs.map((job, index) => {
-        const { id, company } = job;
         return (
           <button
             className={`job-btn ${index === value && "active-btn"}`}
-            key={id}
+            key={job.id}
             onClick={() => setValue(index)}
           >
-            {company}
+            {job.company}
           </button>
         );
       })}

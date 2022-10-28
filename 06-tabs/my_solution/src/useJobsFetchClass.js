@@ -33,9 +33,6 @@
 
 // export default useJobsFetch;
 
-
-
-
 // import { useState, useEffect } from 'react';
 // // This one is OK, is auto-invoked function in useEffect
 // function useJobsFetch(url) {
@@ -70,10 +67,6 @@
 
 //   export default useJobsFetch;
 
-
-
-
-
 import React from "react";
 
 export default class useJobsFetchClass extends React.Component {
@@ -84,7 +77,7 @@ export default class useJobsFetchClass extends React.Component {
       isLoading: true,
       error: "",
       value: "",
-      url
+      url,
     };
   }
 
@@ -106,7 +99,7 @@ export default class useJobsFetchClass extends React.Component {
           isLoading: false,
         }));
 
-        return this.state
+        return this.state;
       } catch (error) {
         return error;
       }
@@ -115,7 +108,7 @@ export default class useJobsFetchClass extends React.Component {
 
   render() {
     // return { this.statejobs, setJobs, value, setValue, isLoading, error };
-    let state = this.state
+    let state = this.state;
     return { state };
   }
 }

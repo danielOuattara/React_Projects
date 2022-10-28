@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import JobAccessButtonFunction from "./JobAccessButtonClass";
 import JobDetailsFunction from "./components/JobDetailsClass";
-// import useJobsFetchClass from "../useJobsFetchClass";
+import useJobsFetchClass from "../useJobsFetchClass";
 
 const url = "https://course-api.com/react-tabs-project";
 
@@ -14,7 +14,7 @@ export default class AppClass extends Component {
       error: "",
       jobIndex: 0,
     };
-    this.handleJobIndexChange = this.handleJobIndexChange.bind(this)
+    this.handleJobIndexChange = this.handleJobIndexChange.bind(this);
   }
 
   handleJobIndexChange(newJobIndex) {

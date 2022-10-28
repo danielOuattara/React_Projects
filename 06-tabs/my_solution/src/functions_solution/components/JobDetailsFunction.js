@@ -1,8 +1,6 @@
 import React from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 
-
-
 export default function JobDetails({ jobs, value }) {
   const { title, dates, duties, company } = jobs[value];
   return (

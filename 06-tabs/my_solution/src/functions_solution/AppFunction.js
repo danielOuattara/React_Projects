@@ -1,9 +1,7 @@
 import React from "react";
 import JobAccessButtonFunction from "./JobAccessButtonFunction";
 import JobDetailsFunction from "./components/JobDetailsFunction";
-import useJobsFetchFunction from "../useJobsFetchFunction";
-
-
+import useJobsFetchFunction from "./useJobsFetchFunction";
 
 function App() {
   const url = "https://course-api.com/react-tabs-project";
