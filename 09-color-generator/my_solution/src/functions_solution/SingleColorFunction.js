@@ -1,37 +1,39 @@
 import React, { useState, useEffect } from "react";
-import rgbToHex from "./../utils";
 
-
-
-const SingleColorFunction = ({ rgb, weight, index }) => {
+function SingleColorFunction({
+  rgb,
+  weight,
+  index,
+  hexColorString,
+  listLength,
+}) {
   const [alert, setAlert] = useState(false);
-  let color = rgbToHex(...rgb);
 
   useEffect(() => {
-    const timeOutSet = setTimeout(() => setAlert(false), 1500);
-    return () => clearTimeout(timeOutSet);
+    const timeOut = setTimeout(() => setAlert(false), 1500);
+    return () => clearTimeout(timeOut);
   }, [alert]);
 
   const handleCopyToClipBoard = () => {
     setAlert(true);
-    navigator.clipboard.writeText(color);
+    navigator.clipboard.writeText(hexColorString);
   };
 
   return (
     <article
       onClick={handleCopyToClipBoard}
-      className={index > 7 ? "color-light color" : "color"}
-      style={{ backgroundColor: `${color}` }}
+      className={index > listLength / 2 ? "color-light color" : "color"}
+      style={{ backgroundColor: `${hexColorString}` }}
     >
       <p className="percent-value">{weight} %</p>
-      <p className="color-value">{color}</p>
+      <p className="color-value">{hexColorString}</p>
       {alert && (
-        <p className={index > 7 ? "alert-light alert" : "alert"}>
+        <p className={index > listLength / 2 ? "alert-light alert" : "alert"}>
           copied to clipboard
         </p>
       )}
     </article>
   );
-};
+}
 
 export default SingleColorFunction;
