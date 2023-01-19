@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import ListContextAPI from "./ListContextAPI";
 import { FriendsContext } from "./contextClass/FriendsContext";
 
@@ -10,23 +10,17 @@ class ContainerClass extends Component {
     return (
       <main>
         <section className="container">
-          <h3>{people.length} birthdays today</h3>
-          <span>class component: contextAPI</span>
+          <span>class component + contextAPI</span>
+          {people.length > 1 && <h3>{people.length} birthdays today</h3>}
+          {(people.length === 1 || people.length === 0) && (
+            <h3>{people.length} birthday today</h3>
+          )}
           <ListContextAPI />
           {people.length !== 0 && (
-            <button
-              onClick={() => handleRemoveAllPeople()}
-              style={{ marginTop: "50px" }}
-            >
-              {" "}
-              Clear all
-            </button>
+            <button onClick={() => handleRemoveAllPeople()}> Clear all</button>
           )}
           {people.length === 0 && (
-            <button onClick={handleRefresh} style={{ marginTop: "50px" }}>
-              {" "}
-              Refresh
-            </button>
+            <button onClick={handleRefresh}> Refresh</button>
           )}
         </section>
       </main>

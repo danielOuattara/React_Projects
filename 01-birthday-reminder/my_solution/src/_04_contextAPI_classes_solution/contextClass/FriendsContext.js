@@ -1,4 +1,4 @@
-import React, { Component, createContext } from "react";
+import { Component, createContext } from "react";
 import data from "../../data";
 
 export const FriendsContext = createContext();
@@ -21,9 +21,8 @@ class FriendsContextProvider extends Component {
     this.setState({ people: [] });
   };
 
-  handleRefresh = () => {
-    window.location.reload(false);
-  };
+  handleRefresh = () => this.setState(() => ({ people: data }));
+
   render() {
     return (
       <div>
