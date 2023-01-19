@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
-
+// import AppFunction from "./_01_function_solution/AppFunction";
+// import AppClass from "./_02_classes_solution/AppClass";
+import AppFunctionContextAPI from "./_03_contextAPI_functions_solution/AppFunctionContextAPI";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <AppFunction /> */}
+    {/* <AppClass /> */}
+    <AppFunctionContextAPI />
   </React.StrictMode>,
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
