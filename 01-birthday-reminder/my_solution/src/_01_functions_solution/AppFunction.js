@@ -1,5 +1,5 @@
 import { useState } from "react";
-import data from "./../data";
+import data from "../data";
 import List from "./ListFunction";
 
 function AppFunction() {
@@ -8,8 +8,7 @@ function AppFunction() {
   const handleRemoveOnePerson = (id) => {
     setPeople(() => {
       // can handle Async behaviour !
-      let newPeople = people.filter((person) => person.id !== id);
-      return newPeople;
+      return people.filter((person) => person.id !== id);
     });
   };
 
@@ -24,20 +23,17 @@ function AppFunction() {
   return (
     <main>
       <section className="container">
-        <h3>{people.length} birthdays today</h3>{" "}
         <span>functionnal component</span>
+        {people.length > 1 && <h3>{people.length} birthdays today</h3>}
+        {(people.length === 1 || people.length === 0) && (
+          <h3>{people.length} birthday today</h3>
+        )}
         <List people={people} handleRemoveOnePerson={handleRemoveOnePerson} />
         {people.length !== 0 && (
-          <button onClick={handleEmpty} style={localStyle}>
-            {" "}
-            clear all
-          </button>
+          <button onClick={handleEmpty}> clear all</button>
         )}
         {people.length === 0 && (
-          <button onClick={handleRefresh} style={localStyle}>
-            {" "}
-            Refresh
-          </button>
+          <button onClick={handleRefresh}> Refresh</button>
         )}
       </section>
     </main>
@@ -45,7 +41,3 @@ function AppFunction() {
 }
 
 export default AppFunction;
-
-const localStyle = {
-  marginTop: "50px",
-};
