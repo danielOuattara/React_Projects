@@ -2,7 +2,7 @@ import React from "react";
 import FriendsContextProvider from "./context/FriendsContext";
 import Container from "./Container";
 
-function AppContextAPIUsereducer() {
+function AppContextAPI() {
   return (
     <FriendsContextProvider>
       <Container />
@@ -10,4 +10,4 @@ function AppContextAPIUsereducer() {
   );
 }
 
-export default AppContextAPIUsereducer;
+export default AppContextAPI;
