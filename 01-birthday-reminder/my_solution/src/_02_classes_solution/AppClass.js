@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import data from "./../data";
+import { Component } from "react";
+import data from "../data";
 import List from "./ListClass";
 
 export default class App extends Component {
@@ -48,8 +48,14 @@ export default class App extends Component {
     return (
       <main>
         <section className="container">
-          <h3>{this.state.people.length} birthdays today</h3>{" "}
           <span>class component</span>
+          {this.state.people.length > 1 && (
+            <h3>{this.state.people.length} birthdays today</h3>
+          )}
+          {(this.state.people.length === 1 ||
+            this.state.people.length === 0) && (
+            <h3>{this.state.people.length} birthday today</h3>
+          )}
           <List
             people={this.state.people}
             handleRemoveOnePerson={this.handleRemoveOnePerson}
@@ -64,13 +70,7 @@ export default class App extends Component {
             </button>
           )}
           {this.state.people.length === 0 && (
-            <button
-              onClick={this.handleRefresh}
-              style={{ marginTop: "50px" }}
-            >
-              {" "}
-              Refresh
-            </button>
+            <button onClick={this.handleRefresh}> Refresh</button>
           )}
         </section>
       </main>
