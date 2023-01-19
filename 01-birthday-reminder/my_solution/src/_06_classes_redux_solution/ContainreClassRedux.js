@@ -1,37 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import List from "./ListClassRedux";
-import { removeAllFriends } from "./actions/friendsActions"; // optionnal
+import { removeAllFriends, resetAllFriends } from "./actions/friendsActions"; // optionnal
 
 class ContainerClassRedux extends Component {
-  handleRefresh = () => {
-    window.location.reload(false);
-  };
-
   render() {
     return (
       <main>
         <section className="container">
-          <h3>{this.props.people.length} birthdays today</h3>{" "}
           <span>class component + redux </span>
+          {this.props.people.length > 1 && (
+            <h3>{this.props.people.length} birthdays today</h3>
+          )}
+          {(this.props.people.length === 1 ||
+            this.props.people.length === 0) && (
+            <h3>{this.props.people.length} birthday today</h3>
+          )}
           <List />
           {this.props.people.length !== 0 && (
-            <button
-              onClick={() => this.props.handleRemoveAllFriends()}
-              style={{ marginTop: "50px" }}
-            >
+            <button onClick={() => this.props.handleRemoveAllFriends()}>
               {" "}
               Clear all
             </button>
           )}
           {this.props.people.length === 0 && (
-            <button
-              onClick={this.handleRefresh}
-              style={{ marginTop: "50px" }}
-            >
-              {" "}
-              Refresh
-            </button>
+            <button onClick={this.props.handleResetAllFirends}> Refresh</button>
           )}
         </section>
       </main>
@@ -54,10 +47,13 @@ const mapDispatchToProps = (dispatch) => {
     handleRemoveAllFriends: () => {
       dispatch(removeAllFriends());
     },
+    handleResetAllFirends: () => {
+      dispatch(resetAllFriends());
+    },
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ContainerClassRedux);

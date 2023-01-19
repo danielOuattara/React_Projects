@@ -10,6 +10,9 @@ export const friendsReducer = (state = initialState, action) => {
     case "REMOVE_ALL_FRIENDS":
       return (state = []);
 
+    case "RESET_ALL_FRIENDS":
+      return (state = initialState);
+
     default:
       return state;
   }
