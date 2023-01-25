@@ -18,7 +18,7 @@ export default class AppClass extends Component {
 
   render() {
     const filteredMenus = items.filter(
-      (item) => item.category === this.state.category
+      (item) => item.category === this.state.category,
     );
     const menusToRender = this.state.category === "all" ? items : filteredMenus;
 
@@ -26,7 +26,7 @@ export default class AppClass extends Component {
       <main>
         <section className="menu section">
           <div className="title">
-            <h2>our menu</h2>
+            <h2>our menu (class solution)</h2>
             <div className="underline"></div>
 
             <ListCategoriesClass

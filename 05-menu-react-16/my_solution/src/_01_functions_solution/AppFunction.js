@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Menu from "./MenuFunction";
 import ListCategories from "./ListCategoriesFunction";
-import items from "./../data";
+import items from "../data";
 
 function AppFunction() {
   // method 1
@@ -31,7 +31,7 @@ function AppFunction() {
     <main>
       <section className="menu section">
         <div className="title">
-          <h2>our menu</h2>
+          <h2>our menu (function solution)</h2>
           <div className="underline"></div>
           <ListCategories categories={categories} showCategory={showCategory} />
           <Menu menusToRender={menusToRender} />
