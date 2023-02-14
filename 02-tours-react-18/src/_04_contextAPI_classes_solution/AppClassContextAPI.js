@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import ToursContextProvider from "./context/ToursContext";
 import Container from "./components/Container";
 
