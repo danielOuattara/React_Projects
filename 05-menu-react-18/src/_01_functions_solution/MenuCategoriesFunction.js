@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListCategories = ({ categories, showCategory }) => {
+const ListCategories = ({ categories, setCategory }) => {
   return (
     <ul className="btn-container">
       {categories.map((category) => {
@@ -8,7 +8,7 @@ const ListCategories = ({ categories, showCategory }) => {
           <li key={category}>
             <button
               className="filter-btn"
-              onClick={() => showCategory(category)}
+              onClick={() => setCategory(category)}
             >
               {" "}
               {category}

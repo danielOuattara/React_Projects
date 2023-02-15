@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import Menus from "./MenuFunction";
-import ListCategories from "./ListCategoriesFunction";
-import items from "../data";
+import Menu from "./MenuFunction";
+import MenuCategories from "./MenuCategoriesFunction";
+import menuItems from "../data";
 
 function AppFunction() {
   // method 2: Much more easier and straith forward
-  const categories = ["all", ...new Set(items.map((item) => item.category))];
-
+  const categories = [
+    "all",
+    ...new Set(menuItems.map((item) => item.category)),
+  ];
   const [category, setCategory] = useState("all");
-
-  const filteredMenus = items.filter((item) => item.category === category);
-
-  const menusToRender = category === "all" ? items : filteredMenus;
-
-  const showCategory = (category) => setCategory(() => category); // OK
+  const filteredMenu = menuItems.filter((item) => item.category === category);
+  const menusToRender = category === "all" ? menuItems : filteredMenu;
 
   return (
     <main>
@@ -21,8 +19,8 @@ function AppFunction() {
         <div className="title">
           <h2>our menu (function solution)</h2>
           <div className="underline"></div>
-          <ListCategories categories={categories} showCategory={showCategory} />
-          <Menus menusToRender={menusToRender} />
+          <MenuCategories categories={categories} setCategory={setCategory} />
+          <Menu menusToRender={menusToRender} />
         </div>
       </section>
     </main>

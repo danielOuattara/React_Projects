@@ -1,26 +1,27 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import MenuClass from "./MenuClass";
-import ListCategoriesClass from "./ListCategoriesClass";
-import items from "./../data";
+import MenuCategoriesClass from "./MenuCategoriesClass";
+import menuItems from "./../data";
 
 export default class AppClass extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories: ["all", ...new Set(items.map((item) => item.category))],
+      categories: ["all", ...new Set(menuItems.map((item) => item.category))],
       category: "all",
     };
   }
 
   showCategory = (newCategory) => {
-    this.setState({ category: newCategory });
+    this.setState((prevState) => ({ ...prevState, category: newCategory }));
   };
 
   render() {
-    const filteredMenus = items.filter(
+    const filteredMenus = menuItems.filter(
       (item) => item.category === this.state.category,
     );
-    const menusToRender = this.state.category === "all" ? items : filteredMenus;
+    const menusToRender =
+      this.state.category === "all" ? menuItems : filteredMenus;
 
     return (
       <main>
@@ -29,7 +30,7 @@ export default class AppClass extends Component {
             <h2>our menu (class solution)</h2>
             <div className="underline"></div>
 
-            <ListCategoriesClass
+            <MenuCategoriesClass
               categories={this.state.categories}
               showCategory={this.showCategory}
             />
