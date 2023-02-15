@@ -1,11 +1,12 @@
-import React from "react";
 import questions from "./../data";
 import QuestionFunction from "./QuestionFunction";
 
 function App() {
   return (
     <div className="container">
-      <h3>question and answer about login (function components )</h3>
+      <h3>
+        question and answer about login <b>(function components)</b>
+      </h3>
       <section className="info">
         <ul>
           {questions.map((item) => {

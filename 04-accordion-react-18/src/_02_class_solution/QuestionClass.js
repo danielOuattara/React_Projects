@@ -9,12 +9,6 @@ export default class QuestionClass extends Component {
     };
   }
 
-  // toggleShowAnswer = () => {
-  //   this.setState({
-  //     showAnswer: !this.state.showAnswer,
-  //   });
-  // };
-
   toggleShowAnswer = () => {
     this.setState((prevState) => {
       return { ...prevState, showAnswer: !this.state.showAnswer };
