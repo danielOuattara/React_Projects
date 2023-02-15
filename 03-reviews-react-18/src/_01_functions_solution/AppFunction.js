@@ -7,6 +7,7 @@ function AppFunction() {
       <section className="container">
         <div className="title">
           <h2> our reviews</h2>
+          <h4>functional component</h4>
           <div className="underline"></div>
         </div>
         <ReviewFunction />

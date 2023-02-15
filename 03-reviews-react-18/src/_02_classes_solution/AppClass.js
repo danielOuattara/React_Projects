@@ -8,6 +8,7 @@ export default class AppClass extends Component {
         <section className="container">
           <div className="title">
             <h2> our reviews</h2>
+            <h4>class component</h4>
             <div className="underline"></div>
           </div>
           <ReviewClass />
