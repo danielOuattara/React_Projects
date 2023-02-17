@@ -99,6 +99,7 @@ export default class AppClass extends Component {
         <section className="section">
           <div className="title">
             <h2>experience</h2>
+            <h4>class solution</h4>
             <div className="underline"></div>
           </div>
 

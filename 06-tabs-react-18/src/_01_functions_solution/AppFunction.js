@@ -30,6 +30,7 @@ function App() {
       <section className="section">
         <div className="title">
           <h2>experiences</h2>
+          <h4>function solution</h4>
           <div className="underline"></div>
         </div>
 
