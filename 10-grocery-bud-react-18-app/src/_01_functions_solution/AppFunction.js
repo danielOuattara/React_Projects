@@ -27,11 +27,11 @@ function AppFunction() {
     } else if (item && isEditing) {
       // edit item
       setItemsList(() => {
-        return itemsList.map((item) => {
-          if (item.id === editID) {
-            return { ...item, title: item };
+        return itemsList.map((obj) => {
+          if (obj.id === editID) {
+            return { ...obj, title: item };
           }
-          return item;
+          return obj;
         });
       });
       setItem("");
@@ -94,9 +94,11 @@ function AppFunction() {
 
   return (
     <section className="section-center ">
+      <p>function solution version 1</p>
+
       <form className="grocery-form" onSubmit={handleSubmitItem}>
         {/* {alert.show && <AlertFunction {...alert} />} */}
-        <Alert {...alert} removeAlert={showAlert} />
+        <Alert {...alert} showAlert={showAlert} />
         <h3>grocery bud</h3>
         <div className="form-control">
           <input
