@@ -11,6 +11,14 @@ const retrieveLocalStorage = () => {
   }
 };
 
+/*
+In this solution I build a global state: see below, 
+only one useState 
+
+Building this kind of solution helps greatly in class 
+component solution approach
+*/
+
 export default function AppFunctionV2() {
   const [state, setState] = useState({
     itemName: "",
