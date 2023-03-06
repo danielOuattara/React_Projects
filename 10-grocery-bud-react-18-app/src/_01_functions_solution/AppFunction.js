@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import List from "./components/List";
 import Alert from "./components/Alert";
 
@@ -64,19 +64,21 @@ function AppFunction() {
 
   //---------------------------------------
   const showAlert = (show = false, type = "", msg = "") => {
-    setAlert({ show, type, msg });
+    setAlert(() => ({ show, type, msg }));
   };
 
   //---------------------------------------
   const clearItemsList = () => {
     setItemsList(() => []);
     showAlert(true, "danger", "emptying list");
+    return 0;
   };
 
   //---------------------------------------
   const deleteItem = (id) => {
-    setItemsList(itemsList.filter((item) => item.id !== id));
+    setItemsList(() => itemsList.filter((item) => item.id !== id));
     showAlert(true, "success", "item successfully removed");
+    return 0;
   };
 
   //---------------------------------------
