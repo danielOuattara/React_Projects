@@ -83,7 +83,7 @@ export default function AppFunctionV2() {
   };
 
   //---------------------------------------
-  const showAlert = (show = false, type = "", msg = "") => {
+  const showAlert = (show = false, type = "", msg = "") =>
     setState((prevState) => ({
       ...prevState,
       alert: {
@@ -92,7 +92,6 @@ export default function AppFunctionV2() {
         msg,
       },
     }));
-  };
 
   //---------------------------------------
   const clearItemsList = () => {
