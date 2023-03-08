@@ -2,14 +2,14 @@ import { Component } from "react";
 import List from "./components/List";
 import Alert from "./components/Alert";
 
-const retrieveLocalStorage = () => {
+function retrieveLocalStorage() {
   let itemsList = localStorage.getItem("itemsListClass");
   if (itemsList) {
     return JSON.parse(localStorage.getItem("itemsListClass"));
   } else {
     return [];
   }
-};
+}
 
 export default class AppClass extends Component {
   state = {
@@ -75,7 +75,7 @@ export default class AppClass extends Component {
   };
 
   //---------------------------------------
-  showAlert = (show = false, type = "", msg = "") => {
+  showAlert = (show = false, type = "", msg = "") =>
     this.setState((prevState) => ({
       ...prevState,
       alert: {
@@ -84,7 +84,6 @@ export default class AppClass extends Component {
         msg,
       },
     }));
-  };
 
   //---------------------------------------
   clearItemsList = () => {
@@ -117,7 +116,6 @@ export default class AppClass extends Component {
   };
 
   //---------------------------------------
-
   componentDidUpdate(prevProps, prevState) {
     if (prevState.itemsList !== this.state.itemsList) {
       localStorage.setItem(
@@ -130,10 +128,9 @@ export default class AppClass extends Component {
   render() {
     return (
       <section className="section-center ">
-        <p>function solution version 2</p>
+        <p>class solution</p>
 
         <form className="grocery-form" onSubmit={this.handleSubmitItem}>
-          {/* {alert.show && <AlertFunction {...alert} />} */}
           <Alert {...this.state.alert} showAlert={this.showAlert} />
           <h3>grocery bud</h3>
           <div className="form-control">

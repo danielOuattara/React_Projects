@@ -1,12 +1,16 @@
-import { useEffect } from "react";
+import { Component } from "react";
 
-export default function Alert({ type, msg, showAlert }) {
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      showAlert();
+export default class Alert extends Component {
+  componentDidUpdate(prevProps, prevState, snapshot, timeoutID) {
+    this.timeoutID = setTimeout(() => {
+      return this.props.showAlert();
     }, 1500);
-    return () => clearTimeout(timeout);
-  }, []);
+  }
 
-  return <p className={`alert alert-${type}`}>{msg}</p>;
+  render() {
+    clearTimeout(this.timeoutID);
+    return <p className={`alert alert-${this.props.type}`}>{this.props.msg}</p>;
+  }
 }
+
+//--------------------------------------------------------
