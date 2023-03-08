@@ -48,7 +48,7 @@ export default function AppFunctionV2() {
       return showAlert(true, "danger", "select a valid itemName name");
       //
     } else if (state.itemName && state.isEditing) {
-      // edit itemName
+      // edit itemName + show edit alert
       setState((prevState) => ({
         ...prevState,
         itemsList: [
@@ -103,16 +103,14 @@ export default function AppFunctionV2() {
   const deleteItem = (id) => {
     setState((prevState) => ({
       ...prevState,
-      itemsList: [
-        ...prevState.itemsList.filter((itemName) => itemName.id !== id),
-      ],
+      itemsList: [...prevState.itemsList.filter((item) => item.id !== id)],
     }));
     showAlert(true, "success", "itemName successfully removed");
   };
 
   //---------------------------------------
   const editItem = (id) => {
-    const editingItem = state.itemsList.find((itemName) => itemName.id === id);
+    const editingItem = state.itemsList.find((item) => item.id === id);
     setState((prevState) => ({
       ...prevState,
       isEditing: true,
