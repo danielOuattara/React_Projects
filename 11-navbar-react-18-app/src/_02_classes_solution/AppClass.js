@@ -1,7 +1,13 @@
-import React, { Component } from "react";
+import { Component } from "react";
+import Navbar from "./components/Navbar";
 
 export default class AppClass extends Component {
   render() {
-    return <div>AppClass</div>;
+    return (
+      <>
+        <p style={{ marginLeft: "5rem" }}>class solution</p>
+        <Navbar />
+      </>
+    );
   }
 }
