@@ -11,7 +11,7 @@ export default class Submenu extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (
       prevProps.subMenuLocation !== this.props.subMenuLocation ||
-      prevProps.subMenuPageShown?.links !== this.props.subMenuPageShown?.links
+      prevProps.subMenuPageShown.links !== this.props.subMenuPageShown.links
     ) {
       this.props.subMenuPageShown.links.length === 3
         ? this.setState((prevState) => ({ ...prevState, columns: "col-3" }))
@@ -29,7 +29,7 @@ export default class Submenu extends Component {
       >
         <h4>{this.props.subMenuPageShown.page}</h4>
         <div className={`submenu-center ${this.state.columns}`}>
-          {this.props.subMenuPageShown.links?.map((link, index) => {
+          {this.props.subMenuPageShown.links.map((link, index) => {
             return (
               <a key={index} href={link.url}>
                 {link.icon} {link.label}
