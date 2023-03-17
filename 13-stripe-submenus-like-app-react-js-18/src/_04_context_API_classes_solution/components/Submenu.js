@@ -3,60 +3,47 @@ import { AppContext } from "./../context/AppContext";
 //--------------------------------------------------------------
 
 export default class Submenu extends Component {
-  state = {
-    columns: "",
-    localSubMenuPageShown: undefined,
-    localSubMenuLocation: undefined,
-  };
+  columns = "";
+  static contextType = AppContext;
 
   subMenuContainer = createRef(null);
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      prevState.setLocalSubMenuLocation !== this.state.localSubMenuLocation ||
-      prevState.localSubMenuPageShown.links !==
-        this.state.localSubMenuPageShown?.links
+      // Incorrect: need to check previous context.
+      // How to follow context old value VS new value?  HOC ?
+      // https://stackoverflow.com/questions/53422502/react-context-with-componentdidupdate
+      //
+      prevProps.subMenuLocation !== this.context.subMenuLocation ||
+      prevProps.subMenuPageShown.links !== this.context.subMenuPageShown.links
     ) {
-      this.state.localSubMenuPageShown?.links.length === 3
-        ? this.setState((prevState) => ({ ...prevState, columns: "col-3" }))
-        : this.setState((prevState) => ({ ...prevState, columns: "col-3" }));
-      this.subMenuContainer.current.style.left = `${this.state.localSubMenuLocation?.subMenuCenterPosition}px`;
-      this.subMenuContainer.current.style.top = `${this.state.localSubMenuLocation?.subMenuTopPosition}px`;
+      this.context.subMenuPageShown.links.length === 2
+        ? (this.columns = "col-3")
+        : (this.columns = "col-4");
+
+      this.subMenuContainer.current.style.left = `${this.context.subMenuLocation.subMenuCenterPosition}px`;
+      this.subMenuContainer.current.style.top = `${this.context.subMenuLocation.subMenuTopPosition}px`;
     }
   }
 
   render() {
+    const { isSubMenuOpen, subMenuPageShown } = this.context;
     return (
-      <AppContext.Consumer>
-        {(context) => {
-          const { isSubMenuOpen, subMenuLocation, subMenuPageShown } = context;
-          this.setState((prevState) => ({
-            ...prevState,
-            localSubMenuLocation: subMenuLocation,
-          }));
-          this.setState((prevState) => ({
-            ...prevState,
-            localSubMenuPageShown: subMenuPageShown,
-          }));
-          return (
-            <aside
-              className={isSubMenuOpen ? "submenu show" : "submenu"}
-              ref={this.subMenuContainer}
-            >
-              <h4>{subMenuPageShown?.page}</h4>
-              <div className={`submenu-center ${this.state.columns}`}>
-                {subMenuPageShown.links.map((link, index) => {
-                  return (
-                    <a key={index} href={link.url}>
-                      {link.icon} {link.label}
-                    </a>
-                  );
-                })}
-              </div>
-            </aside>
-          );
-        }}
-      </AppContext.Consumer>
+      <aside
+        className={isSubMenuOpen ? "submenu show" : "submenu"}
+        ref={this.subMenuContainer}
+      >
+        <h4>{subMenuPageShown.page}</h4>
+        <div className={`submenu-center ${this.columns}`}>
+          {subMenuPageShown.links.map((link, index) => {
+            return (
+              <a key={index} href={link.url}>
+                {link.icon} {link.label}
+              </a>
+            );
+          })}
+        </div>
+      </aside>
     );
   }
 }

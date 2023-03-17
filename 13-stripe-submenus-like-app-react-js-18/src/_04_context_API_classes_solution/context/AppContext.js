@@ -16,30 +16,39 @@ export default class AppContextProvider extends Component {
     },
   };
 
-  setSubMenuPageShown = () => {
+  setIsSideBarOpen = (booleanArg) => {
     this.setState((prevState) => ({
       ...prevState,
-      isSideBarOpen: !prevState.isSideBarOpen,
-    }));
-  };
-  setIsSideBarOpen = () => {
-    this.setState((prevState) => ({
-      ...prevState,
-      isSideBarOpen: !prevState.isSideBarOpen,
+      isSideBarOpen: booleanArg,
     }));
   };
 
-  setSubMenuLocation = () => {
+  setIsSubMenuOpen = (booleanArg) => {
     this.setState((prevState) => ({
       ...prevState,
-      isSideBarOpen: !prevState.isSideBarOpen,
+      isSubMenuOpen: booleanArg,
     }));
   };
 
-  setIsSubMenuOpen = () => {
+  setSubMenuLocation = (objectArg) => {
     this.setState((prevState) => ({
       ...prevState,
-      isSideBarOpen: !prevState.isSideBarOpen,
+      subMenuLocation: {
+        ...prevState.subMenuLocation,
+        subMenuCenterPosition: objectArg.subMenuCenterPosition,
+        subMenuTopPosition: objectArg.subMenuTopPosition,
+      },
+    }));
+  };
+
+  setSubMenuPageShown = (objectArg) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      subMenuPageShown: {
+        ...prevState.subMenuPageShown,
+        page: objectArg.page,
+        links: objectArg.links,
+      },
     }));
   };
 
@@ -50,7 +59,7 @@ export default class AppContextProvider extends Component {
           isSideBarOpen: this.state.isSideBarOpen,
           isSubMenuOpen: this.state.isSubMenuOpen,
           subMenuLocation: this.state.subMenuLocation,
-          subMenuPageShown: this.state.isSideBarOpen,
+          subMenuPageShown: this.state.subMenuPageShown,
           setSubMenuPageShown: this.setSubMenuPageShown,
           setIsSideBarOpen: this.setIsSideBarOpen,
           setSubMenuLocation: this.setSubMenuLocation,
