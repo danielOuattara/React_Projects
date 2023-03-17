@@ -11,15 +11,15 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <AppFunction />
+    {/* <AppFunction /> */}
     <br /> <hr /> <br />
-    <AppClass />
+    {/* <AppClass /> */}
     <br /> <hr /> <br />
-    <AppContextAPIFunction />
+    {/* <AppContextAPIFunction /> */}
     <br /> <hr /> <br />
     <AppContextAPIClasses />
     <br /> <hr /> <br />
-    <AppUseContextHookFunction />
+    {/* <AppUseContextHookFunction /> */}
     <br /> <hr /> <br />
   </React.StrictMode>,
 );
