@@ -11,7 +11,6 @@ export default function AppFunction() {
   useEffect(() => {
     fetchingUsers();
   }, []);
-  console.log(usersFetchedState);
 
   //--------------------------------------
 
@@ -19,12 +18,13 @@ export default function AppFunction() {
 
   return (
     <>
-      <h2>react + typescript function solution version 1: using composable</h2>
+      <b>
+        <p style={{ marginLeft: "2rem" }}>
+          react function solution version 1: using composable
+        </p>
+      </b>
       <SingleUser singleState={singleState} fetchSingleUser={fetchSingleUser} />
-      <UsersList
-        users={usersFetchedState.users}
-        fetchSingleUser={fetchSingleUser}
-      />
+      <UsersList users={usersFetchedState.users} />
     </>
   );
 }
