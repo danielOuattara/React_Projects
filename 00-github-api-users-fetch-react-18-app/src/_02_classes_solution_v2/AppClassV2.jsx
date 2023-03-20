@@ -94,7 +94,9 @@ export default class AppClass extends Component {
   render() {
     return (
       <>
-        <h2> react class solution version 2</h2>
+        <b>
+          <p style={{ marginLeft: "2rem" }}> react class solution version 2</p>
+        </b>
         <SingleUser
           singleUserState={this.state.singleUserState}
           fetchSingleUser={this.fetchSingleUser}
