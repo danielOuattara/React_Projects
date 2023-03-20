@@ -94,7 +94,12 @@ export default class AppClass extends Component {
   render() {
     return (
       <>
-        <h2>class component</h2>
+        <b>
+          <p style={{ marginLeft: "2rem" }}>
+            {" "}
+            react context API class solution version 1
+          </p>
+        </b>
         <h2> react class solution version 1</h2>
         <SingleUser
           singleUserState={this.state.singleUserState}
