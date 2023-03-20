@@ -4,7 +4,6 @@ import { useGlobalContext } from "../context/AppContext";
 
 export default function Navbar() {
   const { totalItems, isLoading } = useGlobalContext();
-  console.log("totalItems = ", totalItems);
   return (
     !isLoading && (
       <nav>
