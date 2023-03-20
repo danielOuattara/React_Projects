@@ -76,6 +76,12 @@ export default function AppFunction() {
 
   return (
     <>
+      <b>
+        <p style={{ marginLeft: "2rem" }}>
+          {" "}
+          react context API class solution version 1
+        </p>
+      </b>
       <h2>react + typescript function solution version 2: large</h2>
       <SingleUser singleState={singleState} fetchSingleUser={fetchSingleUser} />
       <UsersList users={state.users} />
