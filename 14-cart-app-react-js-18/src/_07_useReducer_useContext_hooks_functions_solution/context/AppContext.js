@@ -1,5 +1,5 @@
 import React, { useContext, useReducer, useEffect } from "react";
-import cartItems from "../data/data";
+import { cartItems } from "./../../data/data";
 import cartItemsReducer from "./../reducer/cartItemsReducer";
 //-----------------------------------------------------------------
 
