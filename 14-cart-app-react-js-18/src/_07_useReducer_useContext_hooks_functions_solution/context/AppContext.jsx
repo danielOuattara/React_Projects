@@ -1,6 +1,6 @@
 import React, { useContext, useReducer, useEffect } from "react";
-import { cartItems } from "./../../data/data";
-import cartItemsReducer from "./../reducer/cartItemsReducer";
+import { cartItems } from "../../data/data";
+import cartItemsReducer from "../reducer/cartItemsReducer";
 //-----------------------------------------------------------------
 
 const url = "https://course-api.com/react-useReducer-cart-project";

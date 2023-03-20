@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "./../context/AppContext";
+import { useGlobalContext } from "../context/AppContext";
 //---------------------------------------------------------
 
 export default function CartItem({ id, img, title, price, quantity }) {

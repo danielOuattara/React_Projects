@@ -1,6 +1,6 @@
 import React from "react";
 import CartItem from "./CartItem";
-import { useGlobalContext } from "./../context/AppContext";
+import { useGlobalContext } from "../context/AppContext";
 
 export default function CartContainer() {
   const { cart, isLoading, totalPrice, totalItems, clearCart } =
