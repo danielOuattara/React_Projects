@@ -2,7 +2,7 @@ import CartContainer from "./components/CartContainer";
 import Navbar from "./components/Navbar";
 import AppContextProvider from "./context/AppContext";
 
-export default function AppUseReducerUseContextHooksFunctions() {
+export default function AppUseContextHookFunction() {
   return (
     <AppContextProvider>
       <br /> <hr /> <br />
