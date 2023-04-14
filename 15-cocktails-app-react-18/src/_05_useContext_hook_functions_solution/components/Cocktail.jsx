@@ -1,4 +1,3 @@
-import { useGlobalContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
 
 export default function Cocktail(props) {
@@ -12,7 +11,6 @@ export default function Cocktail(props) {
           <h3>{props.name}</h3>
           <h4>{props.glass}</h4>
           <p>{props.info}</p>
-          details
         </div>
       </Link>
     </article>

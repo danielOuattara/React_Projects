@@ -20,14 +20,12 @@ const AppContextProvider = ({ children }) => {
 
         if (data.drinks) {
           const fetchedCocktails = data.drinks.map((item) => {
-            const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } =
-              item;
             return {
-              id: idDrink,
-              name: strDrink,
-              image: strDrinkThumb,
-              info: strAlcoholic,
-              glass: strGlass,
+              id: item.idDrink,
+              name: item.strDrink,
+              image: item.strDrinkThumb,
+              info: item.strAlcoholic,
+              glass: item.strGlass,
             };
           });
           setState((prevState) => ({
@@ -39,6 +37,7 @@ const AppContextProvider = ({ children }) => {
           setState((prevState) => ({
             ...prevState,
             cocktails: [],
+            loading: false,
           }));
         }
       } catch (error) {

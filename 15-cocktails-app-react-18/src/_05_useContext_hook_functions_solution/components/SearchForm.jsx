@@ -16,10 +16,7 @@ export default function SearchForm() {
     }));
   };
 
-  const handleSubmit = (event) => {
-    console.log(searchValue.current.value);
-    event.preventDefault();
-  };
+  const handleSubmit = (event) => event.preventDefault();
 
   return (
     <section className="section search">
