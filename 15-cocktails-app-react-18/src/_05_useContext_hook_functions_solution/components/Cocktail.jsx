@@ -1,9 +1,20 @@
+import { useGlobalContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
 
-export default function Cocktail() {
+export default function Cocktail(props) {
   return (
-    <div>
-      <h2>cocktail component</h2>
-    </div>
+    <article className="cocktail">
+      <Link to={`cocktail/${props.id}`}>
+        <div className="img-container">
+          <img src={props.image} alt={props.name} />
+        </div>
+        <div className="cocktail-footer">
+          <h3>{props.name}</h3>
+          <h4>{props.glass}</h4>
+          <p>{props.info}</p>
+          details
+        </div>
+      </Link>
+    </article>
   );
 }
