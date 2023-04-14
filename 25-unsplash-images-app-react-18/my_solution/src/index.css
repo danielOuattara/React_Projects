@@ -74,6 +74,13 @@ html {
   --textColor: var(--grey-900);
 }
 
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --textColor: var(--dark-mode-text-color);
+    --backgroundColor: var(--dark-mode-bg-color);
+  }
+} */
+
 .dark-theme {
   --textColor: var(--dark-mode-text-color);
   --backgroundColor: var(--dark-mode-bg-color)
