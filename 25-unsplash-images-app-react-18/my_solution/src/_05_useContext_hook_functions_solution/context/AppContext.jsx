@@ -3,17 +3,26 @@ import { useContext, useState, createContext } from "react";
 //-----------------------------------------------------------------
 
 // make sure use
+
+export const AppContext = createContext();
+
 export const useGlobalContext = () => {
   return useContext(AppContext);
 };
 
-export const AppContext = createContext();
-
 export default function AppContextProvider({ children }) {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
+  const toggleDarkTheme = () => {
+    const newDarkTheme = !isDarkTheme;
+    setIsDarkTheme(newDarkTheme);
+    document.body.classList.toggle("dark-theme", newDarkTheme);
+  };
+
   return (
-    <AppContext.Provider value={{ isDarkTheme, setIsDarkTheme }}>
+    <AppContext.Provider
+      value={{ isDarkTheme, setIsDarkTheme, toggleDarkTheme }}
+    >
       {children}
     </AppContext.Provider>
   );
