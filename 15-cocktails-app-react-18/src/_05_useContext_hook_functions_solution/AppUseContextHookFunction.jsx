@@ -1,4 +1,4 @@
-import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { About, Error, Home, SingleCocktail } from "./pages";
 import { AppContextProvider } from "./context/AppContext";
 import { RootLayout } from "./layout";
@@ -11,6 +11,7 @@ function App() {
       children: [
         { index: true, element: <Home /> },
         { path: "about", element: <About /> },
+        { path: "cocktail/:cocktailId", element: <SingleCocktail /> },
       ],
     },
     { path: "*", element: <Error /> },
