@@ -8,6 +8,7 @@ const AppContext = createContext();
 const AppContextProvider = ({ children }) => {
   return <AppContext.Provider value="hello">{children}</AppContext.Provider>;
 };
+
 // make sure use
 export const useGlobalContext = () => {
   return useContext(AppContext);
