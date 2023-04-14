@@ -1,6 +1,5 @@
-import Cocktail from "./Cocktail";
-import Loading from "./Loading";
-import { useGlobalContext } from "../context";
+import { Loading, Cocktail } from "./";
+import { useGlobalContext } from "./../context/AppContext";
 
 export default function CocktailList() {
   return (
