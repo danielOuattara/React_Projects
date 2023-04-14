@@ -20,9 +20,7 @@ export default function AppContextProvider({ children }) {
   };
 
   return (
-    <AppContext.Provider
-      value={{ isDarkTheme, setIsDarkTheme, toggleDarkTheme }}
-    >
+    <AppContext.Provider value={{ isDarkTheme, toggleDarkTheme }}>
       {children}
     </AppContext.Provider>
   );
