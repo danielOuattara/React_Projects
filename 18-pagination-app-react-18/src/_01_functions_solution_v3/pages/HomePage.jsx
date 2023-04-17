@@ -43,12 +43,12 @@ export default function HomePage() {
     setPersonsNumberPerPage(Number(event.target.value));
   };
 
-  console.log("followersToShowPerPage = ", followersToShowPerPage);
-
   return (
     <>
       <br /> <hr /> <br />
-      <p style={{ textAlign: "center" }}>function solution</p>
+      <p style={{ textAlign: "center" }}>
+        function solution version 3 + react router{" "}
+      </p>
       <main>
         <div className="section-title">
           <h1> pagination</h1>
