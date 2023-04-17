@@ -34,7 +34,7 @@ export default function AppFunction() {
   return (
     <>
       <br /> <hr /> <br />
-      <p style={{ textAlign: "center" }}>function solution</p>
+      <p style={{ textAlign: "center" }}>function solution version 1</p>
       <main>
         <div className="section-title">
           <h1> {loading ? "loading..." : "pagination"}</h1>
