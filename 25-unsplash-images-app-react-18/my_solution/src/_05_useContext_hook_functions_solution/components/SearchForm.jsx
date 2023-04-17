@@ -1,7 +1,8 @@
 export default function SearchForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const searchValue = event.target.elements[0].value;
+    // const searchValue = event.target.elements[0].value; // OK
+    const searchValue = event.target.elements.search.value;
     if (!searchValue) return;
     console.log(searchValue);
   };
@@ -14,7 +15,7 @@ export default function SearchForm() {
           name="search"
           id="search"
           className="form-input search-input"
-          placeholder="e.g: cat"
+          placeholder="example: cat"
         />
         <button type="submit" className="btn">
           search
