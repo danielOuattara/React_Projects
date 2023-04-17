@@ -1,10 +1,13 @@
+import { useGlobalContext } from "../context";
+
 export default function SearchForm() {
+  const { setSearchTerm } = useGlobalContext();
   const handleSubmit = (event) => {
     event.preventDefault();
     // const searchValue = event.target.elements[0].value; // OK
     const searchValue = event.target.elements.search.value;
     if (!searchValue) return;
-    console.log(searchValue);
+    setSearchTerm(searchValue);
   };
   return (
     <section>

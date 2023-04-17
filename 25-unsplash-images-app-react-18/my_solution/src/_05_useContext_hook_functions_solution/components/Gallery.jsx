@@ -1,23 +1,51 @@
 import { useQuery } from "@tanstack/react-query";
 import { customFetch } from "./../axios";
+import { useGlobalContext } from "./../context";
 
 export default function Gallery() {
-  const { data, isLoading } = useQuery({
-    queryKey: ["images"],
+  const { searchTerm } = useGlobalContext();
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["images", searchTerm],
     queryFn: async () => {
-      const { data } = await customFetch.get("/");
+      const { data } = await customFetch.get(
+        `search/photos?client_id=${
+          import.meta.env.VITE_API_CLIENT_ID
+        }&query=${searchTerm}`,
+      );
       return data;
     },
   });
 
   if (isLoading) {
-    return <p style={{ marginTop: "2rem" }}>Loading...</p>;
+    return (
+      <section className="image-container">
+        <h4>Loading...</h4>
+      </section>
+    );
+  }
+
+  if (isError) {
+    return <section className="image-container">Error...</section>;
+  }
+
+  if (data.results.length === 0) {
+    return (
+      <section className="image-container">
+        Nothing Found With tHis search term
+      </section>
+    );
   }
   return (
-    <div className="mage-container">
+    <section className="image-container">
       {data.results.map((item) => (
-        <p key={item.id}>{item.id}</p>
+        <img
+          key={item.id}
+          src={item.urls.regular}
+          className="img"
+          alt={item.alt_description}
+        />
       ))}
-    </div>
+    </section>
   );
 }

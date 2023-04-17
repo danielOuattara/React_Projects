@@ -75,12 +75,13 @@ html {
   --darkModeTransition: color 0.5s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* @media (prefers-color-scheme: dark) {
+/* Allow user to use its system default mode: dark or light */
+@media (prefers-color-scheme: dark) {
   :root {
     --textColor: var(--dark-mode-text-color);
     --backgroundColor: var(--dark-mode-bg-color);
   }
-} */
+}
 
 /* NOTE: The idea in dark-theme class toggle is to update the value 
 of some predefined CSS variables: --text-color and --backgroundColor */
