@@ -66,12 +66,13 @@ html {
   --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
+  --backgroundColor: var(--grey-50);
+  --textColor: var(--grey-900);
+
   /* dark mode setup */
   --dark-mode-bg-color: #333;
   --dark-mode-text-color: #f0f0f0;
-  --darkModeTransition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  --backgroundColor: var(--grey-50);
-  --textColor: var(--grey-900);
+  --darkModeTransition: color 0.5s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -81,14 +82,17 @@ html {
   }
 } */
 
+/* NOTE: The idea in dark-theme class toggle is to update the value 
+of some predefined CSS variables: --text-color and --backgroundColor */
+
 .dark-theme {
   --textColor: var(--dark-mode-text-color);
-  --backgroundColor: var(--dark-mode-bg-color)
+  --backgroundColor: var(--dark-mode-bg-color);
 }
 
 body {
-  background: var(--backgroundColor);
   transition: var(--darkModeTransition);
+  background: var(--backgroundColor);
   color: var(--textColor);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -350,7 +354,7 @@ Toggle Container
 }
 
 .toggle-icon {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: var(--textColor);
 }
 
