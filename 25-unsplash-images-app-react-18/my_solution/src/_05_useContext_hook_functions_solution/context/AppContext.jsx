@@ -1,9 +1,7 @@
 import { useContext, useState, createContext } from "react";
-// import useFetchBag from "../customHooks/useFetchBag";
 //-----------------------------------------------------------------
 
 // make sure use
-
 export const AppContext = createContext();
 
 export const useGlobalContext = () => {
@@ -14,9 +12,8 @@ export default function AppContextProvider({ children }) {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   const toggleDarkTheme = () => {
-    const newDarkTheme = !isDarkTheme;
-    setIsDarkTheme(newDarkTheme);
-    document.body.classList.toggle("dark-theme", newDarkTheme);
+    setIsDarkTheme(() => !isDarkTheme);
+    document.body.classList.toggle("dark-theme", isDarkTheme);
   };
 
   return (
