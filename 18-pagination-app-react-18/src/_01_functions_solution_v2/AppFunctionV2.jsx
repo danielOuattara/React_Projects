@@ -5,12 +5,20 @@ import {
   PageButtonList,
   PersonPerPageSelector,
 } from "./components";
+import { paginator } from "./utilities";
 
 export default function AppFunction() {
   const [personsNumberPerPage, setPersonsNumberPerPage] = useState(10);
-  const { loading, data } = useFetchFollowers(personsNumberPerPage);
+  const { loading, rootData } = useFetchFollowers();
+  const [data, setData] = useState([]);
   const [pageSelected, setPageSelected] = useState(0);
   const [followersToShowPerPage, setFollowersToShowPerPage] = useState([]);
+
+  useEffect(() => {
+    if (!loading) {
+      setData(paginator(rootData, personsNumberPerPage));
+    }
+  }, [personsNumberPerPage, rootData, loading]);
 
   useEffect(() => {
     if (!loading) {
@@ -43,7 +51,7 @@ export default function AppFunction() {
   return (
     <>
       <br /> <hr /> <br />
-      <p style={{ textAlign: "center" }}>function solution</p>
+      <p style={{ textAlign: "center" }}>function solution version 2</p>
       <main>
         <div className="section-title">
           <h1> {loading ? "loading..." : "pagination"}</h1>
@@ -56,7 +64,7 @@ export default function AppFunction() {
         <section className="followers">
           {/* followers list */}
           <div className="container">
-            {followersToShowPerPage.map((person) => (
+            {followersToShowPerPage?.map((person) => (
               <SingleFollower key={person.id} {...person} />
             ))}
           </div>
