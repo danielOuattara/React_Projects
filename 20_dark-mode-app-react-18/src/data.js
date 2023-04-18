@@ -1,7 +1,7 @@
 const articles = [
   {
     id: 1,
-    title: "the WET Codbase",
+    title: "the WET Codebase",
     date: new Date(2020, 9, 4),
     length: 11,
     snippet: `Come waste your time with me`,
