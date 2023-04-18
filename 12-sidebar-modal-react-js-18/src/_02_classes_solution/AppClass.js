@@ -25,6 +25,7 @@ export default class AppClass extends Component {
   render() {
     return (
       <>
+        <br /> <hr /> <br />
         <p style={{ textAlign: "center" }}>classes solution</p>
         <Home
           isModalOpen={this.state.isModalOpen}

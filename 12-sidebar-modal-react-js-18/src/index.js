@@ -10,15 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <AppFunction />
-    <br /> <hr /> <br />
-    <AppClass />
-    <br /> <hr /> <br />
-    <AppContextAPIFunction />
-    <br /> <hr /> <br />
-    <AppContextAPIClasses />
-    <br /> <hr /> <br />
+    {/* <AppFunction /> */}
+    {/* <AppClass /> */}
+    {/* <AppContextAPIFunction /> */}
+    {/* <AppContextAPIClasses /> */}
     <AppUseContextHookFunction />
-    <br /> <hr /> <br />
   </React.StrictMode>,
 );

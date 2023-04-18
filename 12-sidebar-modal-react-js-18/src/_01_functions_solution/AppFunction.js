@@ -8,6 +8,7 @@ export default function AppFunction() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
+      <br /> <hr /> <br />
       <p style={{ textAlign: "center" }}>function solution</p>
       <Home
         isModalOpen={isModalOpen}
