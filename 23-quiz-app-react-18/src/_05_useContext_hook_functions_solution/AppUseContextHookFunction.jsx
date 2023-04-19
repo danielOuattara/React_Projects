@@ -1,24 +1,22 @@
-import MovieContextProvider from "./context/MovieContext";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, SingleMovie, ErrorPage } from "./pages";
-import { RootLayout } from "./layout";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "movies/:movieId", element: <SingleMovie /> },
-    ],
-    errorElement: <ErrorPage />,
-  },
-]);
+import QuizContextProvider from "./context/QuizContext";
+import { useQuizContext } from "./context/QuizContext";
+import { Loading, Modal, SetupForm } from "./components";
 
 export default function AppUseContextHookFunction() {
   return (
-    <MovieContextProvider>
-      <RouterProvider router={router} />
-    </MovieContextProvider>
+    <QuizContextProvider>
+      <br /> <hr /> <br />
+      <p style={{ textAlign: "center" }}>
+        {" "}
+        05 useContext hook function solution
+      </p>
+      <SetupForm />
+      <Loading />
+      <Modal />
+    </QuizContextProvider>
   );
+}
+
+function App() {
+  return <h2>quiz starter</h2>;
 }
