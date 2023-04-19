@@ -1,16 +1,22 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Home, SingleMovie, ErrorPage } from "./pages";
+import { RootLayout } from "./layout";
 import { Component } from "react";
-import {} from "./components";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "movies/:movieId", element: <SingleMovie /> },
+    ],
+    errorElement: <ErrorPage />,
+  },
+]);
 
 export default class AppClasses extends Component {
-  state = {};
-
   render() {
-    return (
-      <>
-        <br /> <hr /> <br />
-        <p style={{ textAlign: "center" }}>class solution</p>
-        <main></main>
-      </>
-    );
+    return <RouterProvider router={router} />;
   }
 }
