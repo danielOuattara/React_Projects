@@ -7,7 +7,7 @@ export default function ErrorPage() {
       <div>
         <h1>404</h1>
         <h3>Sorry the page does not exist</h3>
-        <Link className="btn" to={"/"}>
+        <Link className="btn" to="/">
           go back to home
         </Link>
       </div>
