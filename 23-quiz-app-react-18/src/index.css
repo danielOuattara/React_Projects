@@ -244,6 +244,21 @@ main {
   color: #ffb100;
 }
 
+.remove-btn {
+  background: var(--clr-red-dark);
+  color: var(--clr-white);
+  border-color: transparent;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-transform: capitalize;
+  font-weight: 700;
+  border-radius: var(--radius);
+  border-color: transparent;
+  padding: 0.25rem 0.5rem;
+  width: 35%;
+  margin-top: 2rem;
+}
+
 /*
 =============== 
 Form
@@ -329,7 +344,7 @@ Loading
 
 .modal-content {
   background: var(--clr-white);
-  width: 90vw;
+
   max-width: var(--fixed-width);
   padding: 3rem;
   border-radius: var(--radius);
