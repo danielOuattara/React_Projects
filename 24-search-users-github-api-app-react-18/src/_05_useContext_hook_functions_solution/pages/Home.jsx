@@ -1,12 +1,21 @@
-import { SearchForm, Movies } from "./../components";
+import {
+  Dashboard,
+  Login,
+  ErrorPage,
+  PrivateRoute,
+  AuthWrapper,
+} from "./../pages";
 
 export default function Home() {
   return (
     <>
       <br /> <hr /> <br />
       <p style={{ textAlign: "center" }}>useContext hook function solution</p>
-      <SearchForm />
-      <Movies />
+      <div>
+        <Dashboard></Dashboard>
+        <Login />
+        <ErrorPage />
+      </div>
     </>
   );
 }
