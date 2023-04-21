@@ -1,10 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 import { useGitHubContext } from "../context";
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./charts";
 //---------------------------------------------------
 
 export default function Repos() {
+  const { reposList } = useGitHubContext();
   return <h2>repos component</h2>;
 }
 

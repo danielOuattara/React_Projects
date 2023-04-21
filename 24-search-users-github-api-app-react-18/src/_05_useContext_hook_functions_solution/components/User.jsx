@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./Card";
-import Followers from "./Followers";
+import { UserCard, UserFollowers } from "./";
 //---------------------------------------------------
 
 export default function User() {
-  return <h2>search component</h2>;
+  return (
+    <section className="section">
+      <Wrapper className="section-center">
+        <UserCard />
+        <UserFollowers />
+      </Wrapper>
+    </section>
+  );
 }
 
 //---------------------------------------------------

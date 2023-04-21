@@ -1,10 +1,25 @@
-import { useGitHubContext } from "./../context";
+import { useGitHubContext } from "../context";
 import styled from "styled-components";
 
 //---------------------------------------------------
 
 export default function Followers() {
-  return <h2>followers component</h2>;
+  const { followers } = useGitHubContext();
+  return (
+    <Wrapper>
+      <div className="followers">
+        {followers.map((person) => (
+          <article key={person.id}>
+            <img src={person.avatar_url} alt={person.name} />
+            <div>
+              <h4>{person.login}</h4>
+              <a href={person.html_url}>{person.html_url}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </Wrapper>
+  );
 }
 
 //---------------------------------------------------
