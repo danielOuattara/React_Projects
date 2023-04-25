@@ -1,11 +1,20 @@
 import styled from "styled-components";
 import { useGitHubContext } from "../context";
-import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./charts";
+import { Pie3D, Column3D, Bar3D, Doughnut2D } from "./charts";
+import { pie3DUtilityV2 } from "../utilities";
 //---------------------------------------------------
 
 export default function Repos() {
   const { reposList } = useGitHubContext();
-  return <h2>repos component</h2>;
+
+  return (
+    <section className="section">
+      <Wrapper className="section-center">
+        <Pie3D chartData={pie3DUtilityV2(reposList)} />
+        <Doughnut2D chartData={pie3DUtilityV2(reposList)} />
+      </Wrapper>
+    </section>
+  );
 }
 
 //---------------------------------------------------
