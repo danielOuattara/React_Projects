@@ -1,4 +1,3 @@
-// STEP 1 - Include Dependencies
 import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";

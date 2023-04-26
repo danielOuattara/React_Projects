@@ -1,5 +1,4 @@
-import pie3DUtilityV1 from "./pie3DUtilityV1";
-import pie3DUtilityV2 from "./pie3DUtilityV2";
-import pie3DUtilityV3 from "./pie3DUtilityV3";
+import pie3dDoughnutDataUtility from "./pie3dDoughnutDataUtility";
+import column3dBar3dDataUtility from "./column3dBar3dDataUtility";
 
-export { pie3DUtilityV1, pie3DUtilityV2, pie3DUtilityV3 };
+export { pie3dDoughnutDataUtility, column3dBar3dDataUtility };
