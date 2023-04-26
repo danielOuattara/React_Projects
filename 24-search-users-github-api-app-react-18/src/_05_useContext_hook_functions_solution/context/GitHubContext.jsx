@@ -1,21 +1,16 @@
-import { useState, useEffect, useContext, createContext } from "react";
-import { mockUser, mockFollowers, mockRepos } from "./mockData";
-import axios from "axios";
-
-const rootUrl = "https://api.github.com";
+import { useContext, createContext } from "react";
+import { useGitHubFetches } from "../customHooks";
 
 const GitHubContext = createContext();
 
 export default function GitHubContextProvider({ children }) {
-  const [gitHubState, setGitHubState] = useState({
-    gitHubUser: mockUser,
-    reposList: mockRepos,
-    followers: mockFollowers,
-    isLoading: true,
-    error: { show: false, message: "" },
-  });
+  const { gitHubState, fetchRequestsLimits, searchGitHubUser } =
+    useGitHubFetches();
+
   return (
-    <GitHubContext.Provider value={{ ...gitHubState, setGitHubState }}>
+    <GitHubContext.Provider
+      value={{ ...gitHubState, fetchRequestsLimits, searchGitHubUser }}
+    >
       {children}
     </GitHubContext.Provider>
   );

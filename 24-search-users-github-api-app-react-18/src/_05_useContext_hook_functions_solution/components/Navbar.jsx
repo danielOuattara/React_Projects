@@ -4,7 +4,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 //---------------------------------------------------
 
 export default function Navbar() {
-  return <h2>navbar component</h2>;
+  return (
+    <Wrapper>
+      <h2>navbar component</h2>
+    </Wrapper>
+  );
 }
 
 //---------------------------------------------------

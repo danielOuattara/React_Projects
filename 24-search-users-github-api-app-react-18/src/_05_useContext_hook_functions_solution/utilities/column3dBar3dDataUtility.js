@@ -38,8 +38,5 @@ export default function column3dBar3dDataUtility(repos) {
   repoByStars = orderAndSlicer(repoByStars, 10);
   repoByForks = orderAndSlicer(repoByForks, 10);
 
-  console.log("repoByStars, = ", repoByStars);
-  console.log("repoByForks = ", repoByForks);
-
   return { repoByStars, repoByForks };
 }
