@@ -18,7 +18,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <Dashboard /> },
+      {
+        element: <PrivateRoute />,
+        children: [{ index: true, element: <Dashboard /> }],
+      },
+
       { path: "login", element: <Login /> },
     ],
     errorElement: <ErrorPage />,
@@ -27,8 +31,16 @@ const router = createBrowserRouter([
 
 export default function AppUseContextHookFunction() {
   return (
-    <GitHubContextProvider>
-      <RouterProvider router={router} />
-    </GitHubContextProvider>
+    <Auth0Provider
+      domain={process.env.REACT_APP_DOMAIN}
+      clientId={process.env.REACT_APP_CLIENT_ID}
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <GitHubContextProvider>
+        <RouterProvider router={router} />
+      </GitHubContextProvider>
+    </Auth0Provider>
   );
 }

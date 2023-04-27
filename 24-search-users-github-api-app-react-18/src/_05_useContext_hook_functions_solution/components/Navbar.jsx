@@ -4,9 +4,23 @@ import { useAuth0 } from "@auth0/auth0-react";
 //---------------------------------------------------
 
 export default function Navbar() {
+  console.log(useAuth0());
+  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
+    useAuth0();
   return (
     <Wrapper>
-      <h2>navbar component</h2>
+      {isAuthenticated && user && user.picture && (
+        <img src={user.picture} alt={user.name} />
+      )}
+      {isAuthenticated && user && user.name && (
+        <>
+          <h4>Welcome {user.name.toLocaleUpperCase()}</h4>
+          <button onClick={() => logout({ returnTo: window.location.origin })}>
+            logout
+          </button>
+        </>
+      )}
+      <button onClick={loginWithRedirect}>login</button>
     </Wrapper>
   );
 }

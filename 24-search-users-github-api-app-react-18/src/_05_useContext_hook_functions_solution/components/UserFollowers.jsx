@@ -10,6 +10,7 @@ export default function Followers() {
       <div className="followers">
         {followers?.map((person) => (
           <a
+            key={person.id}
             href={person.html_url}
             style={{
               backgroundColor: "rgb(237, 240, 243)",
@@ -17,7 +18,7 @@ export default function Followers() {
               color: "grey",
             }}
           >
-            <article key={person.id}>
+            <article>
               <img src={person.avatar_url} alt={person.name} />
               <div>
                 <h4>{person.login}</h4>
