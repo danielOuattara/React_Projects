@@ -4,12 +4,17 @@ import { useGitHubFetches } from "../customHooks";
 const GitHubContext = createContext();
 
 export default function GitHubContextProvider({ children }) {
-  const { gitHubState, fetchRequestsLimits, searchGitHubUser } =
+  const { gitHubState, setGitHubState, fetchRequestsLimits, fetchGitHubUser } =
     useGitHubFetches();
 
   return (
     <GitHubContext.Provider
-      value={{ ...gitHubState, fetchRequestsLimits, searchGitHubUser }}
+      value={{
+        ...gitHubState,
+        setGitHubState,
+        fetchRequestsLimits,
+        fetchGitHubUser,
+      }}
     >
       {children}
     </GitHubContext.Provider>

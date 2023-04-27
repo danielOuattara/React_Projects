@@ -5,6 +5,7 @@ import {
   pie3dDoughnutDataUtility,
   column3dBar3dDataUtility,
 } from "../utilities";
+
 //---------------------------------------------------
 
 export default function Repos() {
@@ -16,11 +17,6 @@ export default function Repos() {
   } = pie3dDoughnutDataUtility(reposList);
   const { repoByStars: column3dData, repoByForks: bar3dData } =
     column3dBar3dDataUtility(reposList);
-
-  console.log("pie3dData = ", pie3dData);
-  console.log("doughnut3dData = ", doughnut3dData);
-  console.log("column3dData = ", column3dData);
-  console.log("bar3dData = ", bar3dData);
 
   return (
     <section className="section">

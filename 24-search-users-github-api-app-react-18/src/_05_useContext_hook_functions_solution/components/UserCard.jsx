@@ -13,7 +13,9 @@ export default function UserCard() {
           <h4>{gitHubUser.name}</h4>
           <p>@{gitHubUser.twitter_username || ""}</p>
         </div>
-        <a href={gitHubUser.html_url || ""}>follow</a>
+        <a href={gitHubUser.html_url || ""} target="_blank" rel="noreferrer">
+          follow
+        </a>
       </header>
       <p className="bio">{gitHubUser.bio || ""}</p>
       <div className="links">
@@ -23,7 +25,7 @@ export default function UserCard() {
         <p>
           <MdLocationOn></MdLocationOn> {gitHubUser.location || ""}
         </p>
-        <a href={`https://${gitHubUser.blog}`}>
+        <a href={`${gitHubUser.blog}`}>
           <MdLink></MdLink>
           {gitHubUser.blog}
         </a>

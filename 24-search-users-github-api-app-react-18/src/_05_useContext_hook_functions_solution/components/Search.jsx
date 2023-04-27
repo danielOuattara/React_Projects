@@ -1,27 +1,29 @@
-import { useState, useEffect } from "react";
 import { MdSearch } from "react-icons/md";
 import { useGitHubContext } from "../context";
 import { SearchErrorWrapper, SearchWrapper } from "./wrappers";
+import { useRef } from "react";
 //---------------------------------------------------
 
 export default function Search() {
-  const { requests, error, isLoading, fetchRequestsLimits, searchGitHubUser } =
-    useGitHubContext();
+  const {
+    requests,
+    error,
+    isLoading,
+    fetchGitHubUser,
+    searchUser,
+    setGitHubState,
+  } = useGitHubContext();
 
-  const [searchUser, setSearchUser] = useState("mosh-hamedani");
-
-  useEffect(() => {
-    searchGitHubUser(searchUser);
-    fetchRequestsLimits();
-  }, []);
+  const searchUserRef = useRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (searchUser) {
-      searchGitHubUser(searchUser);
-      fetchRequestsLimits();
-    }
-    return;
+    if (!searchUser) return;
+    setGitHubState((prevState) => ({
+      ...prevState,
+      searchUser: searchUserRef.current.value,
+    }));
+    fetchGitHubUser(searchUserRef.current.value);
   };
   return (
     <section className="section">
@@ -35,8 +37,7 @@ export default function Search() {
             <input
               type="text"
               placeholder="enter a github user"
-              value={searchUser}
-              onChange={(event) => setSearchUser(event.target.value)}
+              ref={searchUserRef}
             />
             {requests.requestsRemaining > 0 && !isLoading && (
               <button type="submit">search</button>

@@ -1,20 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 const rootUrl = "https://api.github.com";
 
 export default function useGitHubFetches() {
   const [gitHubState, setGitHubState] = useState({
+    searchUser: "mosh-hamedani",
+    error: { show: false, message: "" },
+    isLoading: true,
+    requests: {},
     gitHubUser: {},
     reposList: [],
     followers: [],
-    isLoading: true,
-    error: { show: false, message: "" },
-    requests: {},
   });
 
   //----------------------------------------------------------
-  async function fetchRequestsLimits() {
+
+  const fetchRequestsLimits = useCallback(async function () {
     try {
       const response = await axios(rootUrl + "/rate_limit");
       const {
@@ -53,36 +55,66 @@ export default function useGitHubFetches() {
     } catch (error) {
       console.log(error);
     }
-  }
+  }, []);
 
+  useEffect(() => {
+    fetchRequestsLimits();
+  }, [fetchRequestsLimits, gitHubState.searchUser]);
+
+  // Promise.allSettled
   //----------------------------------------------------------
-  async function searchGitHubUser(userArg) {
-    const response = await axios(rootUrl + `/users/${userArg}`);
-    if (response) {
+
+  const fetchGitHubUser = useCallback(async function (userArg) {
+    try {
       setGitHubState((prevState) => ({
         ...prevState,
-        gitHubUser: response.data,
+        error: { show: false, message: "" },
+        isLoading: true,
       }));
 
-      const userRepos = await axios(
-        `${rootUrl}/users/${response.data.login}/repos?per_page=100`,
-      );
-      if (userRepos.data) {
+      const response = await axios(rootUrl + `/users/${userArg}`);
+      if (response) {
         setGitHubState((prevState) => ({
           ...prevState,
-          reposList: userRepos.data,
+          gitHubUser: response.data,
         }));
-      }
 
-      const userFollowers = await axios(`${response.data.followers_url}`);
-      if (userFollowers.data) {
-        setGitHubState((prevState) => ({
-          ...prevState,
-          followers: userFollowers.data,
-        }));
+        const [userRepos, userFollowers] = await Promise.allSettled([
+          axios(`${rootUrl}/users/${response.data.login}/repos?per_page=100`),
+          axios(`${response.data.followers_url}`),
+        ]);
+
+        if (userRepos.status === "fulfilled") {
+          setGitHubState((prevState) => ({
+            ...prevState,
+            reposList: userRepos.value?.data,
+          }));
+        }
+
+        if (userFollowers.status === "fulfilled") {
+          setGitHubState((prevState) => ({
+            ...prevState,
+            followers: userFollowers.value?.data,
+          }));
+        }
       }
+    } catch (error) {
+      setGitHubState((prevState) => ({
+        ...prevState,
+        error: {
+          ...prevState.error,
+          show: true,
+          message: error.message,
+        },
+      }));
+    } finally {
+      setGitHubState((prevState) => ({ ...prevState, isLoading: false }));
     }
-  }
+  }, []);
 
-  return { gitHubState, setGitHubState, fetchRequestsLimits, searchGitHubUser };
+  useEffect(() => {
+    fetchGitHubUser(gitHubState.searchUser);
+  }, [fetchGitHubUser, gitHubState.searchUser]);
+
+  return { gitHubState, setGitHubState, fetchRequestsLimits, fetchGitHubUser };
 }
