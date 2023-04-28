@@ -1,6 +1,6 @@
 import { MdSearch } from "react-icons/md";
 import { useGitHubContext } from "../context";
-import { SearchErrorWrapper, SearchWrapper } from "./wrappers";
+import { SearchErrorWrapper, SearchWrapper } from "./../wrappers";
 import { useRef } from "react";
 //---------------------------------------------------
 

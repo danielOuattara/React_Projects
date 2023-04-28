@@ -1,5 +1,5 @@
 import { useGitHubContext } from "../context";
-import { UserFollowersWrapper } from "./wrappers";
+import { UserFollowersWrapper } from "./../wrappers";
 
 //---------------------------------------------------
 
