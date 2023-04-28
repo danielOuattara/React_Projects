@@ -1,3 +1,3 @@
 import RootLayout from "./RootLayout";
-
-export { RootLayout };
+import PrivateRouteLayout from "./PrivateRouteLayout";
+export { RootLayout, PrivateRouteLayout };

@@ -1,4 +1,4 @@
-export default [
+export const mockRepos =  [
   {
     id: 239164394,
     node_id: "MDEwOlJlcG9zaXRvcnkyMzkxNjQzOTQ=",

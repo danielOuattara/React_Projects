@@ -7,9 +7,8 @@ import {
   PrivateRoute,
   AuthWrapper,
 } from "./pages";
-import { RootLayout } from "./layout";
-import * as serviceWorker from "./../serviceWorker";
-import { useGitHubContext } from "./context";
+import { RootLayout, PrivateRouteLayout } from "./layout";
+
 import { Auth0Provider } from "@auth0/auth0-react";
 import {} from "./pages";
 
@@ -19,7 +18,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        element: <PrivateRoute />,
+        element: <PrivateRouteLayout />,
         children: [{ index: true, element: <Dashboard /> }],
       },
 
