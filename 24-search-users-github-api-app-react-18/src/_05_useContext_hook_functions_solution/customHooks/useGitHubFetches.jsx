@@ -1,17 +1,18 @@
 import { useState, useEffect, useCallback } from "react";
+import { mockFollowers, mockRepos, mockUser } from "./../context/mockData";
 import axios from "axios";
 
 const rootUrl = "https://api.github.com";
 
 export default function useGitHubFetches() {
   const [gitHubState, setGitHubState] = useState({
-    searchUser: "mosh-hamedani",
+    searchUser: "john-smilga",
     error: { show: false, message: "" },
     isLoading: true,
     requests: {},
-    gitHubUser: {},
-    reposList: [],
-    followers: [],
+    gitHubUser: mockUser,
+    reposList: mockRepos,
+    followers: mockFollowers,
   });
 
   //----------------------------------------------------------
@@ -112,9 +113,9 @@ export default function useGitHubFetches() {
     }
   }, []);
 
-  useEffect(() => {
-    fetchGitHubUser(gitHubState.searchUser);
-  }, [fetchGitHubUser, gitHubState.searchUser]);
+  // useEffect(() => {
+  //   fetchGitHubUser(gitHubState.searchUser);
+  // }, [fetchGitHubUser, gitHubState.searchUser]);
 
   return { gitHubState, setGitHubState, fetchRequestsLimits, fetchGitHubUser };
 }

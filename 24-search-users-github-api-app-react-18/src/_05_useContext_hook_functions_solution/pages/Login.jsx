@@ -3,16 +3,23 @@ import styled from "styled-components";
 import loginImg from "./../../images/login-img.svg";
 
 export default function Login() {
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   return (
     <Wrapper>
       <div className="container">
         <img src={loginImg} alt="GitHub user" />
         <h1>github user</h1>
-        <button className="btn">login</button>
+
+        {!isAuthenticated && (
+          <button className="btn" onClick={loginWithRedirect}>
+            Log in / sign up
+          </button>
+        )}
       </div>
     </Wrapper>
   );
 }
+
 const Wrapper = styled.section`
   min-height: 100vh;
   display: grid;

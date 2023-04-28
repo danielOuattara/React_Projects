@@ -37,10 +37,13 @@ export default function AppUseContextHookFunction() {
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
+      cacheLocation="localstorage"
     >
-      <GitHubContextProvider>
-        <RouterProvider router={router} />
-      </GitHubContextProvider>
+      <AuthWrapper>
+        <GitHubContextProvider>
+          <RouterProvider router={router} />
+        </GitHubContextProvider>
+      </AuthWrapper>
     </Auth0Provider>
   );
 }

@@ -5,8 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Navbar() {
   console.log(useAuth0());
-  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
-    useAuth0();
+  const { isAuthenticated, logout, user } = useAuth0();
   return (
     <Wrapper>
       {isAuthenticated && user && user.picture && (
@@ -15,12 +14,19 @@ export default function Navbar() {
       {isAuthenticated && user && user.name && (
         <>
           <h4>Welcome {user.name.toLocaleUpperCase()}</h4>
-          <button onClick={() => logout({ returnTo: window.location.origin })}>
+          <button
+            onClick={() =>
+              logout({
+                logoutParams: {
+                  returnTo: window.location.origin,
+                },
+              })
+            }
+          >
             logout
           </button>
         </>
       )}
-      <button onClick={loginWithRedirect}>login</button>
     </Wrapper>
   );
 }
