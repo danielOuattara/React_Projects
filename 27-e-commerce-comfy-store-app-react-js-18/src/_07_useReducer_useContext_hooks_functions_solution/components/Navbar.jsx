@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { links } from "../utilities/constants";
 import CartButtons from "./CartButtons";
 import { useProductsContext, useUserContext } from "../context";
-import { NavbarWrapper } from "./../styleWrappers";
+import { NavbarWrapper } from "./styleWrappers";
 
-export default function Nav() {
+export default function Navbar() {
   return <h4>navbar</h4>;
 }

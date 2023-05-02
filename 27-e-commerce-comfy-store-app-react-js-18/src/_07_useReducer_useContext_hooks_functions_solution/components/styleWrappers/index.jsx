@@ -9,7 +9,7 @@ import PageHeroWrapper from "./PageHeroWrapper";
 import NavbarWrapper from "./NavbarWrapper";
 import ListViewWrapper from "./ListViewWrapper";
 import HeroWrapper from "./HeroWrapper";
-import GridViewWrapper from "../components/GridView";
+import GridViewWrapper from "./GridViewWrapper";
 import FooterWrapper from "./FooterWrapper";
 import FiltersWrapper from "./FiltersWrapper";
 import FeaturedProductsWrapper from "./FeaturedProductsWrapper";

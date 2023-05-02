@@ -1,4 +1,4 @@
-import { GridViewWrapper } from "../styleWrappers";
+import { GridViewWrapper } from "./styleWrappers";
 import Product from "./Product";
 
 export default function GridView() {

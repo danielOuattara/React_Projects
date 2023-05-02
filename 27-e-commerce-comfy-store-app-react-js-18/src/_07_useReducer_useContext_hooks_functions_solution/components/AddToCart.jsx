@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import { useCartContext } from "../context";
 import AmountButtons from "./";
-import { AddToCartWrapper } from "../styleWrappers";
+import { AddToCartWrapper } from "./styleWrappers";
 
 //---------------------------------------------------------------
 

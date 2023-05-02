@@ -1,4 +1,4 @@
-import { CartContentWrapper } from "../styleWrappers";
+import { CartContentWrapper } from "./styleWrappers";
 import { useCartContext } from "../context/";
 import { Link } from "react-router-dom";
 import CartColumns from "./CartColumns";
