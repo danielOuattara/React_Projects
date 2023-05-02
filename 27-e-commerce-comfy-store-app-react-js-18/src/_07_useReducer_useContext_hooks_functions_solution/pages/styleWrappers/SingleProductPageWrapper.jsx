@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SinglePageProductWrapper = styled.main`
+const SingleProductPageWrapper = styled.main`
   .product-center {
     display: grid;
     gap: 4rem;
@@ -34,4 +34,4 @@ const SinglePageProductWrapper = styled.main`
   }
 `;
 
-export default SinglePageProductWrapper;
+export default SingleProductPageWrapper;

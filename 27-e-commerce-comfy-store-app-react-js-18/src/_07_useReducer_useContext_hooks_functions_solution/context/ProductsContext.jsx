@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useReducer } from "react";
 import { productsReducer } from "./../reducer";
-import { products_url as url } from "./../utilities/constants";
+import { products_url } from "./../../utilities/";
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,

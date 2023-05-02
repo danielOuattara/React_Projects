@@ -1,5 +1,5 @@
 import { useCartContext, useFilterContext } from "../context/";
-import { formatPrice } from "../utilities/helpers";
+import { priceFormatter } from "./../../utilities";
 import { Link } from "react-router-dom";
 import { CartTotalWrapper } from "./styleWrappers";
 

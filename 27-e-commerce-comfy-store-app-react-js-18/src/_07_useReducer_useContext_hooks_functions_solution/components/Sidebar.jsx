@@ -2,7 +2,7 @@ import logo from "./../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { useProductsContext, useUserContext, useUIContext } from "../context/";
 import { FaTimes } from "react-icons/fa";
-import { links } from "../utilities/constants";
+import { links } from "./../../utilities";
 import CartButtons from "./CartButtons";
 import { SidebarContainerWrapper } from "./styleWrappers";
 

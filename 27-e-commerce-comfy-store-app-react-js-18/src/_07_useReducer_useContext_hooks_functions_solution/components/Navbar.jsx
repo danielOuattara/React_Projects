@@ -1,7 +1,7 @@
 import logo from "./../../assets/logo.svg";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { links } from "../utilities/constants";
+import { links } from "./../../utilities";
 import { CartButtons } from "./";
 import { useProductsContext, useUserContext, useUIContext } from "../context";
 import { NavbarWrapper } from "./styleWrappers";

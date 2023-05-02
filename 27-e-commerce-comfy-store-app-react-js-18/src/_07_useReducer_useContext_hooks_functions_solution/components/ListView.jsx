@@ -1,4 +1,4 @@
-import { formatPrice } from "../utilities/helpers";
+import { priceFormatter } from "./../../utilities";
 import { Link } from "react-router-dom";
 import { ListViewWrapper } from "./styleWrappers";
 

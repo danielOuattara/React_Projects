@@ -8,7 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useCartContext, useUserContext } from "../context/";
-import { formatPrice } from "../utilities/helpers";
+import { priceFormatter } from "./../../utilities/";
 import { useHistory } from "react-router-dom";
 import { StripeCheckoutWrapper } from "./styleWrappers";
 

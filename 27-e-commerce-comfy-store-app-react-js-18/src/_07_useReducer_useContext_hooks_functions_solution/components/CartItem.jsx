@@ -1,4 +1,4 @@
-import { formatPrice } from "../utilities/helpers";
+import { priceFormatter } from "./../../utilities";
 import AmountButtons from "./AmountButtons";
 import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/";

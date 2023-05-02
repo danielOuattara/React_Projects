@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useProductsContext } from "../context";
-import { single_product_url as url } from "./../utilities/constants";
-import { formatPrice } from "../utilities/helpers";
+import { single_product_url } from "./../../utilities";
+import { priceFormatter } from "./../../utilities";
 import {
   Loading,
   Error,

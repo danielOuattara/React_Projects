@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
@@ -34,16 +34,16 @@ const router = createBrowserRouter([
       { path: "products", element: <ProductsPage /> },
       { path: "products/:productId", element: <SingleProductPage /> },
       { path: "checkout", element: <CheckoutPage /> },
+      { path: "*", element: <ErrorPage /> },
     ],
   },
-  // { path: "*", element: <ErrorPage /> },
 ]);
 
 export default function AppUseReducerUseContextHooksFunctions() {
   return (
     <UIContextProvider>
       <ProductsContextProvider>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
       </ProductsContextProvider>
     </UIContextProvider>
   );

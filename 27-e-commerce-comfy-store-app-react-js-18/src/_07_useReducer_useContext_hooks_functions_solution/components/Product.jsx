@@ -1,4 +1,4 @@
-import { formatPrice } from "../utilities/helpers";
+import { priceFormatter } from "./../../utilities";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ProductWrapper } from "./styleWrappers";

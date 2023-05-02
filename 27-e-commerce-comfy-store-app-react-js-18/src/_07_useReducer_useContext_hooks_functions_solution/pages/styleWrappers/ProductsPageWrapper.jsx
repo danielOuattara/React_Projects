@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ProductPageWrapper = styled.div`
+const ProductsPageWrapper = styled.div`
   .products {
     display: grid;
     gap: 3rem 1.5rem;
@@ -13,4 +13,4 @@ const ProductPageWrapper = styled.div`
   }
 `;
 
-export default ProductPageWrapper;
+export default ProductsPageWrapper;

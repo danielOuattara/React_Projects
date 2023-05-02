@@ -1,5 +1,5 @@
 import { useFilterContext } from "../context/";
-import { getUniqueValues, formatPrice } from "../utilities/helpers";
+import { getUniqueValues, priceFormatter } from "./../../utilities";
 import { FaCheck } from "react-icons/fa";
 import { FiltersWrapper } from "./styleWrappers";
 
