@@ -4,6 +4,7 @@ import {
   CartContextProvider,
   FilterContextProvider,
   ProductsContextProvider,
+  UIContextProvider,
   UserContextProvider,
 } from "./context";
 
@@ -39,5 +40,11 @@ const router = createBrowserRouter([
 ]);
 
 export default function AppUseReducerUseContextHooksFunctions() {
-  return <RouterProvider router={router} />;
+  return (
+    <UIContextProvider>
+      <ProductsContextProvider>
+        <RouterProvider router={router} />;
+      </ProductsContextProvider>
+    </UIContextProvider>
+  );
 }

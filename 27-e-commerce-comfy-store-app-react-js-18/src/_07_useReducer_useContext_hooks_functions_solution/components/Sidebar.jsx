@@ -1,23 +1,26 @@
 import logo from "./../../assets/logo.svg";
 import { Link } from "react-router-dom";
-import { useProductsContext, useUserContext } from "../context/";
+import { useProductsContext, useUserContext, useUIContext } from "../context/";
 import { FaTimes } from "react-icons/fa";
 import { links } from "../utilities/constants";
 import CartButtons from "./CartButtons";
 import { SidebarContainerWrapper } from "./styleWrappers";
 
 export default function Sidebar() {
-  const isOpen = true;
+  const { toggleSideBar, isSideBarOpen } = useUIContext();
+
   return (
     <SidebarContainerWrapper>
-      <aside className={`${isOpen ? "sidebar show-sidebar" : "sidebar"}`}>
+      <aside
+        className={`${isSideBarOpen ? "sidebar show-sidebar" : "sidebar"}`}
+      >
         <div className="sidebar-header">
           <img src={logo} className="logo" alt="comfy sloth" />
-          <button className="close-btn" type="button">
+          <button className="close-btn" type="button" onClick={toggleSideBar}>
             <FaTimes />
           </button>
         </div>
-        <ul className="sidebar-links">
+        <ul className="links">
           {links.map((item) => (
             <li key={item.id}>
               <Link to={item.url}>{item.text}</Link>

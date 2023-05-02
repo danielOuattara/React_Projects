@@ -10,8 +10,18 @@ import {
 } from "../actions/actions";
 
 const productsReducer = (state, action) => {
-  return state;
-  throw new Error(`No Matching "${action.type}" - action type`);
+  switch (action.type) {
+    case "TOGGLE_SIDEBAR":
+      return {
+        ...state,
+        isSideBarOpen: !state.isSideBarOpen,
+      };
+
+    default:
+      return state;
+  }
+  // return state;
+  // throw new Error(`No Matching "${action.type}" - action type`);
 };
 
 export default productsReducer;

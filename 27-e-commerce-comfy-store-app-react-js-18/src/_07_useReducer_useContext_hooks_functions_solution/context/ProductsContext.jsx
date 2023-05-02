@@ -5,6 +5,7 @@ import { products_url as url } from "./../utilities/constants";
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
+  /*   TOGGLE_SIDEBAR, */
   GET_PRODUCTS_BEGIN,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
@@ -13,13 +14,28 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from "../actions/actions";
 
-const initialState = {};
+const initialProductsState = {};
 
 const ProductsContext = React.createContext();
 
 export default function ProductsContextProvider({ children }) {
+  const [productsState, dispatchProducts] = useReducer(
+    productsReducer,
+    initialProductsState,
+  );
+
+  // const toggleSideBar = () => {
+  //   dispatchProducts({ type: TOGGLE_SIDEBAR });
+  // };
+
   return (
-    <ProductsContext.Provider value="products context">
+    <ProductsContext.Provider
+      value={
+        {
+          /* toggleSideBar, isSideBarOpen: productsState.isSideBarOpen */
+        }
+      }
+    >
       {children}
     </ProductsContext.Provider>
   );

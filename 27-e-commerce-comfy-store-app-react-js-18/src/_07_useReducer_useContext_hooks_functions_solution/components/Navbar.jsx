@@ -3,10 +3,13 @@ import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "../utilities/constants";
 import { CartButtons } from "./";
-import { useProductsContext, useUserContext } from "../context";
+import { useProductsContext, useUserContext, useUIContext } from "../context";
 import { NavbarWrapper } from "./styleWrappers";
 
 export default function Navbar() {
+  const { toggleSideBar } = useUIContext();
+
+  console.log("===> ", useUIContext());
   return (
     <NavbarWrapper>
       <div className="nav-center">
@@ -14,7 +17,7 @@ export default function Navbar() {
           <Link to="/">
             <img src={logo} alt="comfy sloth" />
           </Link>
-          <button className="nav-toggle">
+          <button className="nav-toggle" onClick={toggleSideBar}>
             <FaBars />
           </button>
         </div>
