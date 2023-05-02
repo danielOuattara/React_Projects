@@ -1,12 +1,18 @@
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useProductsContext, useCartContext, useUserContext } from "../context";
+import {
+  useProductsContext,
+  useCartContext,
+  useUserContext,
+  useUIContext,
+} from "../context";
 import { CartButtonsWrapper } from "./styleWrappers";
 
 export default function CartButtons() {
+  const { toggleSideBar } = useUIContext();
   return (
     <CartButtonsWrapper className="cart-btn-wrapper">
-      <Link to="/cart" className="cart-btn">
+      <Link to="/cart" className="cart-btn" onClick={toggleSideBar}>
         <span className="cart-container">
           <FaShoppingCart />
           <span className="cart-value">12</span>

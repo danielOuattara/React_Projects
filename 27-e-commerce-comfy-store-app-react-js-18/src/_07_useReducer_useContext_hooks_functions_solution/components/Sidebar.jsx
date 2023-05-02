@@ -23,7 +23,9 @@ export default function Sidebar() {
         <ul className="links">
           {links.map((item) => (
             <li key={item.id}>
-              <Link to={item.url}>{item.text}</Link>
+              <Link to={item.url} onClick={toggleSideBar}>
+                {item.text}
+              </Link>
             </li>
           ))}
 

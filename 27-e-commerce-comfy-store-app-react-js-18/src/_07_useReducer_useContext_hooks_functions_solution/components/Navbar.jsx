@@ -9,7 +9,6 @@ import { NavbarWrapper } from "./styleWrappers";
 export default function Navbar() {
   const { toggleSideBar } = useUIContext();
 
-  console.log("===> ", useUIContext());
   return (
     <NavbarWrapper>
       <div className="nav-center">
