@@ -1,6 +1,4 @@
 import {
-  SIDEBAR_OPEN,
-  SIDEBAR_CLOSE,
   GET_PRODUCTS_BEGIN,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
@@ -11,10 +9,25 @@ import {
 
 const productsReducer = (state, action) => {
   switch (action.type) {
-    case "TOGGLE_SIDEBAR":
+    case GET_PRODUCTS_BEGIN:
       return {
         ...state,
-        isSideBarOpen: !state.isSideBarOpen,
+        isProductsLoading: true,
+      };
+
+    case GET_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        products: action.payload,
+        featured_products: action.payload.filter((item) => item.featured),
+        isProductsLoading: false,
+      };
+
+    case GET_PRODUCTS_ERROR:
+      return {
+        ...state,
+        isProductsLoading: false,
+        isProductsError: true,
       };
 
     default:

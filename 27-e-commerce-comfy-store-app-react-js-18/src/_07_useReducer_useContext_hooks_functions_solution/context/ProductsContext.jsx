@@ -1,11 +1,8 @@
 import axios from "axios";
-import React, { useContext, useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer, createContext } from "react";
 import { productsReducer } from "./../reducer";
 import { products_url } from "./../../utilities/";
 import {
-  SIDEBAR_OPEN,
-  SIDEBAR_CLOSE,
-  /*   TOGGLE_SIDEBAR, */
   GET_PRODUCTS_BEGIN,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
@@ -14,9 +11,14 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from "../actions/actions";
 
-const initialProductsState = {};
+const initialProductsState = {
+  isProductsLoading: false,
+  isProductsError: false,
+  products: [],
+  featured_products: [],
+};
 
-const ProductsContext = React.createContext();
+const ProductsContext = createContext();
 
 export default function ProductsContextProvider({ children }) {
   const [productsState, dispatchProducts] = useReducer(
@@ -24,17 +26,28 @@ export default function ProductsContextProvider({ children }) {
     initialProductsState,
   );
 
-  // const toggleSideBar = () => {
-  //   dispatchProducts({ type: TOGGLE_SIDEBAR });
-  // };
+  const fetchProducts = async (url) => {
+    try {
+      dispatchProducts({ type: GET_PRODUCTS_BEGIN });
+      const response = await axios(url);
+      const products = response.data;
+      dispatchProducts({ type: GET_PRODUCTS_SUCCESS, payload: products });
+    } catch (error) {
+      dispatchProducts({ type: GET_PRODUCTS_ERROR });
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts(products_url);
+  }, []);
 
   return (
     <ProductsContext.Provider
-      value={
-        {
-          /* toggleSideBar, isSideBarOpen: productsState.isSideBarOpen */
-        }
-      }
+      value={{
+        fetchProducts,
+        productsState,
+        productsReducer,
+      }}
     >
       {children}
     </ProductsContext.Provider>
