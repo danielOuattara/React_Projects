@@ -19,7 +19,7 @@ const productsReducer = (state, action) => {
       return {
         ...state,
         products: action.payload,
-        featured_products: action.payload.filter((item) => item.featured),
+        featuredProducts: action.payload.filter((item) => item.featured),
         isProductsLoading: false,
       };
 

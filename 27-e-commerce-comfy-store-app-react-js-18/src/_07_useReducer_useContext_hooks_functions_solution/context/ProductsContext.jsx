@@ -15,7 +15,7 @@ const initialProductsState = {
   isProductsLoading: false,
   isProductsError: false,
   products: [],
-  featured_products: [],
+  featuredProducts: [],
 };
 
 const ProductsContext = createContext();
@@ -45,8 +45,8 @@ export default function ProductsContextProvider({ children }) {
     <ProductsContext.Provider
       value={{
         fetchProducts,
-        productsState,
-        productsReducer,
+        ...productsState,
+        dispatchProducts,
       }}
     >
       {children}

@@ -26,6 +26,5 @@ export default function UIContextProvider({ children }) {
 
 // make sure use
 export const useUIContext = () => {
-  console.log("I AM ALIVE !!!!");
   return useContext(UIContext);
 };
