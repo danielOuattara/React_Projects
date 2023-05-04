@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useProductsContext } from "../context";
 import { single_product_url } from "./../../utilities";
@@ -11,9 +11,38 @@ import {
   Stars,
   PageHero,
 } from "../components";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { SingleProductPageWrapper } from "./styleWrappers";
 
 export default function SingleProductPage() {
-  return <h4>single product page</h4>;
+  const {
+    fetchSingleProduct,
+    isSingleProductLoading,
+    isSingleProductError,
+    singleProduct,
+  } = useProductsContext();
+
+  const params = useParams();
+
+  useEffect(() => {
+    fetchSingleProduct(`${single_product_url}${params.productId}`);
+  }, []);
+
+  console.log("singleProduct = ", singleProduct);
+
+  if (isSingleProductLoading) {
+    return (
+      <div className="section section-center">
+        <Loading />
+      </div>
+    );
+  }
+
+  if (isSingleProductError) {
+    return <Error />;
+  }
+
+  return (
+    <SingleProductPageWrapper>single product page</SingleProductPageWrapper>
+  );
 }

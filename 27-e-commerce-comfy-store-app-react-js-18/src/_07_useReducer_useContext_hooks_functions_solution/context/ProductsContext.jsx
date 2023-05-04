@@ -16,6 +16,9 @@ const initialProductsState = {
   isProductsError: false,
   products: [],
   featuredProducts: [],
+  isSingleProductLoading: false,
+  isSingleProductError: false,
+  singleProduct: {},
 };
 
 const ProductsContext = createContext();
@@ -26,6 +29,7 @@ export default function ProductsContextProvider({ children }) {
     initialProductsState,
   );
 
+  //----------------------------------------
   const fetchProducts = async (url) => {
     try {
       dispatchProducts({ type: GET_PRODUCTS_BEGIN });
@@ -37,16 +41,35 @@ export default function ProductsContextProvider({ children }) {
     }
   };
 
+  //----------------------------------------
+  const fetchSingleProduct = async (url) => {
+    try {
+      dispatchProducts({ type: GET_SINGLE_PRODUCT_BEGIN });
+      const response = await axios(url);
+      const singleProduct = response.data;
+      dispatchProducts({
+        type: GET_SINGLE_PRODUCT_SUCCESS,
+        payload: singleProduct,
+      });
+    } catch (error) {
+      dispatchProducts({ type: GET_SINGLE_PRODUCT_ERROR });
+    }
+  };
+
+  //----------------------------------------
   useEffect(() => {
     fetchProducts(products_url);
   }, []);
 
+  // console.log("productsState = ", productsState);
+
   return (
     <ProductsContext.Provider
       value={{
-        fetchProducts,
         ...productsState,
-        dispatchProducts,
+        // fetchProducts,
+        // dispatchProducts,
+        fetchSingleProduct,
       }}
     >
       {children}
