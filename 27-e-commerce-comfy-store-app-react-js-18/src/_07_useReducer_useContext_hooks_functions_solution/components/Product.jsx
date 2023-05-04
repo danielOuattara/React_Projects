@@ -13,8 +13,8 @@ export default function Product(props) {
         </Link>
       </div>
       <footer>
-        <h5>{props.price}</h5>
-        <p>${props.name}</p>
+        <h5>{props.name}</h5>
+        <p>{priceFormatter(props.price)}</p>
       </footer>
     </ProductWrapper>
   );
