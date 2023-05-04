@@ -8,19 +8,24 @@ import { featuredProductsRandomizer } from "../../utilities";
 import { useEffect, useState } from "react";
 
 export default function FeaturedProducts() {
-  const [featuredProductsRandomized, setFeaturedProductsRandomized] = useState(
-    [],
-  );
   const { isProductsLoading, isProductsError, featuredProducts } =
     useProductsContext();
 
+  // const [featuredProductsRandomized, setFeaturedProductsRandomized] = useState(
+  //   featuredProducts.slice(0, 3),
+  // );
+
   const featuredProductsMaxLength = 3;
 
+  const featuredProductsRandomized = featuredProductsRandomizer(
+    featuredProducts,
+    featuredProductsMaxLength,
+  );
+
+  //--------------------------------
   useEffect(() => {
     const timer = setInterval(() => {
-      setFeaturedProductsRandomized(() =>
-        featuredProductsRandomizer(featuredProducts, featuredProductsMaxLength),
-      );
+      featuredProductsRandomizer(featuredProducts, featuredProductsMaxLength);
     }, [5000]);
 
     return () => {
@@ -28,10 +33,18 @@ export default function FeaturedProducts() {
     };
   }, [featuredProducts]);
 
-  // const featuredProductsRandomized = featuredProductsRandomizer(
-  //   featuredProducts,
-  //   featuredProductsMaxLength,
-  // );
+  //--------------------------------
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setFeaturedProductsRandomized(
+  //       featuredProductsRandomizer(featuredProducts, featuredProductsMaxLength),
+  //     );
+  //   }, [5000]);
+
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, [featuredProducts]);
 
   if (isProductsLoading) {
     return (
@@ -52,7 +65,7 @@ export default function FeaturedProducts() {
         <div className="underline"></div>
       </div>
       <div className="section-center featured">
-        {featuredProductsRandomized?.map((product) => (
+        {featuredProductsRandomized.map((product) => (
           <Product key={product.id} {...product} />
         ))}
       </div>
