@@ -7,7 +7,7 @@ export default function ProductImages(props) {
 
   return (
     <ProductImagesWrapper>
-      <img src={mainImage.url} alt="front main" className="main" />
+      <img src={mainImage.url} alt="header main" className="main" />
       <div className="gallery">
         {images.map((image, index) => (
           <img
