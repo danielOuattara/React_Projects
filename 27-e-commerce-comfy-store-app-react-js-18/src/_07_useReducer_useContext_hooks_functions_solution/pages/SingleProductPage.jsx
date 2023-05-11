@@ -22,6 +22,7 @@ export default function SingleProductPage() {
 
   const params = useParams();
   const navigate = useNavigate();
+
   //------------------------------
   useEffect(() => {
     fetchSingleProduct(`${single_product_url}${params.productId}`);
@@ -30,9 +31,10 @@ export default function SingleProductPage() {
   //------------------------------
   useEffect(() => {
     if (isSingleProductError) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         return navigate("/");
       }, 3000);
+      return () => clearTimeout(timer);
     }
   }, [isSingleProductError, navigate]);
 
@@ -59,7 +61,10 @@ export default function SingleProductPage() {
           <ProductImages images={singleProduct.images} />
           <section className="content">
             <h2>{singleProduct.name}</h2>
-            <Stars />
+            <Stars
+              stars={singleProduct.stars}
+              reviews={singleProduct.reviews}
+            />
             <h5 className="price">{priceFormatter(singleProduct.price)}</h5>
             <p className="desc">{singleProduct.description}</p>
 
@@ -75,7 +80,8 @@ export default function SingleProductPage() {
             <p className="info">
               <span>Brand : </span> {singleProduct.company}
             </p>
-            {singleProduct.stock > 0 && <AddToCart />}
+            <hr />
+            {singleProduct.stock > 0 && <AddToCart {...singleProduct} />}
           </section>
         </div>
       </div>
