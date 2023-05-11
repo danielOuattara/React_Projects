@@ -75,7 +75,7 @@ export default function Stars(props) {
   const starsArray = Array.from({ length: 5 }, (_, index) => {
     const number = index + 0.5;
     return (
-      <span>
+      <span key={index}>
         {props.stars >= index + 1 ? (
           <BsStarFill />
         ) : props.stars >= number ? (
