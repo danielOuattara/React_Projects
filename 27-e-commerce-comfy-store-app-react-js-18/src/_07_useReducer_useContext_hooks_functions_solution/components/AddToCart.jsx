@@ -9,6 +9,26 @@ import { AddToCartWrapper } from "./styleWrappers";
 
 export default function AddToCart(props) {
   const [mainColor, setMainColor] = useState(props.colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  // const updateAmount = (value) => {
+  //   return setAmount((prevState) => {
+  //     if (prevState + value > props.stock || prevState + value <= 0) {
+  //       return prevState;
+  //     }
+  //     return prevState + value;
+  //   });
+  // };
+
+  const updateAmount = (value) => {
+    return setAmount((prevState) => {
+      if (prevState + value <= props.stock && prevState + value >= 1) {
+        return prevState + value;
+      }
+      return prevState;
+    });
+  };
+
   return (
     <AddToCartWrapper>
       <div className="colors">
@@ -29,7 +49,12 @@ export default function AddToCart(props) {
           ))}
         </div>
       </div>
-      <div className="btn-containers"></div>
+      <div className="btn-containers">
+        <AmountButtons amount={amount} updateAmount={updateAmount} />
+        <Link to="/cart" className="btn">
+          add to cart
+        </Link>
+      </div>
     </AddToCartWrapper>
   );
 }
