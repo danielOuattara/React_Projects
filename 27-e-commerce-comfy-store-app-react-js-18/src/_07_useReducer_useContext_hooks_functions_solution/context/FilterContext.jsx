@@ -1,3 +1,10 @@
+/* goals:
+
+- filtering
+- sorting
+- changing UI the views
+*/
+
 import React, { useEffect, useContext, useReducer } from "react";
 import { filterReducer } from "./../reducer";
 import {
@@ -12,17 +19,33 @@ import {
 } from "../actions/actions";
 import { useProductsContext } from "./../context";
 
-const initialState = {};
+//-----------------------------------------------------------
+
+const initialState = {
+  filteredProducts: [],
+  allProducts: [],
+};
 
 const FilterContext = React.createContext();
 
 export default function FilterContextProvider({ children }) {
+  const { products } = useProductsContext();
+
+  const [filterState, dispatchFilter] = useReducer(filterReducer, initialState);
+
+  useEffect(() => {
+    dispatchFilter({ type: LOAD_PRODUCTS, payload: products });
+  }, [products]);
+
+  console.log("filterState = ", filterState);
+
   return (
     <FilterContext.Provider value="filter context">
       {children}
     </FilterContext.Provider>
   );
 }
+
 // make sure use
 export const useFilterContext = () => {
   return useContext(FilterContext);

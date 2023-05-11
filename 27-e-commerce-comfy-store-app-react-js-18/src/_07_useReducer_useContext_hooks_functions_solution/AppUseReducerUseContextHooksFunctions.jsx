@@ -43,7 +43,9 @@ export default function AppUseReducerUseContextHooksFunctions() {
   return (
     <UIContextProvider>
       <ProductsContextProvider>
-        <RouterProvider router={router} />
+        <FilterContextProvider>
+          <RouterProvider router={router} />
+        </FilterContextProvider>
       </ProductsContextProvider>
     </UIContextProvider>
   );

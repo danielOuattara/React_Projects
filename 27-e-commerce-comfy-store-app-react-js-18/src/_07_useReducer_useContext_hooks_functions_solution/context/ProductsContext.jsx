@@ -61,8 +61,6 @@ export default function ProductsContextProvider({ children }) {
     fetchProducts(products_url);
   }, []);
 
-  // console.log("productsState = ", productsState);
-
   return (
     <ProductsContext.Provider
       value={{

@@ -36,9 +36,6 @@ const productsReducer = (state, action) => {
         isSingleProductLoading: true,
       };
 
-    default:
-      return state;
-
     case GET_SINGLE_PRODUCT_SUCCESS:
       return {
         ...state,
@@ -51,6 +48,8 @@ const productsReducer = (state, action) => {
         isSingleProductLoading: false,
         isSingleProductError: true,
       };
+    default:
+      return state;
   }
 };
 

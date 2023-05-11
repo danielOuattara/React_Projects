@@ -10,8 +10,17 @@ import {
 } from "../actions/actions";
 
 const filterReducer = (state, action) => {
-  return state;
-  throw new Error(`No Matching "${action.type}" - action type`);
+  switch (action.type) {
+    case LOAD_PRODUCTS:
+      return {
+        ...state,
+        allProducts: [...action.payload],
+        filteredProducts: [...action.payload],
+      };
+
+    default:
+      return state;
+  }
 };
 
 export default filterReducer;
