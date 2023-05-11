@@ -3,7 +3,10 @@ import { products_url, single_product_url } from "./urls";
 import { priceFormatter } from "./priceFormatter";
 import { getUniqueValues } from "./getUniqueValues";
 import { services } from "./services";
-import { featuredProductsRandomizer } from "./featuredProductRandomizer";
+import {
+  featuredProductsRandomizer,
+  randomArrayIndexer,
+} from "./featuredProductRandomizer";
 
 export {
   links,
@@ -13,4 +16,5 @@ export {
   priceFormatter,
   getUniqueValues,
   featuredProductsRandomizer,
+  randomArrayIndexer,
 };
