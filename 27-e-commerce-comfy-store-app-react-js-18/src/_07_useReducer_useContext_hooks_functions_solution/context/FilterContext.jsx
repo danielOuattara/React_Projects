@@ -40,7 +40,7 @@ export default function FilterContextProvider({ children }) {
   console.log("filterState = ", filterState);
 
   return (
-    <FilterContext.Provider value="filter context">
+    <FilterContext.Provider value={{ ...filterState }}>
       {children}
     </FilterContext.Provider>
   );
