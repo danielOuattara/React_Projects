@@ -18,6 +18,61 @@ const filterReducer = (state, action) => {
         filteredProducts: [...action.payload],
       };
 
+    case SET_LISTVIEW:
+      return {
+        ...state,
+        isGridViewLayout: false,
+      };
+
+    case SET_GRIDVIEW:
+      return {
+        ...state,
+        isGridViewLayout: true,
+      };
+    case UPDATE_SORT:
+      return {
+        ...state,
+        sort: action.payload,
+      };
+    case SORT_PRODUCTS:
+      if (state.sort === "price-lowest") {
+        return {
+          ...state,
+          filteredProducts: state.allProducts.sort(function (a, b) {
+            return a.price - b.price;
+          }),
+        };
+      }
+
+      if (state.sort === "price-highest") {
+        return {
+          ...state,
+          filteredProducts: state.allProducts.sort(function (a, b) {
+            return b.price - a.price;
+          }),
+        };
+      }
+
+      if (state.sort === "name-a") {
+        return {
+          ...state,
+          filteredProducts: state.allProducts.sort(function (a, b) {
+            return a.name.localeCompare(b.name);
+          }),
+        };
+      }
+
+      if (state.sort === "name-z") {
+        return {
+          ...state,
+          filteredProducts: state.allProducts.sort(function (a, b) {
+            return b.name.localeCompare(a.name);
+          }),
+        };
+      }
+
+      return state;
+
     default:
       return state;
   }
