@@ -1,4 +1,4 @@
-/* goals:
+/* Goals:
 
 - filtering
 - sorting
@@ -65,7 +65,19 @@ export default function FilterContextProvider({ children }) {
 
   const handleFiltersChange = (event) => {
     const name = event.target.name;
-    const value = event.target.value;
+    let value = event.target.value;
+    if (name === "category") {
+      value = event.target.textContent;
+    }
+
+    if (name === "color") {
+      value = event.target.dataset.color;
+    }
+
+    if (name === "price") {
+      value = event.target.valueAsNumber;
+    }
+    console.log(name, value);
     dispatchFilter({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
@@ -76,7 +88,7 @@ export default function FilterContextProvider({ children }) {
   useEffect(() => {
     dispatchFilter({ type: FILTER_PRODUCTS });
     dispatchFilter({ type: SORT_PRODUCTS });
-  }, [filterState.sort, filterState.filters]);
+  }, [products, filterState.sort, filterState.filters]);
 
   return (
     <FilterContext.Provider
