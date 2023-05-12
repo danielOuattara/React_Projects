@@ -28,11 +28,12 @@ const initialState = {
   sort: "price-lowest",
   filters: {
     text: "",
+    category: "all",
     company: "all",
     color: "all",
-    min_price: 0,
-    max_price: 0,
-    price: 0,
+    rangeMinPrice: 0,
+    rangeMaxPrice: 0,
+    rangeSelectedPrice: 0,
     freeShipping: false,
   },
 };
@@ -51,20 +52,31 @@ export default function FilterContextProvider({ children }) {
   const changeViewLayoutToGrid = () => {
     dispatchFilter({ type: SET_GRIDVIEW });
   };
+
   const changeViewLayoutToList = () => {
     dispatchFilter({ type: SET_LISTVIEW });
   };
 
   const handleSortChange = (event) => {
     event.preventDefault();
-    const name = event.target.name;
     const value = event.target.value;
     dispatchFilter({ type: UPDATE_SORT, payload: value });
   };
 
+  const handleFiltersChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    dispatchFilter({ type: UPDATE_FILTERS, payload: { name, value } });
+  };
+
+  const clearAllFilters = () => {
+    dispatchFilter({ type: CLEAR_FILTERS });
+  };
+
   useEffect(() => {
+    dispatchFilter({ type: FILTER_PRODUCTS });
     dispatchFilter({ type: SORT_PRODUCTS });
-  }, [filterState.sort]);
+  }, [filterState.sort, filterState.filters]);
 
   return (
     <FilterContext.Provider
@@ -73,6 +85,8 @@ export default function FilterContextProvider({ children }) {
         changeViewLayoutToGrid,
         changeViewLayoutToList,
         handleSortChange,
+        handleFiltersChange,
+        clearAllFilters,
       }}
     >
       {children}

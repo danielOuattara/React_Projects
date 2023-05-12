@@ -12,10 +12,27 @@ import {
 const filterReducer = (state, action) => {
   switch (action.type) {
     case LOAD_PRODUCTS:
+      const arrayOfPrice = action.payload.map((item) => item.price);
+
       return {
         ...state,
         allProducts: [...action.payload],
         filteredProducts: [...action.payload],
+        filters: {
+          ...state.filters,
+          rangeMinPrice: arrayOfPrice.reduce(
+            (a, b) => Math.min(a, b),
+            +Infinity,
+          ),
+          rangeMaxPrice: arrayOfPrice.reduce(
+            (a, b) => Math.max(a, b),
+            -Infinity,
+          ),
+          rangeSelectedPrice: arrayOfPrice.reduce(
+            (a, b) => Math.max(a, b),
+            -Infinity,
+          ),
+        },
       };
 
     case SET_LISTVIEW:
@@ -72,6 +89,20 @@ const filterReducer = (state, action) => {
       }
 
       return state;
+
+    case UPDATE_FILTERS:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          [action.payload.name]: action.payload.value,
+        },
+      };
+    case FILTER_PRODUCTS:
+      console.log("Filtering products");
+      return {
+        ...state,
+      };
 
     default:
       return state;

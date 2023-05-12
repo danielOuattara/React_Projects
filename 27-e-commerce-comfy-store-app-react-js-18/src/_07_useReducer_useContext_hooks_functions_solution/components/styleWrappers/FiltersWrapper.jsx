@@ -13,6 +13,7 @@ const FiltersWrapper = styled.section`
     border-radius: var(--radius);
     border-color: transparent;
     letter-spacing: var(--spacing);
+    width: 100%;
   }
   .search-input::placeholder {
     text-transform: capitalize;
@@ -96,6 +97,9 @@ const FiltersWrapper = styled.section`
     .content {
       position: sticky;
       top: 1rem;
+    }
+    .search-input {
+      max-width: 100%;
     }
   }
 `;
