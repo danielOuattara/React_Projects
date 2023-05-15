@@ -1,19 +1,10 @@
-// using an external custom hook
-// ------------------------------------------------------------------------------
-
-import { useEffect, createContext } from "react";
-import useFetchTours from "./../components/useFetchTours";
+import { createContext } from "react";
+import useFetchTours from "./../customHooks/useFetchTours";
 export const ToursContext = createContext();
-
-const url = "https://course-api.com/react-tours-project";
 
 function ToursContextProvider(props) {
   const { loading, isError, errorMessage, tours, fetchTours, removeTourItem } =
-    useFetchTours(url);
-
-  useEffect(() => {
-    fetchTours();
-  }, []);
+    useFetchTours();
 
   return (
     <ToursContext.Provider

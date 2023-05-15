@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, createContext } from "react";
 
-function useFetchTours(url) {
+export const ToursContext = createContext();
+
+const url = "https://course-api.com/react-tours-project";
+
+function ToursContextProvider(props) {
   const [loading, setLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -32,14 +36,26 @@ function useFetchTours(url) {
     });
   };
 
-  return {
-    loading,
-    isError,
-    errorMessage,
-    tours,
-    fetchTours,
-    removeTourItem,
-  };
+  useEffect(() => {
+    fetchTours();
+  }, []);
+
+  return (
+    <ToursContext.Provider
+      value={{
+        loading,
+        isError,
+        errorMessage,
+        tours,
+        removeTourItem,
+        fetchTours,
+      }}
+    >
+      {props.children}
+    </ToursContext.Provider>
+  );
 }
 
-export default useFetchTours;
+export default ToursContextProvider;
+
+// using an external custom hook in Version 2

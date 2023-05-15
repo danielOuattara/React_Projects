@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { ToursContext } from "./../context/ToursContext";
-
 
 const TourItem = ({ id, image, info, price, name }) => {
   const [readMore, setReadMore] = useState(false);
-  const {removeTourItem} = React.useContext(ToursContext)
-
+  const { removeTourItem } = useContext(ToursContext);
 
   return (
     <article className="single-tour">
-      <img src={image} alt={`${name} decription`} />
+      <img src={image} alt={`${name} description`} />
       <footer>
         <div className="tour-info">
           <h4>{name}</h4>
