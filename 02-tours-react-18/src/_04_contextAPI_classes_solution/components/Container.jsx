@@ -1,4 +1,3 @@
-
 // using useContext
 //-----------------------------------------------------------------
 
@@ -29,7 +28,6 @@
 
 // export default Container;
 
-
 // using ToursContext.Consumer
 //-------------------------------------------------------------------
 
@@ -39,28 +37,25 @@ import ResetTours from "./ResetTours";
 import Tours from "./Tours";
 import { ToursContext } from "../context/ToursContext";
 
-
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class Container extends Component {
-
   static contextType = ToursContext;
 
   render() {
-      const { isError, loading, tours } = this.context;
-      if (isError) {
-        return <Error />;
-      }
-    
-      if (loading) {
-        return <Loading />;
-      }
-    
-      if (tours.length === 0) {
-        return <ResetTours />;
-      }
-    return <Tours />;
+    const { isError, loading, tours, fetchTours } = this.context;
+
+    if (isError) {
+      return <Error />;
     }
+
+    if (loading) {
+      return <Loading />;
+    }
+
+    if (tours.length === 0) {
+      return <ResetTours />;
+    }
+    return <Tours />;
+  }
 }
-
-

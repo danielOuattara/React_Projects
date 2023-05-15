@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import { Component, createContext } from "react";
 
-export const ToursContext = React.createContext();
+export const ToursContext = createContext();
 
 const url = "https://course-api.com/react-tours-project";
 
@@ -16,22 +16,32 @@ export class ToursContextProvider extends Component {
   }
 
   fetchTours = async () => {
-    // async function fetchTours() {
     try {
       const res = await fetch(url);
       if (!res.ok) {
-        this.setState({ isError: true });
-        this.setState({ loading: false });
-        this.setState({ errorMessage: `${res.status} ${res.statusText}` });
+        this.setState((prevState) => ({
+          ...prevState,
+          isError: true,
+          loading: false,
+          errorMessage: `${res.status} ${res.statusText}`,
+        }));
+
         throw Error(`${res.status} ${res.statusText}`);
       }
+
       const data = await res.json();
-      this.setState({ tours: data });
-      this.setState({ loading: false });
-      this.setState({ errorMessage: `${res.status} ${res.statusText}` });
+      this.setState((prevState) => ({
+        ...prevState,
+        loading: false,
+        errorMessage: ``,
+        tours: data,
+      }));
     } catch (err) {
-      this.setState({ isError: true });
-      this.setState({ loading: false });
+      this.setState((prevState) => ({
+        ...prevState,
+        isError: true,
+        loading: false,
+      }));
       return err;
     }
   };

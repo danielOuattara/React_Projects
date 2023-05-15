@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import TourItem from "./TourItem";
 import { ToursContext } from "../context/ToursContext";
 
@@ -10,8 +10,8 @@ export default class ToursClass extends Component {
       <main>
         <section>
           <div className="title">
+            <p>context API + classes component solutions</p>
             <h2>our tours</h2>
-            <h3>class component & context API</h3>
             <div className="underline"></div>
             <div>
               {tours.map((item) => {
