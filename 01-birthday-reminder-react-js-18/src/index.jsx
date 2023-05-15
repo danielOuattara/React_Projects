@@ -12,7 +12,7 @@ import AppFunctionUseReducerUseContext from "./_08_useReducer_useContext_hooks_f
 import AppFunctionRedux from "./_09_react_redux_functions_solution/AppFunctionRedux";
 import AppClassRedux from "./_10_react_redux_classes_solution/AppClassRedux";
 import AppFunctionReduxToolkit from "./_11_redux_toolkit_functions_solution/AppFunctionReduxToolkit";
-import AppClassReduxToolkit from "./12_redux_toolkit_classes_solution/AppClassReduxToolkit";
+import AppClassReduxToolkit from "./_12_redux_toolkit_classes_solution/AppClassReduxToolkit";
 
 ReactDOM.render(
   <React.StrictMode>
