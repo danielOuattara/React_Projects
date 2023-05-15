@@ -12,7 +12,7 @@ export default class TourItemClass extends Component {
     const { id, image, info, price, name, removeTourItem } = this.props;
     return (
       <article className="single-tour">
-        <img src={image} alt={`${name} decription`} />
+        <img src={image} alt={`${name} description`} />
         <footer>
           <div className="tour-info">
             <h4>{name}</h4>

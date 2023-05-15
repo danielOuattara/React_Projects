@@ -15,22 +15,23 @@ export default class AppClass extends Component {
       errorMessage: "",
       tours: [],
     };
+
+    this.fetchTours = this.fetchTours.bind(this);
   }
 
-  // fetchTours = async () => {
   async fetchTours() {
     try {
-      const res = await fetch(url);
-      if (!res.ok) {
+      const response = await fetch(url);
+      if (!response.ok) {
         this.setState((prevState) => ({
           ...prevState,
           isError: true,
           loading: false,
-          errorMessage: `${res.status} ${res.statusText}`,
+          errorMessage: `${response.status} ${response.statusText}`,
         }));
-        throw Error(`${res.status} ${res.statusText}`);
+        throw Error(`${response.status} ${response.statusText}`);
       }
-      const data = await res.json();
+      const data = await response.json();
       this.setState((prevState) => ({
         ...prevState,
         tours: data,
@@ -38,10 +39,11 @@ export default class AppClass extends Component {
         errorMessage: "",
       }));
     } catch (err) {
-      this.setState({
+      this.setState((prevState) => ({
+        ...prevState,
         loading: false,
         isError: true,
-      });
+      }));
       return err;
     }
   }
@@ -58,6 +60,7 @@ export default class AppClass extends Component {
   };
 
   render() {
+    console.log(this.state);
     if (this.state.isError) {
       return <Error errorMessage={this.state.errorMessage} />;
     }
@@ -78,5 +81,3 @@ export default class AppClass extends Component {
     );
   }
 }
-
-//-----------------------------------

@@ -6,7 +6,7 @@ export default class ResetTours extends Component {
       <main>
         <div className="title">
           <h2>no tour left</h2>
-          <button className="btn" onClick={() => this.props.fetchTours()}>
+          <button className="btn" onClick={this.props.fetchTours}>
             refresh
           </button>
         </div>

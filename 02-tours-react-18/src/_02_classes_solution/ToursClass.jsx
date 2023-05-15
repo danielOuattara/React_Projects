@@ -8,8 +8,8 @@ export default class ToursClass extends Component {
       <main>
         <section>
           <div className="title">
+            <p>classes solutions</p>
             <h2>our tours</h2>
-            <h3>class component</h3>
             <div className="underline"></div>
             <div>
               {tours.map((tourItem) => {
