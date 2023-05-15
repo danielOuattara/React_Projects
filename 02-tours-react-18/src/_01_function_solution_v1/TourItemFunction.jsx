@@ -5,7 +5,7 @@ const TourItem = ({ id, image, info, price, name, removeTourItem }) => {
 
   return (
     <article className="single-tour">
-      <img src={image} alt={`${name} decription`} />
+      <img src={image} alt={`${name} description`} />
       <footer>
         <div className="tour-info">
           <h4>{name}</h4>

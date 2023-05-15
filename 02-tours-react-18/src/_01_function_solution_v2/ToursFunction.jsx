@@ -5,8 +5,8 @@ const Tours = ({ tours, removeTourItem }) => {
     <main>
       <section>
         <div className="title">
+          <p>functions + custom hook solution</p>
           <h2>our tours</h2>
-          <h3>function component</h3>
           <div className="underline"></div>
           <div>
             {tours.map((item) => (

@@ -6,7 +6,7 @@ import Tours from "./ToursFunction";
 
 const url = "https://course-api.com/react-tours-project";
 
-function AppFunction() {
+export default function AppFunctionV1() {
   const [loading, setLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -55,5 +55,3 @@ function AppFunction() {
 
   return <Tours tours={tours} removeTourItem={removeTourItem} />;
 }
-
-export default AppFunction;
