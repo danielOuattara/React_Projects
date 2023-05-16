@@ -8,6 +8,7 @@ export class ResetTours extends Component {
         {(context) => (
           <main>
             <div className="title">
+              <p>context API + classes component solutions</p>
               <h2>no tour left</h2>
               <button className="btn" onClick={context.fetchTours}>
                 refresh

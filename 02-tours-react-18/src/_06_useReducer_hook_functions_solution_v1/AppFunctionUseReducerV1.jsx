@@ -50,8 +50,6 @@ export default function AppFunctionUseReducerV1() {
     fetchTours();
   }, []);
 
-  // console.log("toursState = ", toursState);
-
   const removeTourItem = (id) =>
     dispatchTours({ type: REMOVE_ONE_TOUR, payload: id });
 

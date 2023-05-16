@@ -9,8 +9,6 @@ export default function ToursContextProvider(props) {
   const { loading, isError, errorMessage, tours, fetchTours, removeTourItem } =
     useFetchTours();
 
-  console.log(tours);
-
   return (
     <ToursContext.Provider
       value={{

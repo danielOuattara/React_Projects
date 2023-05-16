@@ -50,7 +50,5 @@ export default function useFetchTours() {
     fetchTours();
   }, []);
 
-  console.log(toursState);
-
   return { ...toursState, removeTourItem, fetchTours };
 }

@@ -5,7 +5,6 @@ import Tours from "./components/ToursFunction";
 import useFetchTours from "./customHooks/useFetchTours";
 
 export default function AppFunctionUseReducerV2() {
-  // console.log("toursState = ", toursState);
   const { isError, loading, tours, errorMessage, fetchTours, removeTourItem } =
     useFetchTours();
 

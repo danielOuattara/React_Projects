@@ -6,6 +6,7 @@ function ResetTours() {
   return (
     <main>
       <div className="title">
+        <p>context API + custom hooks functions solution (version 2) </p>
         <h2>no tour left</h2>
         <button className="btn" onClick={() => fetchTours()}>
           refresh

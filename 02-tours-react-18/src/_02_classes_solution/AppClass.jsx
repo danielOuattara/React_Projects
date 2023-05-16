@@ -60,7 +60,6 @@ export default class AppClass extends Component {
   };
 
   render() {
-    console.log(this.state);
     if (this.state.isError) {
       return <Error errorMessage={this.state.errorMessage} />;
     }
