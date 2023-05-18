@@ -4,6 +4,7 @@ import ListView from "./ListView";
 
 export default function ProductList() {
   const { filteredProducts, isGridViewLayout } = useFilterContext();
+  console.log("filteredProducts PRODUCT_LIST = ", filteredProducts);
 
   if (filteredProducts.length === 0) {
     return (

@@ -32,7 +32,7 @@ export default function Sort() {
       </div>
       <p>{filteredProducts.length} products found</p>
       <hr />{" "}
-      <form>
+      <form onSubmit={(event) => event.preventDefault()}>
         <label htmlFor="sortBy">sort by : &nbsp; </label>
         <select
           name="sortBy"

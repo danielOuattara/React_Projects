@@ -2,10 +2,10 @@
 
 - filtering
 - sorting
-- changing UI the views
+- changing UI for products views
 */
 
-import React, { useEffect, useContext, useReducer } from "react";
+import { useEffect, createContext, useContext, useReducer } from "react";
 import { filterReducer } from "./../reducer";
 import {
   LOAD_PRODUCTS,
@@ -34,51 +34,45 @@ const initialState = {
     rangeMinPrice: 0,
     rangeMaxPrice: 0,
     rangeSelectedPrice: 0,
-    freeShipping: false,
+    isFreeShipping: false,
   },
 };
 
-const FilterContext = React.createContext();
+const FilterContext = createContext();
 
-export default function FilterContextProvider({ children }) {
+export default function FilterContextProvider(props) {
   const { products } = useProductsContext();
 
   const [filterState, dispatchFilter] = useReducer(filterReducer, initialState);
 
-  const changeViewLayoutToGrid = () => {
-    dispatchFilter({ type: SET_GRID_VIEW });
-  };
+  const changeViewLayoutToGrid = () => dispatchFilter({ type: SET_GRID_VIEW });
 
-  const changeViewLayoutToList = () => {
-    dispatchFilter({ type: SET_LIST_VIEW });
-  };
+  const changeViewLayoutToList = () => dispatchFilter({ type: SET_LIST_VIEW });
 
-  const handleSortChange = (event) => {
-    const value = event.target.value;
-    dispatchFilter({ type: UPDATE_SORT_BY, payload: value });
-  };
+  const handleSortChange = (event) =>
+    dispatchFilter({ type: UPDATE_SORT_BY, payload: event.target.value });
 
   const handleFiltersChange = (event) => {
-    const name = event.target.name;
+    let name = event.target.name;
     let value = event.target.value;
     if (name === "category") {
       value = event.target.textContent;
     }
-
     if (name === "color") {
       value = event.target.dataset.color;
     }
-
     if (name === "price") {
+      name = "rangeSelectedPrice";
       value = event.target.valueAsNumber;
     }
-    console.log(name, value);
+    if (name === "isFreeShipping") {
+      value = event.target.checked;
+    }
     dispatchFilter({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
-  const clearAllFilters = () => {
-    dispatchFilter({ type: CLEAR_FILTERS });
-  };
+  const clearAllFilters = () =>
+    dispatchFilter({ type: CLEAR_FILTERS, payload: products });
 
   useEffect(() => {
     dispatchFilter({ type: LOAD_PRODUCTS, payload: products });
@@ -87,7 +81,7 @@ export default function FilterContextProvider({ children }) {
   useEffect(() => {
     dispatchFilter({ type: FILTER_PRODUCTS });
     dispatchFilter({ type: SORT_PRODUCTS });
-  }, [products, filterState.sortBy, filterState.filters]);
+  }, [filterState.sortBy, filterState.filters]);
 
   return (
     <FilterContext.Provider
@@ -100,7 +94,7 @@ export default function FilterContextProvider({ children }) {
         clearAllFilters,
       }}
     >
-      {children}
+      {props.children}
     </FilterContext.Provider>
   );
 }

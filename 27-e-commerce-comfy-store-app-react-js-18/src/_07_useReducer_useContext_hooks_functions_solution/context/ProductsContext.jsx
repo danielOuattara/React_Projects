@@ -65,8 +65,6 @@ export default function ProductsContextProvider({ children }) {
     <ProductsContext.Provider
       value={{
         ...productsState,
-        // fetchProducts,
-        // dispatchProducts,
         fetchSingleProduct,
       }}
     >

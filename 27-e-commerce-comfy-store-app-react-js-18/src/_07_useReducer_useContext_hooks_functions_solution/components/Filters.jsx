@@ -74,7 +74,7 @@ export default function Filters() {
                     <button
                       key={color}
                       name="color"
-                      data-color={color}
+                      data-color="all"
                       className={`${
                         filters.color === "all" ? "active all-btn" : "all-btn"
                       }`}
@@ -109,7 +109,7 @@ export default function Filters() {
           <div className="form-control">
             <h5>price</h5>
             <p className="price">
-              {priceFormatter(Number(filters.rangeSelectedPrice))}
+              {priceFormatter(filters.rangeSelectedPrice)}
             </p>
             <input
               type="range"
@@ -123,13 +123,13 @@ export default function Filters() {
           {/* ---------------------------------------------- */}
 
           <div className="form-control shipping">
-            <h5>shipping</h5>
+            <label htmlFor="isFreeShipping">free isFreeShipping</label>
             <input
-              id="shipping"
+              id="isFreeShipping"
               type="checkbox"
-              name="shipping"
-              onClick={handleFiltersChange}
-              value={filters.rangeSelectedPrice}
+              name="isFreeShipping"
+              onChange={handleFiltersChange}
+              checked={filters.isFreeShipping}
             />
           </div>
           {/* ---------------------------------------------- */}
