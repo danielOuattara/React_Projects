@@ -16,14 +16,15 @@ export default function Sort() {
       <div className="btn-container">
         <button
           type="button"
-          className={`${isGridViewLayout ? "active" : null}`}
+          className={`${isGridViewLayout && "active"}`}
           onClick={changeViewLayoutToGrid}
         >
           <BsFillGridFill />
         </button>
+
         <button
           type="button"
-          className={`${!isGridViewLayout ? "active" : null}`}
+          className={`${!isGridViewLayout && "active"}`}
           onClick={changeViewLayoutToList}
         >
           <BsList />
@@ -32,10 +33,10 @@ export default function Sort() {
       <p>{filteredProducts.length} products found</p>
       <hr />{" "}
       <form>
-        <label htmlFor="sort">sort by : &nbsp; </label>
+        <label htmlFor="sortBy">sort by : &nbsp; </label>
         <select
-          name="sort"
-          id="sort"
+          name="sortBy"
+          id="sortBy"
           className="sort-input"
           onChange={handleSortChange}
         >

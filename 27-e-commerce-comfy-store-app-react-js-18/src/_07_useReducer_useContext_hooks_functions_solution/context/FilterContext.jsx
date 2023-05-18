@@ -9,9 +9,9 @@ import React, { useEffect, useContext, useReducer } from "react";
 import { filterReducer } from "./../reducer";
 import {
   LOAD_PRODUCTS,
-  SET_GRIDVIEW,
-  SET_LISTVIEW,
-  UPDATE_SORT,
+  SET_GRID_VIEW,
+  SET_LIST_VIEW,
+  UPDATE_SORT_BY,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
@@ -25,7 +25,7 @@ const initialState = {
   allProducts: [],
   filteredProducts: [],
   isGridViewLayout: true,
-  sort: "price-lowest",
+  sortBy: "price-lowest",
   filters: {
     text: "",
     category: "all",
@@ -45,22 +45,17 @@ export default function FilterContextProvider({ children }) {
 
   const [filterState, dispatchFilter] = useReducer(filterReducer, initialState);
 
-  useEffect(() => {
-    dispatchFilter({ type: LOAD_PRODUCTS, payload: products });
-  }, [products]);
-
   const changeViewLayoutToGrid = () => {
-    dispatchFilter({ type: SET_GRIDVIEW });
+    dispatchFilter({ type: SET_GRID_VIEW });
   };
 
   const changeViewLayoutToList = () => {
-    dispatchFilter({ type: SET_LISTVIEW });
+    dispatchFilter({ type: SET_LIST_VIEW });
   };
 
   const handleSortChange = (event) => {
-    event.preventDefault();
     const value = event.target.value;
-    dispatchFilter({ type: UPDATE_SORT, payload: value });
+    dispatchFilter({ type: UPDATE_SORT_BY, payload: value });
   };
 
   const handleFiltersChange = (event) => {
@@ -86,9 +81,13 @@ export default function FilterContextProvider({ children }) {
   };
 
   useEffect(() => {
+    dispatchFilter({ type: LOAD_PRODUCTS, payload: products });
+  }, [products]);
+
+  useEffect(() => {
     dispatchFilter({ type: FILTER_PRODUCTS });
     dispatchFilter({ type: SORT_PRODUCTS });
-  }, [products, filterState.sort, filterState.filters]);
+  }, [products, filterState.sortBy, filterState.filters]);
 
   return (
     <FilterContext.Provider
