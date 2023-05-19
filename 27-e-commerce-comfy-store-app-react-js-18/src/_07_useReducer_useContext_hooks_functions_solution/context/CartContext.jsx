@@ -27,8 +27,14 @@ export default function CartContextProvider(props) {
     });
   };
 
+  const removeItem = (id) => {};
+  const toggleAmount = (idn, value) => {};
+  const clearCart = () => {};
+
   return (
-    <CartContext.Provider value={{ ...cartState, addToCart }}>
+    <CartContext.Provider
+      value={{ ...cartState, addToCart, removeItem, toggleAmount, clearCart }}
+    >
       {props.children}
     </CartContext.Provider>
   );
