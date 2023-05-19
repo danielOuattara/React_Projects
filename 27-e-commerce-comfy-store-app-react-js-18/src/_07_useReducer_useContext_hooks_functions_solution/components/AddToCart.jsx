@@ -45,7 +45,7 @@ export default function AddToCart(props) {
               className={
                 mainColor === color ? " color-btn active" : "color-btn"
               }
-              style={{ backgroundColor: props.singleProduct.color }}
+              style={{ backgroundColor: color }}
             >
               {" "}
               {mainColor === color ? <FaCheck /> : null}
