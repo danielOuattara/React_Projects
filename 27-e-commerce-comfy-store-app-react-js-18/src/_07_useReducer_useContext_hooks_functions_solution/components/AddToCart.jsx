@@ -8,8 +8,9 @@ import { AddToCartWrapper } from "./styleWrappers";
 //---------------------------------------------------------------
 
 export default function AddToCart(props) {
-  const [mainColor, setMainColor] = useState(props.colors[0]);
+  const [mainColor, setMainColor] = useState(props.singleProduct.colors[0]);
   const [amount, setAmount] = useState(1);
+  const { addToCart } = useCartContext();
 
   // const updateAmount = (value) => {
   //   return setAmount((prevState) => {
@@ -22,7 +23,10 @@ export default function AddToCart(props) {
 
   const updateAmount = (value) => {
     return setAmount((prevState) => {
-      if (prevState + value <= props.stock && prevState + value >= 1) {
+      if (
+        prevState + value <= props.singleProduct.stock &&
+        prevState + value >= 1
+      ) {
         return prevState + value;
       }
       return prevState;
@@ -34,14 +38,14 @@ export default function AddToCart(props) {
       <div className="colors">
         <span>colors: </span>
         <div>
-          {props.colors.map((color, index) => (
+          {props.singleProduct.colors.map((color, index) => (
             <button
               key={index}
-              onClick={() => setMainColor(props.colors[index])}
+              onClick={() => setMainColor(props.singleProduct.colors[index])}
               className={
                 mainColor === color ? " color-btn active" : "color-btn"
               }
-              style={{ backgroundColor: color }}
+              style={{ backgroundColor: props.singleProduct.color }}
             >
               {" "}
               {mainColor === color ? <FaCheck /> : null}
@@ -51,7 +55,19 @@ export default function AddToCart(props) {
       </div>
       <div className="btn-containers">
         <AmountButtons amount={amount} updateAmount={updateAmount} />
-        <Link to="/cart" className="btn">
+        <Link
+          to="/cart"
+          className="btn"
+          onClick={() =>
+            addToCart(
+              props.singleProduct.id,
+              mainColor,
+              amount,
+              props.singleProduct,
+            )
+          }
+          // id, mainColor, amount, singleProduct
+        >
           add to cart
         </Link>
       </div>

@@ -19,8 +19,16 @@ const CartContext = createContext();
 
 export default function CartContextProvider(props) {
   const [cartState, dispatchCart] = useReducer(cartReducer, initialState);
+
+  const addToCart = (id, mainColor, amount, singleProduct) => {
+    dispatchCart({
+      type: ADD_TO_CART,
+      payload: { id, mainColor, amount, singleProduct },
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ ...cartState }}>
+    <CartContext.Provider value={{ ...cartState, addToCart }}>
       {props.children}
     </CartContext.Provider>
   );

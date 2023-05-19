@@ -81,7 +81,9 @@ export default function SingleProductPage() {
               <span>Brand : </span> {singleProduct.company}
             </p>
             <hr />
-            {singleProduct.stock > 0 && <AddToCart {...singleProduct} />}
+            {singleProduct.stock > 0 && (
+              <AddToCart singleProduct={singleProduct} />
+            )}
           </section>
         </div>
       </div>
