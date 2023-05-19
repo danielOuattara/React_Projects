@@ -9,7 +9,7 @@ import {
 } from "./../actions/actions";
 
 const initialState = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem("cart")) || [],
   totalItems: 0,
   totalAmount: 0,
   shippingFee: 534,
@@ -30,6 +30,10 @@ export default function CartContextProvider(props) {
   const removeItem = (id) => {};
   const toggleAmount = (idn, value) => {};
   const clearCart = () => {};
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartState));
+  }, [cartState]);
 
   return (
     <CartContext.Provider
