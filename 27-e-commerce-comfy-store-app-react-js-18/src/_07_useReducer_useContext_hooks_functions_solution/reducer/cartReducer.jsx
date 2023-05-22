@@ -3,7 +3,7 @@ import {
   CLEAR_CART,
   COUNT_CART_TOTALS,
   REMOVE_CART_ITEM,
-  TOGGLE_CART_ITEM_AMOUNT,
+  UPDATE_CART_ITEM_AMOUNT,
 } from "../actions/actions";
 
 const cartReducer = (state, action) => {
@@ -29,10 +29,6 @@ const cartReducer = (state, action) => {
         state = {
           ...state,
           cart: [...state.cart, newItem],
-          totalItems: state.totalItems + action.payload.amount,
-          totalAmount:
-            state.totalAmount +
-            action.payload.singleProduct.price * action.payload.amount,
         };
       }
 
@@ -44,26 +40,87 @@ const cartReducer = (state, action) => {
           action.payload.amount + productToUpdate.amount >
           productToUpdate.max
         ) {
-          return state;
+          return (state = {
+            ...state,
+            cartMessageError: `The max available quantity for the article ${productToUpdate.name} is ${productToUpdate.max}. Please reduce your quantity`,
+          });
         } else {
           state.cart[productIndexInCart] = {
             ...productToUpdate,
             amount: productToUpdate.amount + action.payload.amount,
+            cartMessageError: "",
           };
-          state.totalItems = state.totalItems + action.payload.amount;
-          state.totalAmount =
-            state.totalAmount +
-            action.payload.singleProduct.price * action.payload.amount;
         }
       }
-
-      console.log("productIndexInCart = ", productIndexInCart);
-      console.log("state = ", state);
-
       return state;
 
     //--------------------------------------------------------
+    case REMOVE_CART_ITEM:
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload.id),
+      };
 
+    //--------------------------------------------------------
+    case CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
+      };
+
+    //--------------------------------------------------------
+    case UPDATE_CART_ITEM_AMOUNT:
+      const productToUpdateIndex = state.cart.findIndex(
+        (item) => item.id === action.payload.id,
+      );
+      const productToUpdate = state.cart[productToUpdateIndex];
+
+      if (productToUpdateIndex === -1) {
+        return state; // security check
+      }
+
+      // remove item if qty = 1 and update value = -1
+      if (productToUpdate.amount === 1 && action.payload.value === -1) {
+        state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+      } else {
+        // increase with qty >= 1; decrease with qty >=2
+        if (
+          // checking against max != amount (subtotal)
+          productToUpdate.amount + action.payload.value >
+          productToUpdate.max
+        ) {
+          return (state = {
+            ...state,
+            cartMessageError: `The max available quantity for the article ${productToUpdate.name} is ${productToUpdate.max}. Please reduce your quantity`,
+          });
+        } else {
+          state.cart[productToUpdateIndex] = {
+            ...state.cart[productToUpdateIndex],
+            amount:
+              state.cart[productToUpdateIndex].amount + action.payload.value,
+          };
+          state.cartMessageError = "";
+        }
+      }
+
+      return {
+        ...state,
+        cart: state.cart,
+      };
+
+    //--------------------------------------------------------
+    case COUNT_CART_TOTALS:
+      const { totalItems, totalAmount } = state.cart.reduce(
+        (total, cartItem) => {
+          total.totalItems += cartItem.amount;
+          total.totalAmount += cartItem.price * cartItem.amount;
+          return total;
+        },
+        { totalItems: 0, totalAmount: 0 },
+      );
+      return { ...state, totalItems, totalAmount };
+
+    //--------------------------------------------------------
     default:
       return state;
   }

@@ -3,13 +3,14 @@ import { cartReducer, filterReducer } from "./../reducer";
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,
-  TOGGLE_CART_ITEM_AMOUNT,
+  UPDATE_CART_ITEM_AMOUNT,
   CLEAR_CART,
   COUNT_CART_TOTALS,
 } from "./../actions/actions";
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem("cart")) || [],
+  cartMessageError: "",
   totalItems: 0,
   totalAmount: 0,
   shippingFee: 534,
@@ -27,17 +28,28 @@ export default function CartContextProvider(props) {
     });
   };
 
-  const removeItem = (id) => {};
-  const toggleAmount = (idn, value) => {};
-  const clearCart = () => {};
+  const updateAmount = (value, id) => {
+    console.log("Update amount clicked !");
+    console.log(value, id);
+    dispatchCart({ type: UPDATE_CART_ITEM_AMOUNT, payload: { id, value } });
+  };
+
+  const removeItem = (id) => {
+    dispatchCart({ type: REMOVE_CART_ITEM, payload: { id } });
+  };
+
+  const clearCart = () => {
+    dispatchCart({ type: CLEAR_CART });
+  };
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartState));
-  }, [cartState]);
+    dispatchCart({ type: COUNT_CART_TOTALS });
+    localStorage.setItem("cart", JSON.stringify(cartState.cart));
+  }, [cartState.cart]);
 
   return (
     <CartContext.Provider
-      value={{ ...cartState, addToCart, removeItem, toggleAmount, clearCart }}
+      value={{ ...cartState, addToCart, removeItem, updateAmount, clearCart }}
     >
       {props.children}
     </CartContext.Provider>

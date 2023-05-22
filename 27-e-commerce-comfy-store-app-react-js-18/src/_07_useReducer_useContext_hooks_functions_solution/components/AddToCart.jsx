@@ -8,9 +8,9 @@ import { AddToCartWrapper } from "./styleWrappers";
 //---------------------------------------------------------------
 
 export default function AddToCart(props) {
+  const { addToCart } = useCartContext();
   const [mainColor, setMainColor] = useState(props.singleProduct.colors[0]);
   const [amount, setAmount] = useState(1);
-  const { addToCart } = useCartContext();
 
   // const updateAmount = (value) => {
   //   return setAmount((prevState) => {
@@ -21,7 +21,7 @@ export default function AddToCart(props) {
   //   });
   // };
 
-  const updateAmount = (value) => {
+  const updateAmount = (value, id = null) => {
     return setAmount((prevState) => {
       if (
         prevState + value <= props.singleProduct.stock &&

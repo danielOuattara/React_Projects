@@ -1,6 +1,6 @@
 import AboutPageWrapper from "./AboutPageWrapper";
 import AuthWrapperPageWrapper from "./AuthWrapperPageWrapper";
-import CartPageWrapper from "./CheckoutPageWrapper";
+import CartPageWrapper from "./CartPageWrapper";
 import CheckoutPageWrapper from "./CheckoutPageWrapper";
 import ErrorPageWrapper from "./ErrorPageWrapper";
 import HomePageWrapper from "./HomePageWrapper";

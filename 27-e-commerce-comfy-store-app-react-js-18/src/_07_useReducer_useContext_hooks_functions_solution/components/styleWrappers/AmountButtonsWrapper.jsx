@@ -20,9 +20,6 @@ const AmountButtonsWrapper = styled.div`
     align-items: center;
     justify-content: center;
   }
-  h2 {
-    margin-bottom: 0;
-  }
 `;
 
 export default AmountButtonsWrapper;
