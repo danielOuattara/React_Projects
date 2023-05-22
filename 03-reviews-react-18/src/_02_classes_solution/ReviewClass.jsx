@@ -3,12 +3,9 @@ import people from "./../data";
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from "react-icons/fa";
 
 export default class ReviewClass extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      index: 0,
-    };
-  }
+  state = {
+    index: 0,
+  };
 
   checkIndex = (argIndex) => {
     if (argIndex > people.length - 1) {
@@ -22,13 +19,13 @@ export default class ReviewClass extends Component {
 
   getPreviousQuote = () => {
     this.setState((prevState) => {
-      return { index: this.checkIndex(prevState.index - 1) };
+      return { ...prevState, index: this.checkIndex(prevState.index - 1) };
     });
   };
 
   getNextQuote = () => {
     this.setState((prevState) => {
-      return { index: this.checkIndex(prevState.index + 1) };
+      return { ...prevState, index: this.checkIndex(prevState.index + 1) };
     });
   };
 
@@ -37,8 +34,8 @@ export default class ReviewClass extends Component {
     if (randomIndex === this.state.index) {
       randomIndex = this.checkIndex(randomIndex - 1);
     }
-    this.setState(() => {
-      return { index: randomIndex };
+    this.setState((prevState) => {
+      return { ...prevState, index: randomIndex };
     });
   };
 
