@@ -4,8 +4,8 @@ import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/";
 import { CartItemsWrapper } from "./styleWrappers";
 
+//---------------------------------------------
 export default function CartItem(props) {
-  // console.log("props in cartItem = ", props);
   const { removeItem, updateAmount } = useCartContext();
   return (
     <CartItemsWrapper>

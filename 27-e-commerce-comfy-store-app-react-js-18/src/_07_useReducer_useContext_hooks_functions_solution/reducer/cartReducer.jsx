@@ -70,10 +70,14 @@ const cartReducer = (state, action) => {
 
     //--------------------------------------------------------
     case UPDATE_CART_ITEM_AMOUNT:
+      // create & return "updatedCart" is necessary for useEffect to detect
+      // change in cart and update local storage, see CartContext.jsx
+      let updatedCart = [...state.cart];
+
       const productToUpdateIndex = state.cart.findIndex(
         (item) => item.id === action.payload.id,
       );
-      const productToUpdate = state.cart[productToUpdateIndex];
+      const productToUpdate = updatedCart[productToUpdateIndex];
 
       if (productToUpdateIndex === -1) {
         return state; // security check
@@ -81,7 +85,9 @@ const cartReducer = (state, action) => {
 
       // remove item if qty = 1 and update value = -1
       if (productToUpdate.amount === 1 && action.payload.value === -1) {
-        state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+        updatedCart = updatedCart.filter(
+          (item) => item.id !== action.payload.id,
+        );
       } else {
         // increase with qty >= 1; decrease with qty >=2
         if (
@@ -89,15 +95,15 @@ const cartReducer = (state, action) => {
           productToUpdate.amount + action.payload.value >
           productToUpdate.max
         ) {
-          return (state = {
+          state = {
             ...state,
             cartMessageError: `The max available quantity for the article ${productToUpdate.name} is ${productToUpdate.max}. Please reduce your quantity`,
-          });
+          };
         } else {
-          state.cart[productToUpdateIndex] = {
+          updatedCart[productToUpdateIndex] = {
             ...state.cart[productToUpdateIndex],
             amount:
-              state.cart[productToUpdateIndex].amount + action.payload.value,
+              updatedCart[productToUpdateIndex].amount + action.payload.value,
           };
           state.cartMessageError = "";
         }
@@ -105,7 +111,7 @@ const cartReducer = (state, action) => {
 
       return {
         ...state,
-        cart: state.cart,
+        cart: updatedCart,
       };
 
     //--------------------------------------------------------

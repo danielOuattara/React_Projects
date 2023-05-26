@@ -29,8 +29,6 @@ export default function CartContextProvider(props) {
   };
 
   const updateAmount = (value, id) => {
-    console.log("Update amount clicked !");
-    console.log(value, id);
     dispatchCart({ type: UPDATE_CART_ITEM_AMOUNT, payload: { id, value } });
   };
 
