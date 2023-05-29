@@ -12,6 +12,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 import {
   AboutPage,
+  AuthWrapperPage,
   CartPage,
   CheckoutPage,
   PrivateRoutePage,
@@ -53,17 +54,19 @@ export default function AppUseReducerUseContextHooksFunctions() {
       authorizationParams={{ redirect_uri: window.location.origin }}
       cacheLocation="localstorage"
     >
-      <UserContextProvider>
-        <UIContextProvider>
-          <ProductsContextProvider>
-            <FilterContextProvider>
-              <CartContextProvider>
-                <RouterProvider router={router} />
-              </CartContextProvider>
-            </FilterContextProvider>
-          </ProductsContextProvider>
-        </UIContextProvider>
-      </UserContextProvider>
+      <AuthWrapperPage>
+        <UserContextProvider>
+          <UIContextProvider>
+            <ProductsContextProvider>
+              <FilterContextProvider>
+                <CartContextProvider>
+                  <RouterProvider router={router} />
+                </CartContextProvider>
+              </FilterContextProvider>
+            </ProductsContextProvider>
+          </UIContextProvider>
+        </UserContextProvider>
+      </AuthWrapperPage>
     </Auth0Provider>
   );
 }
