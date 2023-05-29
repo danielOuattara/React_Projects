@@ -14,13 +14,14 @@ import {
   AboutPage,
   CartPage,
   CheckoutPage,
+  PrivateRoutePage,
   ErrorPage,
   HomePage,
   ProductsPage,
   SingleProductPage,
 } from "./pages";
 
-import { RootLayout } from "./layouts";
+import { RootLayout, PrivateRouteLayout } from "./layouts";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,12 @@ const router = createBrowserRouter([
       { path: "cart", element: <CartPage /> },
       { path: "products", element: <ProductsPage /> },
       { path: "products/:productId", element: <SingleProductPage /> },
-      { path: "checkout", element: <CheckoutPage /> },
+      // { path: "checkout", element: <CheckoutPage /> },
+      {
+        path: "checkout",
+        element: <PrivateRouteLayout />,
+        children: [{ index: true, element: <CheckoutPage /> }],
+      },
       { path: "*", element: <ErrorPage /> },
     ],
   },
