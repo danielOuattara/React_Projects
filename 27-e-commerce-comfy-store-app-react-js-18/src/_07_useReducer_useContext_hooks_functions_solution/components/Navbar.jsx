@@ -3,11 +3,12 @@ import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "./../../utilities";
 import { CartButtons } from "./";
-import { useProductsContext, useUserContext, useUIContext } from "../context";
+import { useUserContext, useUIContext } from "../context";
 import { NavbarWrapper } from "./styleWrappers";
 
 export default function Navbar() {
   const { toggleSideBar } = useUIContext();
+  const { myUser } = useUserContext();
 
   return (
     <NavbarWrapper>
@@ -26,6 +27,11 @@ export default function Navbar() {
               <Link to={item.url}>{item.text}</Link>
             </li>
           ))}
+          {myUser && (
+            <li>
+              <Link to="/checkout">checkout</Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>

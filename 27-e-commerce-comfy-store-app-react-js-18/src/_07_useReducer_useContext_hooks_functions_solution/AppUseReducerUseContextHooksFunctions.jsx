@@ -41,14 +41,23 @@ const router = createBrowserRouter([
 
 export default function AppUseReducerUseContextHooksFunctions() {
   return (
-    <UIContextProvider>
-      <ProductsContextProvider>
-        <FilterContextProvider>
-          <CartContextProvider>
-            <RouterProvider router={router} />
-          </CartContextProvider>
-        </FilterContextProvider>
-      </ProductsContextProvider>
-    </UIContextProvider>
+    <Auth0Provider
+      domain={process.env.REACT_APP_DOMAIN}
+      clientId={process.env.REACT_APP_CLIENT_ID}
+      authorizationParams={{ redirect_uri: window.location.origin }}
+      cacheLocation="localstorage"
+    >
+      <UserContextProvider>
+        <UIContextProvider>
+          <ProductsContextProvider>
+            <FilterContextProvider>
+              <CartContextProvider>
+                <RouterProvider router={router} />
+              </CartContextProvider>
+            </FilterContextProvider>
+          </ProductsContextProvider>
+        </UIContextProvider>
+      </UserContextProvider>
+    </Auth0Provider>
   );
 }

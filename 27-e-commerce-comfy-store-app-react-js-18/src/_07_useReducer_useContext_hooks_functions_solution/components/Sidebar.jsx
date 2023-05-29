@@ -1,6 +1,6 @@
 import logo from "./../../assets/logo.svg";
 import { Link } from "react-router-dom";
-import { useProductsContext, useUserContext, useUIContext } from "../context/";
+import { useUserContext, useUIContext } from "../context/";
 import { FaTimes } from "react-icons/fa";
 import { links } from "./../../utilities";
 import CartButtons from "./CartButtons";
@@ -8,6 +8,7 @@ import { SidebarContainerWrapper } from "./styleWrappers";
 
 export default function Sidebar() {
   const { toggleSideBar, isSideBarOpen } = useUIContext();
+  const { myUser } = useUserContext();
 
   return (
     <SidebarContainerWrapper>
@@ -29,9 +30,13 @@ export default function Sidebar() {
             </li>
           ))}
 
-          <li>
-            <Link to={"checkout"}>checkout</Link>
-          </li>
+          {myUser && (
+            <li>
+              <Link to="/checkout" onClick={toggleSideBar}>
+                checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>
