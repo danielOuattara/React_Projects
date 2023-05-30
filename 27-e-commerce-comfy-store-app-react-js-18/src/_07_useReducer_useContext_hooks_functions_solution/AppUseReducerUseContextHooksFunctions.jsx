@@ -15,7 +15,6 @@ import {
   AuthWrapperPage,
   CartPage,
   CheckoutPage,
-  PrivateRoutePage,
   ErrorPage,
   HomePage,
   ProductsPage,
