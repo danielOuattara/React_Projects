@@ -1,12 +1,13 @@
 import logo from "./../assets/images/logo.svg";
-import main from "./../assets/images/main.svg";
+import main from "./../assets/images/main-job.svg";
 import styles from "./LandingPage.module.css";
+import { Logo } from "../components";
 
 export default function LandingPage() {
   return (
     <main>
       <nav>
-        <img src={logo} alt="jobster" className="logo" />
+        <Logo />
       </nav>
       <div className={`container ${styles.page}`}>
         <div className="info">
