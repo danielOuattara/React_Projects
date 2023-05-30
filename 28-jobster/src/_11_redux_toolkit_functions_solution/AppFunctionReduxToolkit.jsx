@@ -1,3 +1,9 @@
+import { LandingPage } from "./pages";
+
 export default function App() {
-  return <h1>Jobster</h1>;
+  return (
+    <>
+      <LandingPage />
+    </>
+  );
 }
