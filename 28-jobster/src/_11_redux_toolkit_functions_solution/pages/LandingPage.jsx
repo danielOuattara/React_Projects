@@ -1,7 +1,7 @@
-import logo from "./../assets/images/logo.svg";
 import main from "./../assets/images/main-job.svg";
 import styles from "./LandingPage.module.css";
 import { Logo } from "../components";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   return (
@@ -20,7 +20,9 @@ export default function LandingPage() {
             illo aperiam. Dolorem et voluptas ab rerum architecto harum
             voluptatum numquam sapiente ut.
           </p>
-          <button className="btn btn-hero">Login/Register</button>
+          <Link className="btn btn-hero" to="/register">
+            Login/Register
+          </Link>
         </div>
         <img
           src={main}
