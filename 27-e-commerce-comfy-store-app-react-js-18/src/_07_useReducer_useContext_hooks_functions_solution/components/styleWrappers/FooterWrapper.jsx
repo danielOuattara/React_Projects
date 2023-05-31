@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 const FooterWrapper = styled.footer`
-  height: 5rem;
+  height: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: var(--clr-black);
   text-align: center;
+  width: 100%;
   span {
     color: var(--clr-primary-5);
   }
