@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import Menu from "./MenuFunction";
-import MenuCategories from "./MenuCategoriesFunction";
+import { useState } from "react";
+import { Menu, MenuCategories } from "./components";
 import menuItems from "../data";
 
+const categories = ["all", ...new Set(menuItems.map((item) => item.category))];
+
 function AppFunction() {
-  // method 2: Much more easier and straith forward
-  const categories = [
-    "all",
-    ...new Set(menuItems.map((item) => item.category)),
-  ];
   const [category, setCategory] = useState("all");
   const filteredMenu = menuItems.filter((item) => item.category === category);
   const menusToRender = category === "all" ? menuItems : filteredMenu;
@@ -17,9 +13,14 @@ function AppFunction() {
     <main>
       <section className="menu section">
         <div className="title">
-          <h2>our menu (function solution)</h2>
+          <p>functions solution</p>
+          <h2>our menu</h2>
           <div className="underline"></div>
-          <MenuCategories categories={categories} setCategory={setCategory} />
+          <MenuCategories
+            categories={categories}
+            setCategory={setCategory}
+            category={category}
+          />
           <Menu menusToRender={menusToRender} />
         </div>
       </section>
