@@ -1,5 +1,5 @@
 import { Component } from "react";
-import TourItemFunction from "./TourItemFunction";
+import TourItem from "./TourItem";
 import { connect } from "react-redux";
 
 class ToursClass extends Component {
@@ -13,7 +13,7 @@ class ToursClass extends Component {
             <div className="underline"></div>
             <div>
               {this.props.tours.map((item) => {
-                return <TourItemFunction key={item.id} {...item} />;
+                return <TourItem key={item.id} {...item} />;
               })}
             </div>
           </div>

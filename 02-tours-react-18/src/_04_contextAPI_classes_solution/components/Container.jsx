@@ -43,7 +43,7 @@ export default class Container extends Component {
   static contextType = ToursContext;
 
   render() {
-    const { isError, loading, tours, fetchTours } = this.context;
+    const { isError, loading, tours } = this.context;
 
     if (isError) {
       return <Error />;

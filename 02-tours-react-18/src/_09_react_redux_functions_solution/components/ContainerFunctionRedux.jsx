@@ -8,9 +8,10 @@ import { REMOVE_ONE_TOUR, fetchTours } from "./../redux/tours/toursActions";
 import { useEffect } from "react";
 
 function ContainerFunctionRedux(props) {
+  const fetchTours = props.fetchTours;
   useEffect(() => {
-    props.fetchTours();
-  }, []);
+    fetchTours();
+  }, [fetchTours]);
 
   if (props.state.isError) {
     return <Error />;
