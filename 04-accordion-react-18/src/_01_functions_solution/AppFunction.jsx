@@ -1,18 +1,17 @@
 import questions from "./../data";
-import QuestionFunction from "./QuestionFunction";
+import QuestionFunction from "./components/QuestionFunction";
 
 function App() {
   return (
     <div className="container">
       <h3>
-        question and answer about login <b>(function components)</b>
+        Q&A <b>(function solution)</b>
       </h3>
       <section className="info">
         <ul>
           {questions.map((item) => {
-            const { id } = item;
             return (
-              <li key={id}>
+              <li key={item.id}>
                 <QuestionFunction {...item} />
               </li>
             );

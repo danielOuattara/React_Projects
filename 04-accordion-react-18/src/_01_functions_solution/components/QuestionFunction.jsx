@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const Question = (props) => {
   const [showAnswer, setShowAnswer] = useState(false);
 
-  const toggleShowAnswer = () => {
-    setShowAnswer(() => !showAnswer);
-  };
+  const toggleShowAnswer = () => setShowAnswer(() => !showAnswer);
 
   return (
     <article className="question">
