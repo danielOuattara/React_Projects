@@ -1,13 +1,13 @@
 import { Component } from "react";
 import questions from "./../data";
-import QuestionClass from "./QuestionClass";
+import QuestionClass from "./components/QuestionClass";
 
 export default class AppClass extends Component {
   render() {
     return (
       <div className="container">
         <h3>
-          question and answer about login <b>(class components)</b>
+          Q&A <b>(classes solution)</b>
         </h3>
         <section className="info">
           <ul>
