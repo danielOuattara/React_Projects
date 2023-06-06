@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import { toggleJobs } from "../redux/jobs/jobsAction";
 
 function JobAccessButton(props) {
-  console.log("props JobAccessButton = ", props);
   return (
     <div className="btn-container">
       {props.jobsState.jobs.map((job, index) => (

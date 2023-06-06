@@ -45,7 +45,6 @@ function Container(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log("state  = ", state);
   return { jobsState: state.jobsState };
 };
 
