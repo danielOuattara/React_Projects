@@ -1,0 +1,13 @@
+import { createContext } from "react";
+import useFetchJob from "./../customHooks/useFetchJobs";
+
+export const JobsContext = createContext();
+
+export default function JobsContextProvider(props) {
+  const { jobsState, handleToggleJobs } = useFetchJob();
+  return (
+    <JobsContext.Provider value={{ jobsState, handleToggleJobs }}>
+      {props.children}
+    </JobsContext.Provider>
+  );
+}
