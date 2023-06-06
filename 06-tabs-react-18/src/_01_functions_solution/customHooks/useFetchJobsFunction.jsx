@@ -2,7 +2,9 @@
 //
 import { useState, useEffect } from "react";
 
-function useFetchJobs(url) {
+const url = "https://course-api.com/react-tabs-project";
+
+function useFetchJobs() {
   const [state, setState] = useState({
     jobs: [{}],
     isLoading: true,
@@ -35,7 +37,7 @@ function useFetchJobs(url) {
     };
 
     fetchJob();
-  }, [url]);
+  }, []);
 
   return { state, setState };
 }
@@ -48,7 +50,9 @@ export default useFetchJobs;
 
 // import { useState, useEffect } from "react";
 
-// function useFetchJobs(url) {
+// const url = "https://course-api.com/react-tabs-project";
+
+// function useFetchJobs() {
 //   const [isLoading, setIsLoading] = useState(true);
 //   const [jobs, setJobs] = useState([]);
 //   const [error, setError] = useState("");
@@ -73,7 +77,7 @@ export default useFetchJobs;
 //     };
 
 //     fetchJob();
-//   }, [url]);
+//   }, []);
 
 //   return { jobs, setJobs, value, setValue, isLoading, error };
 // }

@@ -1,13 +1,9 @@
 //  CASE 2 : One Big State : OK
-//
-import JobAccessButtonFunction from "./components/JobAccessButtonFunction";
-import JobDetailsFunction from "./components/JobDetailsFunction";
-import useFetchJobs from "./useFetchJobsFunction";
+import { JobAccessButton, JobDetails } from "./components";
+import useFetchJobs from "./customHooks/useFetchJobsFunction";
 
 function App() {
-  const url = "https://course-api.com/react-tabs-project";
-
-  const { state, setState } = useFetchJobs(url);
+  const { state, setState } = useFetchJobs();
 
   if (state.isLoading) {
     return (
@@ -29,18 +25,18 @@ function App() {
     <div>
       <section className="section">
         <div className="title">
+          <p>function solution</p>
           <h2>experiences</h2>
-          <h4>function solution</h4>
           <div className="underline"></div>
         </div>
 
         <div className="jobs-center">
-          <JobAccessButtonFunction
+          <JobAccessButton
             jobIndex={state.jobIndex}
             setState={setState}
             jobs={state.jobs}
           />
-          <JobDetailsFunction job={state.jobs[state.jobIndex]} />
+          <JobDetails job={state.jobs[state.jobIndex]} />
         </div>
       </section>
     </div>
