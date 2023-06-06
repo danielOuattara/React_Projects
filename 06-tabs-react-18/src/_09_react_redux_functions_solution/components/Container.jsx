@@ -30,7 +30,7 @@ function Container(props) {
     <div>
       <section className="section">
         <div className="title">
-          <p>context API + functions solution</p>
+          <p>react redux functions solution</p>
           <h2>experiences</h2>
           <div className="underline"></div>
         </div>

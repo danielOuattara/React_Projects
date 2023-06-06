@@ -24,7 +24,9 @@ export default function Container() {
     <div>
       <section className="section">
         <div className="title">
-          <p>context API + functions solution</p>
+          <p>
+            useReducer + custom hooks + useContext functions solution version 2
+          </p>
           <h2>experiences</h2>
           <div className="underline"></div>
         </div>
