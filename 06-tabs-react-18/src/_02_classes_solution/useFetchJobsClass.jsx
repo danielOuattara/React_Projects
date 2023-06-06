@@ -1,15 +1,12 @@
-import React from "react";
+import { Component } from "react";
 
-export default class useJobsFetch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      jobs: [],
-      isLoading: true,
-      error: "",
-      jobIndex: 0,
-    };
-  }
+export default class useJobsFetch extends Component {
+  state = {
+    jobs: [],
+    isLoading: true,
+    error: "",
+    jobIndex: 0,
+  };
 
   componentDidMount() {
     (async (url) => {
@@ -37,7 +34,6 @@ export default class useJobsFetch extends React.Component {
   }
 
   render() {
-    // return { this.statejobs, setJobs, value, setValue, isLoading, error };
     let state = this.state;
     return { state };
   }

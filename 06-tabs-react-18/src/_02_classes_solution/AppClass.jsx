@@ -1,8 +1,7 @@
 // CASE 1 : locally fetch data
 
 import { Component } from "react";
-import JobAccessButton from "./components/JobAccessButtonClass";
-import JobDetails from "./components/JobDetailsClass";
+import { JobAccessButton, JobDetails } from "./components";
 
 const url = "https://course-api.com/react-tabs-project";
 
@@ -26,7 +25,7 @@ export default class AppClass extends Component {
   }
 
   componentDidMount() {
-    //  CASE 1 : screate a function & call it immediatly : OK !
+    //  CASE 1 : create a function & call it immediately : OK !
     const fetchJob = async () => {
       try {
         const res = await fetch(url);
