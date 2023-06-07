@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { FaQuoteRight } from "react-icons/fa";
 import people from "./../data";
@@ -6,8 +6,9 @@ import people from "./../data";
 export default class AppClass extends Component {
   state = {
     index: 0,
-    slider: undefined,
   };
+
+  slider = "";
 
   checkIndex = (indexArg) => {
     if (indexArg === -1) {
@@ -22,21 +23,18 @@ export default class AppClass extends Component {
     }
   };
 
-  //------> TODO: auto sliding not perfect: correct it !
-  // componentDidMount() {
-  //   const sliderInterval = setInterval(() => {
-  //     this.setState((prevState) => ({
-  //       ...prevState,
-  //       index: prevState.index + 1,
-  //     }));
-  //   }, 3000);
-  //   this.setState((prevState) => ({ ...prevState, slide: sliderInterval }));
-  // }
+  componentDidMount() {
+    this.slider = setInterval(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        index: prevState.index + 1,
+      }));
+    }, 3000);
+  }
 
-  // componentWillUnmount() {
-  //   clearInterval(this.state.slider);
-  // }
-  //------> END TODO
+  componentWillUnmount() {
+    clearInterval(this.slider);
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.index !== this.state.index) {
