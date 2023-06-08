@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import data from "./../data";
 
 export default class AppClass extends Component {
@@ -22,13 +22,14 @@ export default class AppClass extends Component {
   render() {
     return (
       <section className="section-center">
+        <p>class solution</p>
         <h3>tired of boring lorem ipsum ?</h3>
         <form className="lorem-form" onSubmit={this.handleSubmit}>
           <label htmlFor="numbParagraph">paragraph ?</label>
           <input
             id="numbParagraph"
             type="number"
-            min={this.state.numberOfParagraph}
+            min="1"
             max={data.length}
             value={this.state.numberOfParagraph}
             onChange={(event) =>
