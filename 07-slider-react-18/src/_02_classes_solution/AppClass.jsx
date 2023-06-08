@@ -47,6 +47,7 @@ export default class AppClass extends Component {
     return (
       <section className="section">
         <div className="title">
+          <p>class solution</p>
           <h2>
             <span>/</span> reviews
           </h2>
