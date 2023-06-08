@@ -5,7 +5,6 @@ import { useSlidersContext } from "../context/SlidersContext";
 
 //-------------------------------------------------------------
 export default function Container() {
-  console.log(useSlidersContext());
   const { people, index, checkIndex, handleUpdateIndex } = useSlidersContext();
   useEffect(() => {
     checkIndex(index);
