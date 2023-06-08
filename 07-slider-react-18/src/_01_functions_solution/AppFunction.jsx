@@ -28,6 +28,7 @@ function App() {
   return (
     <section className="section">
       <div className="title">
+        <p>function solution</p>
         <h2>
           <span>/</span> reviews
         </h2>
