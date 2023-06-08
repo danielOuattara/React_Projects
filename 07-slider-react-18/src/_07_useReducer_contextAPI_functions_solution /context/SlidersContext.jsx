@@ -1,5 +1,5 @@
 import data from "./../../data";
-import { createContext, useReducer, useCallback } from "react";
+import { createContext, useReducer } from "react";
 import { slidersReducer } from "../reducer/slider/sliderReducers";
 import { checkIndex, updateIndex } from "../reducer/slider/slidersAction";
 
