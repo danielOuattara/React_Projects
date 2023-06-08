@@ -43,7 +43,6 @@ export default class AppClass extends Component {
   }
 
   render() {
-    console.log(this.state.index);
     return (
       <section className="section">
         <div className="title">
