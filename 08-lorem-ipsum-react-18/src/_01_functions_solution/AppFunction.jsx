@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import data from "./../data";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
 
   return (
     <section className="section-center">
+      <p>function solution</p>
       <h3>tired of boring lorem ipsum ?</h3>
 
       <form className="lorem-form" onSubmit={handleSubmit}>
