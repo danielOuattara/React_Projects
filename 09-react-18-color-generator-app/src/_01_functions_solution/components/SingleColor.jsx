@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-function SingleColorFunction({ index, listLength, color }) {
+export default function SingleColor({ index, listLength, color }) {
   const [alert, setAlert] = useState(false);
 
   useEffect(() => {
-    const timeOut = setTimeout(() => setAlert(false), 500);
+    const timeOut = setTimeout(() => setAlert(false), 750);
     return () => clearTimeout(timeOut);
   }, [alert]);
 
@@ -31,5 +31,3 @@ function SingleColorFunction({ index, listLength, color }) {
     </article>
   );
 }
-
-export default SingleColorFunction;
