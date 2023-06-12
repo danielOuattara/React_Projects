@@ -16,14 +16,14 @@ export default function SingleColor({ index, listLength, color }) {
   return (
     <article
       onClick={handleCopyToClipBoard}
-      className={index > listLength / 2 + 2 ? "color-light color" : "color"}
+      className={index >= listLength / 2 ? "color-light color" : "color"}
       style={{ backgroundColor: `${color.hexString()}` }}
     >
       <p className="percent-value">{color.weight} %</p>
       <p className="color-value">{color.hexString()}</p>
       {alert && (
         <span
-          className={index > listLength / 2 ? "alert-light alert" : "alert"}
+          className={index >= listLength / 2 ? "alert-light alert" : "alert"}
         >
           copied to clipboard
         </span>
