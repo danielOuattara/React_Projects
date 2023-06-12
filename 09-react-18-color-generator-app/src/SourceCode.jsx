@@ -11,7 +11,7 @@ export default function SourceCode() {
       }}
     >
       <a
-        href="https://github.com/danielOuattara/React_Projects/tree/master/08-lorem-ipsum-react-18"
+        href="https://github.com/danielOuattara/React_Projects/tree/master/09-react-18-color-generator-app"
         target="_blank"
         rel="noreferrer"
       >
