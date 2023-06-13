@@ -14,8 +14,6 @@ export default function ItemForm() {
           isEditing,
         } = context;
 
-        console.log(context);
-
         return (
           <form className="grocery-form" onSubmit={handleSubmitItem}>
             <Alert alert={alert} setState={setState} />
