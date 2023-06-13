@@ -136,6 +136,11 @@ p {
   }
 }
 
+.header-title {
+  text-align: center;
+  padding: 2rem;
+}
+
 .btn {
   text-transform: uppercase;
   background: transparent;
@@ -159,11 +164,12 @@ p {
 /* section */
 .section {
   padding: 5rem 0;
+
 }
 
 .section-center {
   width: 90vw;
-  margin: 0 auto;
+  margin: 3rem auto;
   max-width: 35rem;
   margin-top: 8rem;
 }
