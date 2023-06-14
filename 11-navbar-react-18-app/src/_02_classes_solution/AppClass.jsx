@@ -5,7 +5,7 @@ export default class AppClass extends Component {
   render() {
     return (
       <>
-        <p style={{ marginLeft: "5rem" }}>class solution</p>
+        <p className="title">class solution</p>
         <Navbar />
       </>
     );

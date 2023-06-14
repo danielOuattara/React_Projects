@@ -15,7 +15,7 @@ How to smoothly toggle links:
 
 ------------------------------------------- */
 
-import React, { Component, createRef } from "react";
+import { Component, createRef } from "react";
 import { FaBars } from "react-icons/fa";
 import { links, social } from "./../data";
 import logo from "./../logo.svg";
