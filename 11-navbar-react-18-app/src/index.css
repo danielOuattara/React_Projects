@@ -138,6 +138,13 @@ p {
 
 /*  global classes */
 
+.title {
+  width: 100%;
+  margin: 3rem;
+  text-align: center;
+
+}
+
 /* section */
 .section {
   width: 90vw;
@@ -159,6 +166,8 @@ Navbar
 nav {
   background: var(--clr-white);
   box-shadow: var(--light-shadow);
+  margin: 3rem 0 5rem 0;
+  padding: 1rem 0;
 }
 
 .nav-header {
