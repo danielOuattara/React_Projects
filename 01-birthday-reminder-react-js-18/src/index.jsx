@@ -13,9 +13,12 @@ import AppFunctionRedux from "./_09_react_redux_functions_solution/AppFunctionRe
 import AppClassRedux from "./_10_react_redux_classes_solution/AppClassRedux";
 import AppFunctionReduxToolkit from "./_11_redux_toolkit_functions_solution/AppFunctionReduxToolkit";
 import AppClassReduxToolkit from "./_12_redux_toolkit_classes_solution/AppClassReduxToolkit";
+import SourceCode from "./SourceCode";
 
 ReactDOM.render(
   <React.StrictMode>
+    <SourceCode />
+    <hr />
     <AppFunction />
     <hr />
     <AppClass />
