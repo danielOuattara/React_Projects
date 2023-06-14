@@ -1,10 +1,12 @@
 import ColorGeneratorContextProvider from "./context/ColorGeneratorContext";
-import { Container } from "./components";
+import { ColorForm, ColorList } from "./components";
 
 export default function AppFunctionUseReducerContextAPI() {
   return (
     <ColorGeneratorContextProvider>
-      <Container />
+      <p className="title">useReducer + context API functions solution</p>
+      <ColorForm />
+      <ColorList />
     </ColorGeneratorContextProvider>
   );
 }
