@@ -5,11 +5,11 @@ How to smoothly toggle links:
 1- dynamic class with animation
   <div className={showLinks ? "links-container show-container" :"links-container"}>
 
-  But the "show-container" class has a limitation: 10rem hard coded. 
+  But the "show-container" class has a limitation: 10rem height hard coded. 
   How to handle case where links quantity could change, so the height 
   of the links panel ?
 
-2- "useRef" + DOM "getBoundingClientRect()" method  to handle the 
+2- "useRef" + DOM "getBoundingClientRect()" method to handle the 
     previous situation
 
 
@@ -22,20 +22,27 @@ import logo from "./../logo.svg";
 
 export default function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
-  const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
+  const linksContainerRef = useRef(null);
 
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect();
+
+    // console.log("linksContainerRef = ", linksContainerRef);
+    // console.log("linksRef = ", linksRef);
+
+    // console.log("---------------------------");
+
     // console.log("showLinks = ", showLinks);
     // console.log("linksHeight= ", linksHeight);
+
     if (showLinks) {
       linksContainerRef.current.style.height = `${linksHeight.height}px`;
     } else {
       linksContainerRef.current.style.height = "0px";
     }
 
-    return () => {};
+    // return () => {}; // ???
   }, [showLinks]);
   return (
     <nav>
