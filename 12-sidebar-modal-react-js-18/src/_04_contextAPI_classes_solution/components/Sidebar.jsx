@@ -2,12 +2,12 @@ import { Component } from "react";
 import logo from "./../logo.svg";
 import { FaTimes } from "react-icons/fa";
 import { social, links } from "../data";
-import { AppContext } from "../context/AppContext";
+import { SidebarContext } from "../context/SidebarContext";
 
 export default class Sidebar extends Component {
   render() {
     return (
-      <AppContext.Consumer>
+      <SidebarContext.Consumer>
         {(context) => (
           <aside
             className={
@@ -15,13 +15,16 @@ export default class Sidebar extends Component {
             }
           >
             <div className="sidebar-header">
-              <img src={logo} alt="coding addict" className="logo" />
-              <button
-                className="close-btn"
-                onClick={() => context.toggleSideBar(!context.isSideBarOpen)}
-              >
-                <FaTimes />
-              </button>
+              <div>
+                <p>contextAPI classes solution</p>
+                <img src={logo} alt="coding addict" className="logo" />
+                <button
+                  className="close-btn"
+                  onClick={() => context.toggleSideBar(!context.isSideBarOpen)}
+                >
+                  <FaTimes />
+                </button>
+              </div>
             </div>
             <ul className="links">
               {links.map((item) => (
@@ -43,7 +46,7 @@ export default class Sidebar extends Component {
             </ul>
           </aside>
         )}
-      </AppContext.Consumer>
+      </SidebarContext.Consumer>
     );
   }
 }

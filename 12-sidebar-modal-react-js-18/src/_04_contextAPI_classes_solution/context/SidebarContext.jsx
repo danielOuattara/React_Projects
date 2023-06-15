@@ -1,8 +1,8 @@
 import { Component, createContext } from "react";
 
-export const AppContext = createContext();
+export const SidebarContext = createContext();
 
-export default class AppContextProvider extends Component {
+export default class SidebarContextProvider extends Component {
   state = {
     isSideBarOpen: false,
     isModalOpen: false,
@@ -22,7 +22,7 @@ export default class AppContextProvider extends Component {
   };
   render() {
     return (
-      <AppContext.Provider
+      <SidebarContext.Provider
         value={{
           isSideBarOpen: this.state.isSideBarOpen,
           toggleSideBar: this.toggleSideBar,
@@ -31,7 +31,7 @@ export default class AppContextProvider extends Component {
         }}
       >
         {this.props.children}
-      </AppContext.Provider>
+      </SidebarContext.Provider>
     );
   }
 }

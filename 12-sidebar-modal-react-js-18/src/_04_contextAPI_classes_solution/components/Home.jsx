@@ -1,11 +1,11 @@
 import { Component } from "react";
 import { FaBars } from "react-icons/fa";
-import { AppContext } from "../context/AppContext";
+import { SidebarContext } from "../context/SidebarContext";
 
 export default class Home extends Component {
   render() {
     return (
-      <AppContext.Consumer>
+      <SidebarContext.Consumer>
         {(context) => (
           <main>
             <button
@@ -22,7 +22,7 @@ export default class Home extends Component {
             </button>
           </main>
         )}
-      </AppContext.Consumer>
+      </SidebarContext.Consumer>
     );
   }
 }

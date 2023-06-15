@@ -1,11 +1,11 @@
 import { Component } from "react";
 import { FaTimes } from "react-icons/fa";
-import { AppContext } from "../context/AppContext";
+import { SidebarContext } from "../context/SidebarContext";
 
 export default class Modal extends Component {
   render() {
     return (
-      <AppContext.Consumer>
+      <SidebarContext.Consumer>
         {(context) => (
           <div
             className={
@@ -24,7 +24,7 @@ export default class Modal extends Component {
             </div>
           </div>
         )}
-      </AppContext.Consumer>
+      </SidebarContext.Consumer>
     );
   }
 }
