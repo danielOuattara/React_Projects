@@ -138,6 +138,13 @@ p {
 
 /*  global classes */
 
+.title {
+  width: 100%;
+  margin: 3rem 0 0;
+  text-align: center;
+
+}
+
 /* section */
 .section {
   width: 90vw;
