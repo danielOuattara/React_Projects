@@ -1,9 +1,9 @@
-import { AppContext } from "./../context/AppContext";
+import { SidebarContext } from "../context/SidebarContext";
 import { FaTimes } from "react-icons/fa";
 
 export default function Modal() {
   return (
-    <AppContext.Consumer>
+    <SidebarContext.Consumer>
       {(context) => (
         <div
           className={
@@ -12,7 +12,7 @@ export default function Modal() {
         >
           <div className="modal-container">
             <h3>modal content</h3>
-            <p>context API function solution</p>
+            <p>context API functions solution</p>
             <button
               className="close-modal-btn"
               onClick={() => context.setIsModalOpen(!context.isModalOpen)}
@@ -22,6 +22,6 @@ export default function Modal() {
           </div>
         </div>
       )}
-    </AppContext.Consumer>
+    </SidebarContext.Consumer>
   );
 }

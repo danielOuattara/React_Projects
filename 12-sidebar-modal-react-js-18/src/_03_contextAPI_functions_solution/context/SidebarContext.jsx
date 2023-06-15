@@ -1,15 +1,15 @@
 import { useState, createContext } from "react";
 
-export const AppContext = createContext();
+export const SidebarContext = createContext();
 
-export default function AppContextProvider({ children }) {
+export default function SidebarContextProvider({ children }) {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <AppContext.Provider
+    <SidebarContext.Provider
       value={{ isSideBarOpen, setIsSideBarOpen, isModalOpen, setIsModalOpen }}
     >
       {children}
-    </AppContext.Provider>
+    </SidebarContext.Provider>
   );
 }

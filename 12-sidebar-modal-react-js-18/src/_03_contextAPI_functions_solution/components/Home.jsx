@@ -1,9 +1,9 @@
 import { FaBars } from "react-icons/fa";
-import { AppContext } from "./../context/AppContext";
+import { SidebarContext } from "./../context/SidebarContext";
 
 export default function Home() {
   return (
-    <AppContext.Consumer>
+    <SidebarContext.Consumer>
       {(context) => (
         <main>
           <button
@@ -20,7 +20,7 @@ export default function Home() {
           </button>
         </main>
       )}
-    </AppContext.Consumer>
+    </SidebarContext.Consumer>
   );
 }
 
