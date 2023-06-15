@@ -6,14 +6,16 @@ export default function Sidebar(props) {
   return (
     <aside className={props.isSideBarOpen ? "sidebar show-sidebar" : "sidebar"}>
       <div className="sidebar-header">
-        <img src={logo} alt="coding addict" className="logo" />
-        <p>functions solution</p>
-        <button
-          className="close-btn"
-          onClick={() => props.setIsSideBarOpen(!props.isSideBarOpen)}
-        >
-          <FaTimes />
-        </button>
+        <div className="neutral">
+          <p>functions solution</p>
+          <img src={logo} alt="coding addict" className="logo" />
+          <button
+            className="close-btn"
+            onClick={() => props.setIsSideBarOpen(!props.isSideBarOpen)}
+          >
+            <FaTimes />
+          </button>
+        </div>
       </div>
       <ul className="links">
         {links.map((item) => (
