@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { showAlert } from "./../redux/grocery/groceryActions";
+import { groceryActions } from "./../redux/grocery/grocery-slice";
 import { connect } from "react-redux";
 
 class Alert extends Component {
@@ -10,7 +10,7 @@ class Alert extends Component {
       this.props.alert.show === true
     ) {
       this.timeoutID = setTimeout(() => {
-        return this.props.dispatch(showAlert());
+        return this.props.dispatch(groceryActions.showAlert());
       }, 1000);
     }
   }

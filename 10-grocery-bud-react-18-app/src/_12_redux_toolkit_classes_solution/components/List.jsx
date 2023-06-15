@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { deleteItem, editItem } from "./../redux/grocery/groceryActions";
+import { groceryActions } from "./../redux/grocery/grocery-slice";
 import { connect } from "react-redux";
 
 class List extends Component {
@@ -13,11 +13,15 @@ class List extends Component {
             <div className="btn-container">
               <FaEdit
                 className="edit-btn"
-                onClick={() => this.props.dispatch(editItem(item.id))}
+                onClick={() =>
+                  this.props.dispatch(groceryActions.editItem(item.id))
+                }
               />
               <FaTrash
                 className="delete-btn"
-                onClick={() => this.props.dispatch(deleteItem(item.id))}
+                onClick={() =>
+                  this.props.dispatch(groceryActions.deleteItem(item.id))
+                }
               />
             </div>
           </article>

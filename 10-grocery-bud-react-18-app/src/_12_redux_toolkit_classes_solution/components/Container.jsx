@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { ItemForm, List } from "./";
-import { clearItemsList } from "../redux/grocery/groceryActions";
+import { groceryActions } from "../redux/grocery/grocery-slice";
 
 class Container extends Component {
   componentDidUpdate(prevProps, prevState) {
@@ -25,7 +25,7 @@ class Container extends Component {
             <List />
             <button
               className="clear-btn"
-              onClick={() => dispatch(clearItemsList())}
+              onClick={() => dispatch(groceryActions.clearItemsList())}
             >
               clear all items
             </button>

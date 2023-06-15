@@ -1,15 +1,12 @@
 import { Component } from "react";
 import { Alert } from "./";
 import { connect } from "react-redux";
-import {
-  handleSubmit,
-  handleChangeItemName,
-} from "./../redux/grocery/groceryActions";
+import { groceryActions } from "./../redux/grocery/grocery-slice";
 
 class ItemForm extends Component {
   handleSubmitLocally = (event) => {
     event.preventDefault();
-    this.props.dispatch(handleSubmit());
+    this.props.dispatch(groceryActions.handleSubmit());
   };
   render() {
     const { itemName, isEditing } = this.props.groceryState;
@@ -25,7 +22,7 @@ class ItemForm extends Component {
             placeholder="e.g eggs"
             value={itemName}
             onChange={(event) =>
-              dispatch(handleChangeItemName(event.target.value))
+              dispatch(groceryActions.handleChangeItemName(event.target.value))
             }
           />
           <button type="submit" className="submit-btn">
