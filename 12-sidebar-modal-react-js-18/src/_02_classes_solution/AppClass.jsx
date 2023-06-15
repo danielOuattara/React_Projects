@@ -1,7 +1,5 @@
 import { Component } from "react";
-import Sidebar from "./components/Sidebar";
-import Modal from "./components/Modal";
-import Home from "./components/Home";
+import { Modal, Sidebar, Home } from "./components";
 
 export default class AppClass extends Component {
   state = {
@@ -25,8 +23,7 @@ export default class AppClass extends Component {
   render() {
     return (
       <>
-        <br /> <hr /> <br />
-        <p style={{ textAlign: "center" }}>classes solution</p>
+        <p className="title">classes solution</p>
         <Home
           isModalOpen={this.state.isModalOpen}
           toggleModal={this.toggleModal}

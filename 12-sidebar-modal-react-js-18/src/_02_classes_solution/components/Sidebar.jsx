@@ -12,13 +12,18 @@ export default class Sidebar extends Component {
         }
       >
         <div className="sidebar-header">
-          <img src={logo} alt="coding addict" className="logo" />
-          <button
-            className="close-btn"
-            onClick={() => this.props.toggleSideBar(!this.props.isSideBarOpen)}
-          >
-            <FaTimes />
-          </button>
+          <div>
+            <p>classes solution</p>
+            <img src={logo} alt="coding addict" className="logo" />
+            <button
+              className="close-btn"
+              onClick={() =>
+                this.props.toggleSideBar(!this.props.isSideBarOpen)
+              }
+            >
+              <FaTimes />
+            </button>
+          </div>
         </div>
         <ul className="links">
           {links.map((item) => (
