@@ -1,8 +1,5 @@
 import { useState } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Sidebar from "./components/Sidebar";
-import Submenu from "./components/Submenu";
+import { Hero, Navbar, Sidebar, Submenu } from "./components";
 
 export default function AppContextAPIFunction() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -15,26 +12,27 @@ export default function AppContextAPIFunction() {
     page: "",
     links: [],
   });
+
   return (
     <>
-      <p style={{ textAlign: "center" }}>function solution</p>
       <Navbar
+        setIsSideBarOpen={setIsSideBarOpen}
         setIsSubMenuOpen={setIsSubMenuOpen}
         setSubMenuLocation={setSubMenuLocation}
         setSubMenuPageShown={setSubMenuPageShown}
-        setIsSideBarOpen={setIsSideBarOpen}
       />
+
       <Sidebar
         isSideBarOpen={isSideBarOpen}
         setIsSideBarOpen={setIsSideBarOpen}
       />
+
       <Hero setIsSubMenuOpen={setIsSubMenuOpen} />
+
       <Submenu
-        setSubMenuPageShown={setSubMenuPageShown}
-        setSubMenuLocation={setSubMenuLocation}
-        subMenuPageShown={subMenuPageShown}
-        subMenuLocation={subMenuLocation}
         isSubMenuOpen={isSubMenuOpen}
+        subMenuLocation={subMenuLocation}
+        subMenuPageShown={subMenuPageShown}
       />
     </>
   );

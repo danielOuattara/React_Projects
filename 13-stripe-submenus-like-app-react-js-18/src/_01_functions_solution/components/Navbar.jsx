@@ -6,16 +6,18 @@ import subLinks from "../../data";
 export default function Navbar(props) {
   //---------------------
   const displaySubMenu = (event) => {
-    const menuPageName = event.target.textContent;
     const menuDOMRect = event.target.getBoundingClientRect();
-    props.setIsSubMenuOpen(true);
+
     props.setSubMenuLocation({
       subMenuCenterPosition: (menuDOMRect.left + menuDOMRect.right) / 2,
       subMenuTopPosition: menuDOMRect.bottom,
     });
 
+    const menuPageName = event.target.textContent;
     const menuPageToShow = subLinks.find((item) => item.page === menuPageName);
     props.setSubMenuPageShown(menuPageToShow);
+
+    props.setIsSubMenuOpen(true);
   };
 
   //---------------------
@@ -49,7 +51,7 @@ export default function Navbar(props) {
             </li>
           ))}
         </ul>
-        <button className="btn sign-btn">Sign in</button>
+        <button className="btn signin-btn">Sign in</button>
       </div>
     </nav>
   );

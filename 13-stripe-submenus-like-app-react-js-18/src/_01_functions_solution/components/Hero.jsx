@@ -6,6 +6,7 @@ export default function Hero(props) {
     <section className="hero" onMouseOver={() => props.setIsSubMenuOpen(false)}>
       <div className="hero-center">
         <article className="hero-info">
+          <p className="title">function solution</p>
           <h1>Payments infrastructure for the internet</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
