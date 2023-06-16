@@ -1,10 +1,10 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
 import subLinks from "../../data";
-import { useGlobalContext } from "./../context/AppContext";
+import { useSubMenusContext } from "./../context/SubMenusContext";
 
 export default function Sidebar() {
-  const { isSideBarOpen, setIsSideBarOpen } = useGlobalContext();
+  const { isSideBarOpen, setIsSideBarOpen } = useSubMenusContext();
   return (
     <aside
       className={isSideBarOpen ? "sidebar-wrapper show" : "sidebar-wrapper"}

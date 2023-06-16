@@ -1,14 +1,14 @@
+import { useSubMenusContext } from "./../context/SubMenusContext";
 import phoneImg from "./../../images/phone.svg";
-import { useGlobalContext } from "./../context/AppContext";
 //--------------------------------------------------------------
 
 export default function Hero() {
-  const { setIsSubMenuOpen } = useGlobalContext();
-
+  const { setIsSubMenuOpen } = useSubMenusContext();
   return (
     <section className="hero" onMouseOver={() => setIsSubMenuOpen(false)}>
       <div className="hero-center">
         <article className="hero-info">
+          <p className="title">context API + useContext hooks solutions</p>
           <h1>Payments infrastructure for the internet</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.

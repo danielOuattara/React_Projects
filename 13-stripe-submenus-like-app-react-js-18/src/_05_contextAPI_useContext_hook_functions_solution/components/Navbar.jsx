@@ -1,6 +1,6 @@
 import logo from "./../../images/logo.svg";
 import { FaBars } from "react-icons/fa";
-import { useGlobalContext } from "./../context/AppContext";
+import { useSubMenusContext } from "./../context/SubMenusContext";
 import subLinks from "../../data";
 //-------------------------------------------------------------------------
 
@@ -10,9 +10,9 @@ export default function Navbar() {
     setIsSubMenuOpen,
     setSubMenuLocation,
     setSubMenuPageShown,
-  } = useGlobalContext();
+  } = useSubMenusContext();
 
-  //---------------------
+  //--------
   const displaySubMenu = (event) => {
     const menuPageName = event.target.textContent;
     const menuDOMRect = event.target.getBoundingClientRect();
@@ -26,14 +26,13 @@ export default function Navbar() {
     setSubMenuPageShown(menuPageToShow);
   };
 
-  //---------------------
+  //--------
   const hideSubMenu = (event) => {
     if (!event.target.classList.contains("link-btn")) {
       setIsSubMenuOpen(false);
     }
   };
 
-  //---------------------
   return (
     <nav className="nav" onMouseOver={(event) => hideSubMenu(event)}>
       <div className="nav-center">
@@ -57,7 +56,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <button className="btn sign-btn">Sign in</button>
+        <button className="btn signin-btn">Sign in</button>
       </div>
     </nav>
   );
