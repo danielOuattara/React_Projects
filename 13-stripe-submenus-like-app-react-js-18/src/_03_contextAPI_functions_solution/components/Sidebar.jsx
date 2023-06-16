@@ -1,11 +1,11 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
 import subLinks from "../../data";
-import { AppContext } from "./../context/AppContext";
+import { SubMenusContext } from "./../context/SubMenusContext";
 
 export default function Sidebar() {
   return (
-    <AppContext.Consumer>
+    <SubMenusContext.Consumer>
       {(context) => (
         <aside
           className={
@@ -41,6 +41,6 @@ export default function Sidebar() {
           </div>
         </aside>
       )}
-    </AppContext.Consumer>
+    </SubMenusContext.Consumer>
   );
 }

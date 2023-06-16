@@ -1,13 +1,13 @@
 import logo from "./../../images/logo.svg";
 import { FaBars } from "react-icons/fa";
-import { AppContext } from "./../context/AppContext";
+import { SubMenusContext } from "./../context/SubMenusContext";
 import subLinks from "../../data";
 //-------------------------------------------------------------------------
 
 export default function Navbar() {
   //---------------------
   return (
-    <AppContext.Consumer>
+    <SubMenusContext.Consumer>
       {(context) => {
         const {
           setIsSideBarOpen,
@@ -62,11 +62,11 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
-              <button className="btn sign-btn">Sign in</button>
+              <button className="btn signin-btn">Sign in</button>
             </div>
           </nav>
         );
       }}
-    </AppContext.Consumer>
+    </SubMenusContext.Consumer>
   );
 }

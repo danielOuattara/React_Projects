@@ -1,10 +1,10 @@
-import { AppContext } from "./../context/AppContext";
+import { SubMenusContext } from "./../context/SubMenusContext";
 import phoneImg from "./../../images/phone.svg";
 //--------------------------------------------------------------
 
 export default function Hero() {
   return (
-    <AppContext.Consumer>
+    <SubMenusContext.Consumer>
       {(context) => (
         <section
           className="hero"
@@ -12,6 +12,7 @@ export default function Hero() {
         >
           <div className="hero-center">
             <article className="hero-info">
+              <p className="title">context API + functions solution</p>
               <h1>Payments infrastructure for the internet</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -27,6 +28,6 @@ export default function Hero() {
           </div>
         </section>
       )}
-    </AppContext.Consumer>
+    </SubMenusContext.Consumer>
   );
 }

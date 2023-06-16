@@ -1,8 +1,8 @@
 import { useState, createContext } from "react";
 
-export const AppContext = createContext();
+export const SubMenusContext = createContext();
 
-export default function AppContextProvider(props) {
+export default function SubMenusContextProvider(props) {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [subMenuLocation, setSubMenuLocation] = useState({
@@ -14,20 +14,20 @@ export default function AppContextProvider(props) {
     links: [],
   });
 
+  const context = {
+    isSideBarOpen,
+    setIsSideBarOpen,
+    isSubMenuOpen,
+    setIsSubMenuOpen,
+    subMenuLocation,
+    setSubMenuLocation,
+    subMenuPageShown,
+    setSubMenuPageShown,
+  };
+
   return (
-    <AppContext.Provider
-      value={{
-        isSideBarOpen,
-        setIsSideBarOpen,
-        isSubMenuOpen,
-        setIsSubMenuOpen,
-        subMenuLocation,
-        setSubMenuLocation,
-        subMenuPageShown,
-        setSubMenuPageShown,
-      }}
-    >
+    <SubMenusContext.Provider value={context}>
       {props.children}
-    </AppContext.Provider>
+    </SubMenusContext.Provider>
   );
 }
