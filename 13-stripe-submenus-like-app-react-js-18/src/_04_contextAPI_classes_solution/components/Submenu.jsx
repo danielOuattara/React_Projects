@@ -1,19 +1,15 @@
 import { createRef, Component } from "react";
-import { AppContext } from "./../context/AppContext";
+import { SubMenuContext } from "./../context/SubMenuContext";
 //--------------------------------------------------------------
 
 export default class Submenu extends Component {
   columns = "";
-  static contextType = AppContext;
+  static contextType = SubMenuContext;
 
   subMenuContainer = createRef(null);
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      // Incorrect: need to check previous context.
-      // How to follow context old value VS new value?  HOC ?
-      // https://stackoverflow.com/questions/53422502/react-context-with-componentdidupdate
-      //
       prevProps.subMenuLocation !== this.context.subMenuLocation ||
       prevProps.subMenuPageShown.links !== this.context.subMenuPageShown.links
     ) {

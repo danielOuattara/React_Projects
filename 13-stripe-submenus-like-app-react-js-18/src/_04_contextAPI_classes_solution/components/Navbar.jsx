@@ -1,14 +1,14 @@
 import { Component } from "react";
 import logo from "./../../images/logo.svg";
 import { FaBars } from "react-icons/fa";
-import { AppContext } from "./../context/AppContext";
+import { SubMenuContext } from "./../context/SubMenuContext";
 import subLinks from "../../data";
 //-------------------------------------------------------------------------
 
 export default class Navbar extends Component {
   render() {
     return (
-      <AppContext.Consumer>
+      <SubMenuContext.Consumer>
         {(context) => {
           const {
             setIsSideBarOpen,
@@ -63,12 +63,12 @@ export default class Navbar extends Component {
                     </li>
                   ))}
                 </ul>
-                <button className="btn sign-btn">Sign in</button>
+                <button className="btn signin-btn">Sign in</button>
               </div>
             </nav>
           );
         }}
-      </AppContext.Consumer>
+      </SubMenuContext.Consumer>
     );
   }
 }

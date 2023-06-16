@@ -1,8 +1,8 @@
 import { Component, createContext } from "react";
 
-export const AppContext = createContext();
+export const SubMenuContext = createContext();
 
-export default class AppContextProvider extends Component {
+export default class SubMenuContextProvider extends Component {
   state = {
     isSideBarOpen: false,
     isSubMenuOpen: false,
@@ -54,7 +54,7 @@ export default class AppContextProvider extends Component {
 
   render() {
     return (
-      <AppContext.Provider
+      <SubMenuContext.Provider
         value={{
           isSideBarOpen: this.state.isSideBarOpen,
           isSubMenuOpen: this.state.isSubMenuOpen,
@@ -67,7 +67,7 @@ export default class AppContextProvider extends Component {
         }}
       >
         {this.props.children}
-      </AppContext.Provider>
+      </SubMenuContext.Provider>
     );
   }
 }

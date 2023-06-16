@@ -1,12 +1,12 @@
 import { Component } from "react";
-import { AppContext } from "./../context/AppContext";
+import { SubMenuContext } from "./../context/SubMenuContext";
 import phoneImg from "./../../images/phone.svg";
 //--------------------------------------------------------------
 
 export default class Hero extends Component {
   render() {
     return (
-      <AppContext.Consumer>
+      <SubMenuContext.Consumer>
         {(context) => (
           <section
             className="hero"
@@ -14,6 +14,7 @@ export default class Hero extends Component {
           >
             <div className="hero-center">
               <article className="hero-info">
+                <p className="title"> context API + classes solution</p>
                 <h1>Payments infrastructure for the internet</h1>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -29,7 +30,7 @@ export default class Hero extends Component {
             </div>
           </section>
         )}
-      </AppContext.Consumer>
+      </SubMenuContext.Consumer>
     );
   }
 }

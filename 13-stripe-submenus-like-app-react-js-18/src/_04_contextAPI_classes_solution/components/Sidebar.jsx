@@ -1,12 +1,12 @@
 import { Component } from "react";
 import { FaTimes } from "react-icons/fa";
 import subLinks from "../../data";
-import { AppContext } from "./../context/AppContext";
+import { SubMenuContext } from "./../context/SubMenuContext";
 
 export default class Sidebar extends Component {
   render() {
     return (
-      <AppContext.Consumer>
+      <SubMenuContext.Consumer>
         {(context) => (
           <aside
             className={
@@ -42,7 +42,7 @@ export default class Sidebar extends Component {
             </div>
           </aside>
         )}
-      </AppContext.Consumer>
+      </SubMenuContext.Consumer>
     );
   }
 }
