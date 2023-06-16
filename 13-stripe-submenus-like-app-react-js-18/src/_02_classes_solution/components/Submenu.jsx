@@ -13,7 +13,7 @@ export default class Submenu extends Component {
       prevProps.subMenuLocation !== this.props.subMenuLocation ||
       prevProps.subMenuPageShown.links !== this.props.subMenuPageShown.links
     ) {
-      this.props.subMenuPageShown.links.length === 3
+      this.props.subMenuPageShown.links.length <= 3
         ? this.setState((prevState) => ({ ...prevState, columns: "col-3" }))
         : this.setState((prevState) => ({ ...prevState, columns: "col-4" }));
       this.subMenuContainer.current.style.left = `${this.props.subMenuLocation.subMenuCenterPosition}px`;
@@ -41,5 +41,3 @@ export default class Submenu extends Component {
     );
   }
 }
-
-//--------------------------------------------------------------

@@ -1,8 +1,5 @@
-import React, { Component } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Sidebar from "./components/Sidebar";
-import Submenu from "./components/Submenu";
+import { Component } from "react";
+import { Hero, Navbar, Sidebar, Submenu } from "./components";
 
 export default class AppClass extends Component {
   state = {
@@ -18,27 +15,19 @@ export default class AppClass extends Component {
     },
   };
 
-  setIsSideBarOpen = (booleanArg) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      isSideBarOpen: booleanArg,
-    }));
-  };
+  setIsSideBarOpen = (booleanArg) =>
+    this.setState({ isSideBarOpen: booleanArg });
 
-  setIsSubMenuOpen = (booleanArg) => {
-    this.setState((prevState) => ({
-      ...prevState,
-      isSubMenuOpen: booleanArg,
-    }));
-  };
+  setIsSubMenuOpen = (booleanArg) =>
+    this.setState({ isSubMenuOpen: booleanArg });
 
   setSubMenuLocation = (objectArg) => {
     this.setState((prevState) => ({
       ...prevState,
       subMenuLocation: {
         ...prevState.subMenuLocation,
-        subMenuCenterPosition: objectArg.subMenuCenterPosition,
-        subMenuTopPosition: objectArg.subMenuTopPosition,
+        subMenuCenterPosition: objectArg["subMenuCenterPosition"],
+        subMenuTopPosition: objectArg["subMenuTopPosition"],
       },
     }));
   };
@@ -48,8 +37,8 @@ export default class AppClass extends Component {
       ...prevState,
       subMenuPageShown: {
         ...prevState.subMenuPageShown,
-        page: objectArg.page,
-        links: objectArg.links,
+        page: objectArg["page"],
+        links: objectArg["links"],
       },
     }));
   };
@@ -57,7 +46,6 @@ export default class AppClass extends Component {
   render() {
     return (
       <>
-        <p style={{ textAlign: "center" }}> classes solution</p>
         <Navbar
           setIsSubMenuOpen={this.setIsSubMenuOpen}
           setSubMenuLocation={this.setSubMenuLocation}
@@ -72,9 +60,7 @@ export default class AppClass extends Component {
         <Submenu
           isSubMenuOpen={this.state.isSubMenuOpen}
           subMenuPageShown={this.state.subMenuPageShown}
-          setSubMenuPageShown={this.setSubMenuPageShown}
           subMenuLocation={this.state.subMenuLocation}
-          setSubMenuLocation={this.setSubMenuLocation}
         />
       </>
     );

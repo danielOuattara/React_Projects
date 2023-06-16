@@ -7,14 +7,15 @@ import subLinks from "../../data";
 export default class Navbar extends Component {
   //---------------------
   displaySubMenu = (event) => {
-    const menuPageName = event.target.textContent;
-    const menuDOMRect = event.target.getBoundingClientRect();
     this.props.setIsSubMenuOpen(true);
+
+    const menuDOMRect = event.target.getBoundingClientRect();
     this.props.setSubMenuLocation({
       subMenuCenterPosition: (menuDOMRect.left + menuDOMRect.right) / 2,
       subMenuTopPosition: menuDOMRect.bottom,
     });
 
+    const menuPageName = event.target.textContent;
     const menuPageToShow = subLinks.find((item) => item.page === menuPageName);
     this.props.setSubMenuPageShown(menuPageToShow);
   };
@@ -49,7 +50,7 @@ export default class Navbar extends Component {
               </li>
             ))}
           </ul>
-          <button className="btn sign-btn">Sign in</button>
+          <button className="btn signin-btn">Sign in</button>
         </div>
       </nav>
     );

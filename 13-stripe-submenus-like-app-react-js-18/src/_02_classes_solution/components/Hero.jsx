@@ -11,6 +11,7 @@ export default class Hero extends Component {
       >
         <div className="hero-center">
           <article className="hero-info">
+            <p className="title">classes solution</p>
             <h1>Payments infrastructure for the internet</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
