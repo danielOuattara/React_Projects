@@ -1,0 +1,87 @@
+import { useState, useEffect } from "react";
+//-------------------------------------------------
+
+const url = "https://course-api.com/react-useReducer-cart-project";
+
+export default function useFetchBag() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
+
+  //---------------
+  const clearCart = () => setCart(() => []);
+
+  //---------------
+  const removeItem = (id) => {
+    return setCart(() => cart.filter((item) => item.id !== id));
+  };
+
+  //---------------
+  const updateQuantity = (id, value) => {
+    let updatedCart = cart
+      .map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity + value };
+        }
+        return item;
+      })
+      .filter((item) => item.quantity !== 0);
+    return setCart(() => updatedCart);
+  };
+
+  //---------------
+  const fetchData = async () => {
+    setIsLoading(() => true);
+    const res = await fetch(url);
+    const fetchedCart = await res.json();
+    const correctedFetchedCart = fetchedCart.map((item) => ({
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      img: item.img,
+      quantity: item.amount,
+    }));
+    setIsLoading(() => false);
+    setCart(() => correctedFetchedCart);
+  };
+
+  //---------------
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  //---------------
+  useEffect(() => {
+    const getTotals = () => {
+      let { totalPrice, totalItems } = cart.reduce(
+        (cartTotal, cartItem) => {
+          const { price, quantity } = cartItem;
+          cartTotal.totalPrice += price * quantity;
+          cartTotal.totalItems += quantity;
+
+          return cartTotal;
+        },
+        { totalPrice: 0, totalItems: 0 },
+      );
+      totalPrice = parseFloat(totalPrice.toFixed(2));
+
+      setTotalItems(() => totalItems);
+      setTotalPrice(() => totalPrice);
+    };
+
+    getTotals();
+  }, [cart]);
+
+  //---------------
+
+  return {
+    isLoading,
+    cart,
+    totalItems,
+    totalPrice,
+    clearCart,
+    removeItem,
+    updateQuantity,
+  };
+}
