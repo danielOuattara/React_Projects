@@ -117,7 +117,7 @@ export default class AppClasses extends Component {
   render() {
     return (
       <>
-        <p style={{ textAlign: "center" }}> classes solution</p>
+        <p className="title"> classes solution</p>
         <main>
           <Navbar
             isLoading={this.state.isLoading}
