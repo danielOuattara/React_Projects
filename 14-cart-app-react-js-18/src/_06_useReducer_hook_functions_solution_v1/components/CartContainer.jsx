@@ -1,24 +1,14 @@
 import React from "react";
 import CartItem from "./CartItem";
 
-export default function CartContainer({
-  cart,
-  isLoading,
-  totalPrice,
-  totalItems,
-  clearCart,
-  removeItem,
-  increaseAmount,
-  decreaseAmount,
-}) {
-  if (isLoading) {
+export default function CartContainer(props) {
+  if (props.isLoading) {
     return <h1 className="loading">Loading ...</h1>;
   }
 
-  if (cart.length === 0) {
+  if (props.cart.length === 0) {
     return (
       <section className="cart">
-        {/* cart header */}
         <header>
           <h2>your bag</h2>
           <h4 className="empty-cart">is currently empty</h4>
@@ -28,37 +18,33 @@ export default function CartContainer({
   }
   return (
     <section className="cart">
-      {/* cart header */}
       <header>
         <h2>your bag</h2>
       </header>
-      {/* cart items */}
       <div>
-        {cart.map((item) => {
+        {props.cart.map((item) => {
           return (
             <CartItem
               key={item.id}
               {...item}
-              removeItem={removeItem}
-              increaseAmount={increaseAmount}
-              decreaseAmount={decreaseAmount}
+              removeItem={props.removeItem}
+              updateQuantity={props.updateQuantity}
             />
           );
         })}
       </div>
-      {/* cart footer */}
       <footer>
         <hr />
         <div className="cart-total">
           <h4>
-            total {totalItems > 1 ? "articles" : "article"}{" "}
-            <span>{totalItems}</span>
+            total {props.totalItems > 1 ? "articles" : "article"}{" "}
+            <span>{props.totalItems}</span>
           </h4>
           <h4>
-            total price <span>${totalPrice}</span>
+            total price <span>${props.totalPrice}</span>
           </h4>
         </div>
-        <button className="btn clear-btn" onClick={clearCart}>
+        <button className="btn clear-btn" onClick={props.clearCart}>
           clear cart
         </button>
       </footer>
