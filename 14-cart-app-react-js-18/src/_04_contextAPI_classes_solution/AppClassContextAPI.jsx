@@ -4,11 +4,11 @@ import Navbar from "./components/Navbar";
 import CartContainer from "./components/CartContainer";
 //---------------------------------------------------
 
-export default class AppContextAPIClasses extends Component {
+export default class AppClassContextAPI extends Component {
   render() {
     return (
       <AppContextProvider>
-        <p style={{ textAlign: "center" }}> context API classes solution</p>
+        <p className="title"> context API classes solution</p>
         <main>
           <Navbar />
           <CartContainer />

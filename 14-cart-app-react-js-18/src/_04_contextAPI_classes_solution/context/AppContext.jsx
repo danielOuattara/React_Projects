@@ -32,35 +32,16 @@ export default class AppContextProvider extends Component {
   };
 
   //---------------
-  decreaseAmount = (id) => {
-    let cartDecreased = this.state.cart
+  updateQuantity = (id, value) => {
+    let updatedCart = this.state.cart
       .map((item) => {
         if (item.id === id) {
-          return { ...item, quantity: item.quantity - 1 };
+          return { ...item, quantity: item.quantity + value };
         }
         return item;
       })
       .filter((item) => item.quantity !== 0);
-
-    return this.setState((prevState) => ({
-      ...prevState,
-      cart: cartDecreased,
-    }));
-  };
-
-  //---------------
-  increaseAmount = (id) => {
-    let cartDecreased = this.state.cart.map((item) => {
-      if (item.id === id) {
-        return { ...item, quantity: item.quantity + 1 };
-      }
-      return item;
-    });
-
-    return this.setState((prevState) => ({
-      ...prevState,
-      cart: cartDecreased,
-    }));
+    return this.setState((prevState) => ({ ...prevState, cart: updatedCart }));
   };
 
   //---------------
@@ -122,8 +103,7 @@ export default class AppContextProvider extends Component {
           ...this.state,
           clearCart: this.clearCart,
           removeItem: this.removeItem,
-          decreaseAmount: this.decreaseAmount,
-          increaseAmount: this.increaseAmount,
+          updateQuantity: this.updateQuantity,
         }}
       >
         {this.props.children}
