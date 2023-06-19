@@ -5,6 +5,9 @@ export default function CartContainer(props) {
   if (props.isLoading) {
     return <h1 className="loading">Loading ...</h1>;
   }
+  if (props.isError) {
+    return <h1 className="">{props.errorMessage}</h1>;
+  }
 
   if (props.cart.length === 0) {
     return (

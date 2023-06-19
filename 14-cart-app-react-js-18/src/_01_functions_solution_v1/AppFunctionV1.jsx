@@ -8,22 +8,37 @@ export default function AppFunctionV1() {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(() => true);
-      const res = await fetch(url);
-      const fetchedCart = await res.json();
-      const correctedFetchedCart = fetchedCart.map((item) => ({
-        id: item.id,
-        title: item.title,
-        price: item.price,
-        img: item.img,
-        quantity: item.amount,
-      }));
+      try {
+        setIsLoading(() => true);
+        const res = await fetch(url);
+        if (!res.ok) {
+          const errorResponse = await res.json();
+          setIsError(true);
+          setIsLoading(false);
+          setErrorMessage(() => `${errorResponse["msg"]} ${res.status}`);
+          throw Error(`${errorMessage}`);
+        }
+        const fetchedCart = await res.json();
+        const correctedFetchedCart = fetchedCart.map((item) => ({
+          id: item.id,
+          title: item.title,
+          price: item.price,
+          img: item.img,
+          quantity: item.amount,
+        }));
 
-      setIsLoading(() => false);
-      setCart(() => correctedFetchedCart);
+        setErrorMessage("");
+        setIsLoading(() => false);
+        setCart(() => correctedFetchedCart);
+      } catch (error) {
+        setIsLoading(false);
+        setIsError(true);
+      }
     };
 
     fetchData();
@@ -81,6 +96,8 @@ export default function AppFunctionV1() {
         <Navbar isLoading={isLoading} totalItems={totalItems} />
         <CartContainer
           isLoading={isLoading}
+          isError={isError}
+          errorMessage={errorMessage}
           cart={cart}
           totalItems={totalItems}
           totalPrice={totalPrice}
