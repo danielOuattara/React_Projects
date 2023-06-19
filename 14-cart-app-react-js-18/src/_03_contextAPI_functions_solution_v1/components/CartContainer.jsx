@@ -1,10 +1,9 @@
-import React from "react";
 import CartItem from "./CartItem";
-import { AppContext } from "../context/AppContext";
+import { CartContext } from "../context/CartContext";
 
 export default function CartContainer() {
   return (
-    <AppContext.Consumer>
+    <CartContext.Consumer>
       {(context) => {
         if (context.isLoading) {
           return <h1 className="loading">Loading ...</h1>;
@@ -13,7 +12,6 @@ export default function CartContainer() {
         if (context.cart.length === 0) {
           return (
             <section className="cart">
-              {/* cart header */}
               <header>
                 <h2>your bag</h2>
                 <h4 className="empty-cart">is currently empty</h4>
@@ -21,19 +19,17 @@ export default function CartContainer() {
             </section>
           );
         }
+
         return (
           <section className="cart">
-            {/* cart header */}
             <header>
               <h2>your bag</h2>
             </header>
-            {/* cart items */}
             <div>
               {context.cart.map((item) => {
                 return <CartItem key={item.id} {...item} />;
               })}
             </div>
-            {/* cart footer */}
             <footer>
               <hr />
               <div className="cart-total">
@@ -52,6 +48,6 @@ export default function CartContainer() {
           </section>
         );
       }}
-    </AppContext.Consumer>
+    </CartContext.Consumer>
   );
 }
