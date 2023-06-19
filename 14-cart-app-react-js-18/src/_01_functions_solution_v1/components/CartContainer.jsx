@@ -9,7 +9,6 @@ export default function CartContainer(props) {
   if (props.cart.length === 0) {
     return (
       <section className="cart">
-        {/* cart header */}
         <header>
           <h2>your bag</h2>
           <h4 className="empty-cart">is currently empty</h4>
@@ -19,11 +18,9 @@ export default function CartContainer(props) {
   }
   return (
     <section className="cart">
-      {/* cart header */}
       <header>
         <h2>your bag</h2>
       </header>
-      {/* cart items */}
       <div>
         {props.cart.map((item) => {
           return (
@@ -31,13 +28,11 @@ export default function CartContainer(props) {
               key={item.id}
               {...item}
               removeItem={props.removeItem}
-              decreaseAmount={props.decreaseAmount}
-              increaseAmount={props.increaseAmount}
+              updateQuantity={props.updateQuantity}
             />
           );
         })}
       </div>
-      {/* cart footer */}
       <footer>
         <hr />
         <div className="cart-total">
