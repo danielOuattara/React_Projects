@@ -11,7 +11,7 @@ export default function SourceCode() {
       }}
     >
       <a
-        href="https://github.com/danielOuattara/React_Projects/tree/master/27-e-commerce-comfy-store-app-react-js-18"
+        href="https://github.com/danielOuattara/React_Projects/tree/master/28-gadget-junkie-store-app-react-js-18"
         target="_blank"
         rel="noreferrer"
       >
