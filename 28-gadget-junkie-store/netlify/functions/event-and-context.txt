@@ -1,0 +1,70 @@
+event =  {
+  path: '/.netlify/functions/helloWorld',
+  httpMethod: 'GET',
+  queryStringParameters: {},
+  multiValueQueryStringParameters: {},
+  headers: {
+    'x-forwarded-for': '::ffff:127.0.0.1',
+    'sec-gpc': '1',
+    'sec-fetch-user': '?1',
+    'sec-fetch-site': 'none',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-dest': 'document',
+    'upgrade-insecure-requests': '1',
+    cookie: '_legacy_auth0.DSDMAeblfJr7jjaTKscsxOXnteN6DHek.is.authenticated=true; auth0.DSDMAeblfJr7jjaTKscsxOXnteN6DHek.is.authenticated=true',
+    connection: 'close',
+    dnt: '1',
+    'accept-encoding': 'gzip, deflate, br',
+    'accept-language': 'en-US,en;q=0.5',
+    accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+    'user-agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0',
+    host: 'localhost:8888',
+    'client-ip': '127.0.0.1'
+  },
+  multiValueHeaders: {
+    'x-forwarded-for': [ '::ffff:127.0.0.1' ],
+    'sec-gpc': [ '1' ],
+    'sec-fetch-user': [ '?1' ],
+    'sec-fetch-site': [ 'none' ],
+    'sec-fetch-mode': [ 'navigate' ],
+    'sec-fetch-dest': [ 'document' ],
+    'upgrade-insecure-requests': [ '1' ],
+    cookie: [
+      '_legacy_auth0.DSDMAeblfJr7jjaTKscsxOXnteN6DHek.is.authenticated=true; auth0.DSDMAeblfJr7jjaTKscsxOXnteN6DHek.is.authenticated=true'
+    ],
+    connection: [ 'close' ],
+    dnt: [ '1' ],
+    'accept-encoding': [ 'gzip, deflate, br' ],
+    'accept-language': [ 'en-US,en;q=0.5' ],
+    accept: [
+      'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    ],
+    'user-agent': [
+      'Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0'
+    ],
+    host: [ 'localhost:8888' ],
+    'client-ip': [ '127.0.0.1' ]
+  },
+  body: undefined,
+  isBase64Encoded: true,
+  rawUrl: 'http://localhost:8888/.netlify/functions/helloWorld',
+  rawQuery: ''
+}
+context =  {
+  done: [Function: bound ],
+  fail: [Function: bound ],
+  succeed: [Function: bound ],
+  getRemainingTimeInMillis: [Function: bound ],
+  callbackWaitsForEmptyEventLoop: false,
+  functionName: 'handler',
+  functionVersion: '1.0',
+  invokedFunctionArn: 'arn:aws:lambda:us-east-1:640083253446:function:handler:1.0',
+  memoryLimitInMB: '1531',
+  awsRequestId: '24846730-f98a-4c64-d993-a517500d16fd',
+  logGroupName: 'Group name',
+  logStreamName: 'Stream name',
+  identity: null,
+  clientContext: {},
+  _stopped: false
+}
+Response with status 200 in 9 ms.
