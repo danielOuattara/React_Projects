@@ -1,11 +1,10 @@
-import logo from "./../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { useUserContext, useUIContext } from "../context/";
 import { FaTimes } from "react-icons/fa";
 import { links } from "./../../utilities";
 import CartButtons from "./CartButtons";
 import { SidebarContainerWrapper } from "./styleWrappers";
-
+import { Logo } from "./index";
 export default function Sidebar() {
   const { toggleSideBar, isSideBarOpen } = useUIContext();
   const { myUser } = useUserContext();
@@ -16,7 +15,7 @@ export default function Sidebar() {
         className={`${isSideBarOpen ? "sidebar show-sidebar" : "sidebar"}`}
       >
         <div className="sidebar-header">
-          <img src={logo} className="logo" alt="comfy sloth" />
+          <Logo />
           <button className="close-btn" type="button" onClick={toggleSideBar}>
             <FaTimes />
           </button>

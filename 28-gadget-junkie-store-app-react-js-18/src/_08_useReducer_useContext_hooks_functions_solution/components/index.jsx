@@ -9,6 +9,7 @@ import Filters from "./Filters";
 import Footer from "./Footer";
 import Hero from "./Hero";
 import Loading from "./Loading";
+import Logo from "./Logo";
 import Navbar from "./Navbar";
 import PageHero from "./PageHero";
 import ProductImages from "./ProductImages";
@@ -20,24 +21,25 @@ import Stars from "./Stars";
 import StripeCheckout from "./StripeCheckout";
 
 export {
-  FeaturedProducts,
-  Navbar,
-  CartButtons,
-  CheckoutForm,
-  Error,
-  Footer,
-  Sidebar,
-  Hero,
-  Services,
-  Contact,
-  Loading,
-  ProductImages,
   AddToCart,
+  CartButtons,
+  CartContent,
+  CheckoutForm,
+  Contact,
+  Error,
+  FeaturedProducts,
   Filters,
+  Footer,
+  Hero,
+  Loading,
+  Logo,
+  Navbar,
+  PageHero,
+  ProductImages,
   ProductList,
+  Services,
+  Sidebar,
   Sort,
   Stars,
-  CartContent,
-  PageHero,
   StripeCheckout,
 };

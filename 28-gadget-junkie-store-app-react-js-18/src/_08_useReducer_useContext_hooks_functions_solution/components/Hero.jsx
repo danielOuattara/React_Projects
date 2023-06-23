@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import heroBcg from "./../../assets/hero-bcg.jpeg";
-import heroBcg2 from "./../../assets/hero-bcg-2.jpeg";
+// import heroBcg from "./../../assets/hero-bcg.jpeg";
+// import heroBcg2 from "./../../assets/hero-bcg-2.jpeg";
+import heroBcg from "./../../assets/hero-bcg.svg";
+
 import { HeroWrapper } from "./styleWrappers";
 
 export default function Hero() {
@@ -8,7 +10,7 @@ export default function Hero() {
     <HeroWrapper className="section-center">
       <article className="content">
         <h1>
-          design your <br /> comfort zone
+          we enjoy <br /> our gadgets
         </h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
@@ -24,7 +26,7 @@ export default function Hero() {
       </article>
       <article className="img-container">
         <img src={heroBcg} alt="nice table" className="main-img" />
-        <img src={heroBcg2} alt="person working" className="accent-img" />
+        {/* <img src={heroBcg2} alt="person working" className="accent-img" /> */}
       </article>
     </HeroWrapper>
   );

@@ -1,8 +1,8 @@
-import logo from "./../../assets/logo.svg";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "./../../utilities";
-import { CartButtons } from "./";
+import { CartButtons, Logo } from "./index";
+
 import { useUserContext, useUIContext } from "../context";
 import { NavbarWrapper } from "./styleWrappers";
 
@@ -15,7 +15,7 @@ export default function Navbar() {
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-            <img src={logo} alt="comfy sloth" />
+            <Logo />
           </Link>
           <button className="nav-toggle" onClick={toggleSideBar}>
             <FaBars />

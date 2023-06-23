@@ -49,7 +49,7 @@ const HeroWrapper = styled.section`
       transform: translateX(-50%);
       border-radius: var(--radius);
     }
-    .img-container::before {
+    /* .img-container::before {
       content: "";
       position: absolute;
       width: 10%;
@@ -58,7 +58,7 @@ const HeroWrapper = styled.section`
       bottom: 0%;
       left: -8%;
       border-radius: var(--radius);
-    }
+    } */
   }
 `;
 

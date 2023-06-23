@@ -2,12 +2,14 @@ export default function SourceCode() {
   return (
     <p
       style={{
-        background: "#e7dada",
+        background: "#dbeafe",
         width: "50%",
         padding: "2rem",
         margin: "auto",
         marginTop: "2rem",
         marginBottom: "4rem",
+        fontFamily:
+          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
       }}
     >
       <a
