@@ -194,7 +194,7 @@ AIRTABLE_TABLE=
 
 #### Serverless Functions
 
-- in functions create
+In functions create
 - products.js
 - single-product.js
 
