@@ -13,12 +13,44 @@ const airtable = new Airtable({
 exports.handler = async (event, context, cb) => {
   try {
     const response = await airtable.list({ maxRecords: 200 });
-    console.log("response = ", response);
+
+    const products = response.records.map((item) => {
+      const { id, fields } = item;
+
+      const {
+        category,
+        colors,
+        company,
+        description,
+        featured,
+        images,
+        name,
+        price,
+        shipping,
+      } = fields;
+
+      const { url } = images[0];
+
+      return {
+        category,
+        colors,
+        company,
+        description,
+        featured,
+        id,
+        image: url,
+        name,
+        price,
+        shipping,
+      };
+    });
+
     return {
       statusCode: 200,
-      body: /* JSON.stringify(products) */ "products list",
+      body: JSON.stringify(products),
     };
   } catch (error) {
+    console.log(error);
     return {
       statusCode: 500,
       body: JSON.stringify(error.message),

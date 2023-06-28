@@ -50,7 +50,7 @@ export default function AppUseReducerUseContextHooksFunctions() {
       authorizationParams={{ redirect_uri: window.location.origin }}
       cacheLocation="localstorage"
     >
-      <p className="title">useReducer + useContext solution</p>
+      <p className="title-over">useReducer + useContext solution</p>
       <AuthWrapperPage>
         <UserContextProvider>
           <UIContextProvider>

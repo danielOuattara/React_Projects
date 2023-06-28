@@ -8,6 +8,8 @@ import {
 } from "../actions/actions";
 
 const productsReducer = (state, action) => {
+  // console.log(action);
+  // console.log(state);
   switch (action.type) {
     case GET_PRODUCTS_BEGIN:
       return {
