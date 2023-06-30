@@ -147,11 +147,13 @@ h5 {
 }
 
 .title {
-  width: 100%;
-  margin: 3rem 0;
-  /* color: blue; */
-  font-size: 1.25rem !important;
+  margin: auto;
+  padding: 2rem;
+  color: green;
+  font-size: 1.35rem !important;
+  background-color: rgba(0, 128, 0, 0.151);
   text-align: center;
+
 }
 
 small,

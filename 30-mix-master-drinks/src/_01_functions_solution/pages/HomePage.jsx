@@ -102,6 +102,7 @@ export default function HomePage() {
 
   return (
     <div>
+      <p className="title">functions solution react-router-dom + react-query</p>
       <SearchForm searchTerm={searchTerm} />
       <CocktailsList drinks={drinks} />
     </div>

@@ -10,7 +10,11 @@ export default function SourceCode() {
         marginBottom: "2rem",
       }}
     >
-      <a href="#" target="_blank" rel="noreferrer">
+      <a
+        href="https://github.com/danielOuattara/React_Projects/tree/master/30-mix-master-drinks"
+        target="_blank"
+        rel="noreferrer"
+      >
         Link: to gitHub source code
       </a>{" "}
     </p>
