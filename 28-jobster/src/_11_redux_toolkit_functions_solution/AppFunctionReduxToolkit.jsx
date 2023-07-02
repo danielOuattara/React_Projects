@@ -7,6 +7,11 @@ import {
 } from "react-router-dom";
 import { RootLayout } from "./layout";
 
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
+//---------------------------------------------------
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -18,10 +23,10 @@ const router = createBrowserRouter(
   ),
 );
 
-export default function App() {
+export default function AppFunctionReduxToolkit() {
   return (
-    <>
+    <Provider store={store}>
       <RouterProvider router={router} />
-    </>
+    </Provider>
   );
 }

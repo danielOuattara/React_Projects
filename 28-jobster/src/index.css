@@ -200,6 +200,9 @@ ul {
 }
 
 /* alerts */
+
+
+
 .alert {
   padding: 0.375rem 0.75rem;
   margin-bottom: 1rem;
@@ -351,6 +354,7 @@ ul {
   }
 }
 
-.Toastify__toast {
+/* alerts */
+/* .Toastify__toast {
   text-transform: capitalize;
-}
+} */

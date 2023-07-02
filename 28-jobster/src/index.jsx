@@ -4,11 +4,15 @@ import "normalize.css";
 import "./index.css";
 import AppFunctionReduxToolkit from "./_11_redux_toolkit_functions_solution/AppFunctionReduxToolkit";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
+    <ToastContainer position="top-center" />
     <AppFunctionReduxToolkit tab="home" />
   </React.StrictMode>,
 );
