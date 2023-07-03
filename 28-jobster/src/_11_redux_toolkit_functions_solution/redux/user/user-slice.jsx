@@ -4,12 +4,15 @@ import {
   addUserToLocalStorage,
   fetchingInstance,
   getUserFromLocalStorage,
+  removeUserFromLocalStorage,
 } from "../../../utilities";
 
 const initialUserState = {
   isLoading: false,
   user: getUserFromLocalStorage(),
 };
+
+// removeUserFromLocalStorage();
 
 //-------
 export const registerUser = createAsyncThunk(
@@ -51,7 +54,7 @@ const userSlice = createSlice({
     },
     [registerUser.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      // state.user = payload.user; // ??
+      state.user = payload.user;
       addUserToLocalStorage(payload.user);
       toast.success(`Welcome ${payload.user.name}`);
     },
@@ -65,8 +68,7 @@ const userSlice = createSlice({
     },
     [loginUser.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      // state.user = payload.user; // ??
-      console.log("payload = ", payload);
+      state.user = payload.user;
       addUserToLocalStorage(payload.user);
       toast.success(`Welcome back ${payload.user.name}`);
     },

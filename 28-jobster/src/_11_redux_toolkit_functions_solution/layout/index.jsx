@@ -1,3 +1,3 @@
 import RootLayout from "./RootLayout";
-
-export { RootLayout };
+import SharedLayout from "./SharedLayout";
+export { RootLayout, SharedLayout };

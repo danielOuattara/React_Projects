@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { registerUser, loginUser } from "./../redux/user/user-slice";
 import { useSelector, useDispatch } from "react-redux";
 
+import { useNavigate } from "react-router-dom";
 //--------------------------------------------------------------------
 
 export default function Register() {
@@ -54,6 +55,15 @@ export default function Register() {
   const toggleViewPassword = () => {
     setState({ ...state, viewPassword: !state.viewPassword });
   };
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    }
+  }, [navigate, user]);
 
   return (
     <RegisterPageWrapper className="full-page">
