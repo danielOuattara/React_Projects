@@ -3,7 +3,7 @@ import { Logo, FormRow } from "../components";
 import { RegisterPageWrapper } from "./../../assets/styles";
 import { toast } from "react-toastify";
 
-import { registerUser, loginUser } from "./../redux/user/user-slice";
+import { registerUser, loginUser } from "./../redux/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ export default function Register() {
 
   const dispatch = useDispatch();
 
-  const { user, isLoading } = useSelector((state) => state.user);
+  const { user, isLoading } = useSelector((state) => state.userState);
 
   const handleChange = (event) => {
     const name = event.target.name;

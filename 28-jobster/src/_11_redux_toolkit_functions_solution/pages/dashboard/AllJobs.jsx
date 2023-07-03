@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function AllJobs() {
-  return <div>AllJobs</div>;
+  return <h1>AllJobs</h1>;
 }

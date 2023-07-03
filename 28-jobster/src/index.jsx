@@ -12,7 +12,7 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <ToastContainer position="top-center" />
+    <ToastContainer position="top-center" autoClose={1500} />
     <AppFunctionReduxToolkit tab="home" />
   </React.StrictMode>,
 );

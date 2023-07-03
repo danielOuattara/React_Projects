@@ -8,7 +8,7 @@ import {
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { SharedLayout } from "./layout";
+import { DashboardSharedLayout } from "./layout";
 import { AddJob, AllJobs, Profile, Stats } from "./pages/dashboard";
 
 //---------------------------------------------------
@@ -16,7 +16,7 @@ import { AddJob, AllJobs, Profile, Stats } from "./pages/dashboard";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<SharedLayout />}>
+      <Route path="/" element={<DashboardSharedLayout />}>
         <Route index element={<Stats />} />
         <Route path="all-jobs" element={<AllJobs />} />
         <Route path="add-job" element={<AddJob />} />

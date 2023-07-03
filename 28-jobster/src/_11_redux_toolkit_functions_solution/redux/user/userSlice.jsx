@@ -12,8 +12,6 @@ const initialUserState = {
   user: getUserFromLocalStorage(),
 };
 
-// removeUserFromLocalStorage();
-
 //-------
 export const registerUser = createAsyncThunk(
   "user/registerUser",
@@ -46,7 +44,12 @@ export const loginUser = createAsyncThunk(
 const userSlice = createSlice({
   name: "user-slice",
   initialState: initialUserState,
-  reducers: {},
+  reducers: {
+    logoutUser: (state) => {
+      state.user = null;
+      removeUserFromLocalStorage();
+    },
+  },
   extraReducers: {
     //--------
     [registerUser.pending]: (state) => {
