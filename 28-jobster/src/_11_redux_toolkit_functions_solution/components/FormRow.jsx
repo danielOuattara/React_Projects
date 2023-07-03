@@ -19,7 +19,7 @@ export default function FormRow(props) {
         type={props.type}
         name={props.name}
         className="form-input"
-        value={props.values}
+        value={props.value}
         onChange={props.handleChange}
       />
     </div>

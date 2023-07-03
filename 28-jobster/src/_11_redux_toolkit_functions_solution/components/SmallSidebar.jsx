@@ -28,7 +28,7 @@ export default function SmallSidebar() {
             <Logo />
           </header>
 
-          <NavLinks />
+          <NavLinks smallScreen />
         </div>
       </div>
     </SmallSidebarWrapper>

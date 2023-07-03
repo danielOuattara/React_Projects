@@ -3,7 +3,7 @@ import { Logo, FormRow } from "../components";
 import { RegisterPageWrapper } from "./../../assets/styles";
 import { toast } from "react-toastify";
 
-import { registerUser, loginUser } from "./../redux/user/userSlice";
+import { registerUser, loginUser } from "./../redux/user/userAsyncThunk";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,6 @@ export default function Register() {
   });
 
   const dispatch = useDispatch();
-
   const { user, isLoading } = useSelector((state) => state.userState);
 
   const handleChange = (event) => {
@@ -99,7 +98,7 @@ export default function Register() {
           viewPassword={state.viewPassword}
         />
 
-        <button className={`btn btn-block`} type="submit" disabled={isLoading}>
+        <button className="btn btn-block" type="submit" disabled={isLoading}>
           {isLoading ? "Loading..." : "Submit"}
         </button>
         <p>

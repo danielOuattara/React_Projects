@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { uiActions } from "./../redux/ui/uiSlice";
 
 //----------------------------------------------------
-export default function NavLinks() {
+export default function NavLinks(props) {
   const dispatch = useDispatch();
   return (
     <div className="nav-links">
@@ -15,7 +15,9 @@ export default function NavLinks() {
             isActive ? "nav-link active" : "nav-link"
           }
           key={item.id}
-          onClick={() => dispatch(uiActions.toggleSidebar())}
+          onClick={
+            props.smallScreen ? () => dispatch(uiActions.toggleSidebar()) : null
+          }
           end
         >
           <span className="icon">{item.icon}</span>
