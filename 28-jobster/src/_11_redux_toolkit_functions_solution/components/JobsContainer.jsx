@@ -1,5 +1,36 @@
-import React from "react";
+import { useEffect } from "react";
+import { Loading, SingleJob } from "./index";
+import { JobsContainerWrapper } from "../../assets/styles";
+import { useSelector, useDispatch } from "react-redux";
+
+//------------------------------------------------------
 
 export default function JobsContainer() {
-  return <h2>JobsContainer</h2>;
+  const dispatch = useDispatch();
+  const { isLoading, jobs } = useSelector((state) => state.allJobsState);
+
+  if (isLoading) {
+    return (
+      <JobsContainerWrapper>
+        <Loading center />
+      </JobsContainerWrapper>
+    );
+  }
+  if (jobs.length === 0) {
+    return (
+      <JobsContainerWrapper>
+        <h2>No jobs to display...</h2>
+      </JobsContainerWrapper>
+    );
+  }
+  return (
+    <JobsContainerWrapper>
+      <h5>jobs info</h5>
+      <div className="jobs">
+        {jobs.map((item) => (
+          <SingleJob key={item._id} {...item} />
+        ))}
+      </div>
+    </JobsContainerWrapper>
+  );
 }
