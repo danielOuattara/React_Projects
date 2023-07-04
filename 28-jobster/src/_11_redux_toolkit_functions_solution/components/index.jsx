@@ -2,9 +2,12 @@ import BigSidebar from "./BigSidebar";
 import EyePassword from "./EyePassword";
 import FormInputRow from "./FormInputRow";
 import FormSelectRow from "./FormSelectRow";
+import JobsContainer from "./JobsContainer";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import NavLinks from "./NavLinks";
+import SearchJobContainer from "./SearchJobContainer";
+import SingleJob from "./SingleJob";
 import SmallSidebar from "./SmallSidebar";
 
 export {
@@ -12,8 +15,11 @@ export {
   EyePassword,
   FormInputRow,
   FormSelectRow,
+  JobsContainer,
   Logo,
   Navbar,
   NavLinks,
+  SearchJobContainer,
+  SingleJob,
   SmallSidebar,
 };
