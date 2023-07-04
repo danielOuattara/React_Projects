@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 export default function Profile() {
   const dispatch = useDispatch();
-  const { user, isLoading } = useSelector((state) => state.userState);
+  const { user, isLoadingUser } = useSelector((state) => state.userState);
 
   const [userData, setUserData] = useState({
     name: user.name || "",
@@ -71,8 +71,12 @@ export default function Profile() {
             type="text"
             value={userData.location}
           />
-          <button className="btn btn-block" type="submit" disabled={isLoading}>
-            {isLoading ? "please wait..." : "save changes"}
+          <button
+            className="btn btn-block"
+            type="submit"
+            disabled={isLoadingUser}
+          >
+            {isLoadingUser ? "please wait..." : "save changes"}
           </button>
         </div>
       </form>

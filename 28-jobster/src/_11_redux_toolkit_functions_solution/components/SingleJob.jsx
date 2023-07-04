@@ -4,6 +4,9 @@ import { JobWrapper } from "../../assets/styles";
 import { useDispatch } from "react-redux";
 import { JobInfo } from "./index";
 import moment from "moment";
+import { modalActions } from "../redux/modal/modalSlice";
+import { singleJobAction } from "../redux/singleJob/singleJobSlice";
+
 //------------------------------------------
 
 export default function SingleJob(props) {
@@ -40,7 +43,8 @@ export default function SingleJob(props) {
               type="button"
               className="btn delete-btn"
               onClick={() => {
-                console.log("delete  job");
+                dispatch(singleJobAction.getDeleteJobId(props._id));
+                dispatch(modalActions.showModal());
               }}
             >
               Delete

@@ -61,6 +61,7 @@ html {
   --fluid-width: 90vw;
   --breakpoint-lg: 992px;
   --nav-height: 6rem;
+
   /* box shadow*/
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -358,3 +359,59 @@ ul {
 /* .Toastify__toast {
   text-transform: capitalize;
 } */
+
+
+
+/* MODAL */
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: var(--primary-50);
+  width: 80vw;
+  max-width: 400px;
+  border-radius: var(--borderRadius);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.modal h4 {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.modal .clear-job-btn,
+.modal .confirm-btn {
+  margin-top: 1rem;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.clear-job-btn {
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  color: var(--red-dark);
+  border: 1px solid var(--red-dark);
+  margin-top: 2.25rem;
+  border-radius: var(--borderRadius);
+}
+
+.clear-job-btn:hover {
+  background: var(--red-light);
+  color: var(--red-dark);
+  border-color: var(--red-dark);
+}

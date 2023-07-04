@@ -8,13 +8,13 @@ import { getAllJobs } from "../redux/allJobs/allJobsAsyncThunk";
 
 export default function JobsContainer() {
   const dispatch = useDispatch();
-  const { isLoading, jobs } = useSelector((state) => state.allJobsState);
+  const { isLoadingAllJobs, jobs } = useSelector((state) => state.allJobsState);
 
   useEffect(() => {
     dispatch(getAllJobs());
-  }, []);
+  }, [dispatch]);
 
-  if (isLoading) {
+  if (isLoadingAllJobs) {
     return (
       <JobsContainerWrapper>
         <Loading center />
@@ -29,13 +29,15 @@ export default function JobsContainer() {
     );
   }
   return (
-    <JobsContainerWrapper>
-      <h5>jobs info</h5>
-      <div className="jobs">
-        {jobs.map((item) => (
-          <SingleJob key={item._id} {...item} />
-        ))}
-      </div>
-    </JobsContainerWrapper>
+    <>
+      <JobsContainerWrapper>
+        <h5>jobs info</h5>
+        <div className="jobs">
+          {jobs.map((item) => (
+            <SingleJob key={item._id} {...item} />
+          ))}
+        </div>
+      </JobsContainerWrapper>
+    </>
   );
 }

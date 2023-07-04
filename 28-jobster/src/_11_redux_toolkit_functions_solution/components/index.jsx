@@ -6,6 +6,7 @@ import JobInfo from "./JobInfo";
 import JobsContainer from "./JobsContainer";
 import Loading from "./Loading";
 import Logo from "./Logo";
+import Modal from "./Modal";
 import Navbar from "./Navbar";
 import NavLinks from "./NavLinks";
 import SearchJobContainer from "./SearchJobContainer";
@@ -21,6 +22,7 @@ export {
   JobsContainer,
   Loading,
   Logo,
+  Modal,
   Navbar,
   NavLinks,
   SearchJobContainer,

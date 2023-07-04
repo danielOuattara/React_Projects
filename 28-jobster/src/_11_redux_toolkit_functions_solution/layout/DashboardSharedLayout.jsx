@@ -11,20 +11,23 @@ export default function DashboardSharedLayout() {
   if (!user) {
     return <Navigate to="/landing" />;
   }
+
   //----------------------------
 
   return (
-    <SharedLayoutWrapper>
-      <main className="dashboard">
-        <SmallSidebar />
-        <BigSidebar />
-        <div>
-          <Navbar />
-          <div className="dashboard-page">
-            <Outlet />
+    <>
+      <SharedLayoutWrapper>
+        <main className="dashboard">
+          <SmallSidebar />
+          <BigSidebar />
+          <div>
+            <Navbar />
+            <div className="dashboard-page">
+              <Outlet />
+            </div>
           </div>
-        </div>
-      </main>
-    </SharedLayoutWrapper>
+        </main>
+      </SharedLayoutWrapper>
+    </>
   );
 }

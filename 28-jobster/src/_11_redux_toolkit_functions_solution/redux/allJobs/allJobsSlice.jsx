@@ -11,7 +11,7 @@ const initialFiltersState = {
 };
 
 const initialJobsState = {
-  isLoading: false,
+  isLoadingAllJobs: false,
   jobs: [],
   totalJobs: 0,
   numOfPages: 1,
@@ -24,19 +24,26 @@ const initialJobsState = {
 const allJobsSlice = createSlice({
   name: "all-jobs-slice",
   initialState: initialJobsState,
-  reducers: {},
+  reducers: {
+    showLoadingAllJobs: (state) => {
+      state.isLoadingAllJobs = true;
+    },
+    hideLoadingAllJobs: (state) => {
+      state.isLoadingAllJobs = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllJobs.pending, (state) => {
-        state.isLoading = true;
+        state.isLoadingAllJobs = true;
       })
       .addCase(getAllJobs.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingAllJobs = false;
         state.jobs = payload.jobs;
       })
 
       .addCase(getAllJobs.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingAllJobs = false;
         toast.error(payload);
       });
   },

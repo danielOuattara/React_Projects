@@ -19,7 +19,7 @@ export default function Register() {
   });
 
   const dispatch = useDispatch();
-  const { user, isLoading } = useSelector((state) => state.userState);
+  const { user, isLoadingUser } = useSelector((state) => state.userState);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -98,8 +98,12 @@ export default function Register() {
           viewPassword={state.viewPassword}
         />
 
-        <button className="btn btn-block" type="submit" disabled={isLoading}>
-          {isLoading ? "Loading..." : "Submit"}
+        <button
+          className="btn btn-block"
+          type="submit"
+          disabled={isLoadingUser}
+        >
+          {isLoadingUser ? "Loading..." : "Submit"}
         </button>
         <p>
           {" "}

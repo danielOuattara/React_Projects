@@ -9,7 +9,7 @@ import {
 import { registerUser, loginUser, updateUser } from "./userAsyncThunk";
 
 const initialUserState = {
-  isLoading: false,
+  isLoadingUser: false,
   user: getUserFromLocalStorage(),
 };
 
@@ -28,44 +28,44 @@ const userSlice = createSlice({
     builder
       //------- REGISTER
       .addCase(registerUser.pending, (state) => {
-        state.isLoading = true;
+        state.isLoadingUser = true;
       })
       .addCase(registerUser.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingUser = false;
         state.user = payload.user;
         addUserToLocalStorage(payload.user);
         toast.success(`Welcome ${payload.user.name}`);
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingUser = false;
         toast.error(payload);
       })
       //------- LOGIN
       .addCase(loginUser.pending, (state) => {
-        state.isLoading = true;
+        state.isLoadingUser = true;
       })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingUser = false;
         state.user = payload.user;
         addUserToLocalStorage(payload.user);
         toast.success(`Welcome back ${payload.user.name}`);
       })
       .addCase(loginUser.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingUser = false;
         toast.error(payload);
       })
       //-------- UPDATE USER
       .addCase(updateUser.pending, (state) => {
-        state.isLoading = true;
+        state.isLoadingUser = true;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingUser = false;
         state.user = payload.user;
         addUserToLocalStorage(payload.user);
         toast.success("User Updated");
       })
       .addCase(updateUser.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoadingUser = false;
         toast.error(payload);
       });
   },
