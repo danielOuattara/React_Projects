@@ -16,11 +16,12 @@ export default function FormRow(props) {
       </label>
 
       <input
-        type={props.type}
-        name={props.name}
         className="form-input"
-        value={props.value}
+        id={props.name}
+        name={props.name}
         onChange={props.handleChange}
+        type={props.type}
+        value={props.value}
       />
     </div>
   );

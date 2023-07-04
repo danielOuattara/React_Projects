@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Logo, FormRow } from "../components";
+import { Logo, FormInputRow } from "../components";
 import { RegisterPageWrapper } from "./../../assets/styles";
 import { toast } from "react-toastify";
 
@@ -71,7 +71,7 @@ export default function Register() {
         <h3>{state.isMember ? "Login" : "Register"}</h3>
 
         {!state.isMember && (
-          <FormRow
+          <FormInputRow
             handleChange={handleChange}
             labelText="name"
             name="name"
@@ -80,7 +80,7 @@ export default function Register() {
           />
         )}
 
-        <FormRow
+        <FormInputRow
           handleChange={handleChange}
           labelText="email"
           name="email"
@@ -88,7 +88,7 @@ export default function Register() {
           value={state.email}
         />
 
-        <FormRow
+        <FormInputRow
           handleChange={handleChange}
           labelText="password"
           name="password"

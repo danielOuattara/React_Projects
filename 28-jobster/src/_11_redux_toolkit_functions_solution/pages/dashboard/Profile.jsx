@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormRow } from "../../components";
+import { FormInputRow } from "../../components";
 import { DashboardFormPageWrapper } from "./../../../assets/styles/";
 
 import { updateUser } from "../../redux/user/userAsyncThunk";
@@ -43,28 +43,28 @@ export default function Profile() {
       <form className="form" onSubmit={handleSubmit}>
         <h3> {user.name}'s profile</h3>
         <div className="form-center">
-          <FormRow
+          <FormInputRow
             handleChange={handleChange}
             labelText="name"
             name="name"
             type="text"
             value={userData.name}
           />
-          <FormRow
+          <FormInputRow
             handleChange={handleChange}
             labelText="last name"
             name="lastName"
             type="text"
             value={userData.lastName}
           />
-          <FormRow
+          <FormInputRow
             handleChange={handleChange}
             labelText="email"
             name="email"
             type="text"
             value={userData.email}
           />
-          <FormRow
+          <FormInputRow
             handleChange={handleChange}
             labelText="location"
             name="location"

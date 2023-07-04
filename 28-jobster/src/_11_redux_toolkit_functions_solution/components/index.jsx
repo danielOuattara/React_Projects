@@ -1,6 +1,7 @@
 import BigSidebar from "./BigSidebar";
 import EyePassword from "./EyePassword";
-import FormRow from "./FormRow";
+import FormInputRow from "./FormInputRow";
+import FormSelectRow from "./FormSelectRow";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import NavLinks from "./NavLinks";
@@ -9,7 +10,8 @@ import SmallSidebar from "./SmallSidebar";
 export {
   BigSidebar,
   EyePassword,
-  FormRow,
+  FormInputRow,
+  FormSelectRow,
   Logo,
   Navbar,
   NavLinks,
