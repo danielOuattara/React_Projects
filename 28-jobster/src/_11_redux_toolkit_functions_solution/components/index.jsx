@@ -2,6 +2,7 @@ import BigSidebar from "./BigSidebar";
 import EyePassword from "./EyePassword";
 import FormInputRow from "./FormInputRow";
 import FormSelectRow from "./FormSelectRow";
+import JobInfo from "./JobInfo";
 import JobsContainer from "./JobsContainer";
 import Loading from "./Loading";
 import Logo from "./Logo";
@@ -16,6 +17,7 @@ export {
   EyePassword,
   FormInputRow,
   FormSelectRow,
+  JobInfo,
   JobsContainer,
   Loading,
   Logo,
