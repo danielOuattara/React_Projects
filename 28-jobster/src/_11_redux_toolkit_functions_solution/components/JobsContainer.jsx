@@ -2,12 +2,17 @@ import { useEffect } from "react";
 import { Loading, SingleJob } from "./index";
 import { JobsContainerWrapper } from "../../assets/styles";
 import { useSelector, useDispatch } from "react-redux";
+import { getAllJobs } from "../redux/allJobs/allJobsAsyncThunk";
 
 //------------------------------------------------------
 
 export default function JobsContainer() {
   const dispatch = useDispatch();
   const { isLoading, jobs } = useSelector((state) => state.allJobsState);
+
+  useEffect(() => {
+    dispatch(getAllJobs());
+  }, []);
 
   if (isLoading) {
     return (
