@@ -1,3 +1,5 @@
+import AreaChart from "./AreaChart";
+import BarChart from "./BarChart";
 import BigSidebar from "./BigSidebar";
 import ChartsContainer from "./ChartsContainer";
 import EyePassword from "./EyePassword";
@@ -17,6 +19,8 @@ import StatItem from "./StatItem";
 import StatsContainer from "./StatsContainer";
 
 export {
+  AreaChart,
+  BarChart,
   BigSidebar,
   ChartsContainer,
   EyePassword,
