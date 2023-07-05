@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllJobs } from "./allJobsAsyncThunk";
+import { getAllJobs, getStats } from "./allJobsAsyncThunk";
 import { toast } from "react-toastify";
 
 const initialFiltersState = {
@@ -34,6 +34,7 @@ const allJobsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      //------------------------ getAllJobs
       .addCase(getAllJobs.pending, (state) => {
         state.isLoadingAllJobs = true;
       })
@@ -43,6 +44,20 @@ const allJobsSlice = createSlice({
       })
 
       .addCase(getAllJobs.rejected, (state, { payload }) => {
+        state.isLoadingAllJobs = false;
+        toast.error(payload);
+      })
+      //------------------------ getStats
+      .addCase(getStats.pending, (state) => {
+        state.isLoadingAllJobs = true;
+      })
+      .addCase(getStats.fulfilled, (state, { payload }) => {
+        state.isLoadingAllJobs = false;
+        state.stats = payload.defaultStats;
+        state.monthlyApplications = payload.monthlyApplications;
+      })
+
+      .addCase(getStats.rejected, (state, { payload }) => {
         state.isLoadingAllJobs = false;
         toast.error(payload);
       });

@@ -1,4 +1,5 @@
 import BigSidebar from "./BigSidebar";
+import ChartsContainer from "./ChartsContainer";
 import EyePassword from "./EyePassword";
 import FormInputRow from "./FormInputRow";
 import FormSelectRow from "./FormSelectRow";
@@ -12,9 +13,12 @@ import NavLinks from "./NavLinks";
 import SearchJobContainer from "./SearchJobContainer";
 import SingleJob from "./SingleJob";
 import SmallSidebar from "./SmallSidebar";
+import StatItem from "./StatItem";
+import StatsContainer from "./StatsContainer";
 
 export {
   BigSidebar,
+  ChartsContainer,
   EyePassword,
   FormInputRow,
   FormSelectRow,
@@ -28,4 +32,6 @@ export {
   SearchJobContainer,
   SingleJob,
   SmallSidebar,
+  StatItem,
+  StatsContainer,
 };

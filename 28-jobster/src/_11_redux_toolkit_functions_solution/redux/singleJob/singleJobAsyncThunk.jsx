@@ -5,65 +5,7 @@ import { singleJobAction } from "./singleJobSlice";
 import { allJobsAction } from "../allJobs/allJobsSlice";
 import { getAllJobs } from "../allJobs/allJobsAsyncThunk";
 import { modalActions } from "../modal/modalSlice";
-import { getUserFromLocalStorage } from "../../../utilities";
 
-//---------------------------------------------------------------
-
-const authHeader = () => {
-  return {
-    headers: {
-      authorization: `Bearer ${getUserFromLocalStorage().token}`,
-    },
-  };
-};
-//---------------------------------------------------------------
-
-// const createJob = createAsyncThunk(
-//   "singleJob/addJob",
-//   async (jobData, thunkAPI) => {
-//     try {
-//       const response = await fetchingInstance.post("/jobs", jobData, {
-//         headers: {
-//           authorization: `Bearer ${thunkAPI.getState().userState.user.token}`,
-//         },
-//       });
-//       thunkAPI.dispatch(singleJobAction.clearJobInput());
-//       return response.data;
-//     } catch (error) {
-//       if (error.response.status === 401) {
-//         thunkAPI.dispatch(userActions.logoutUser());
-//         return thunkAPI.rejectWithValue("Unauthorized! Logging Out...");
-//       }
-//       return thunkAPI.rejectWithValue(error.response.data.msg);
-//     }
-//   },
-// );
-
-// OR
-
-// const createJob = createAsyncThunk(
-//   "singleJob/addJob",
-//   async (jobData, thunkAPI) => {
-//     console.log("ADD JOB");
-//     try {
-//       const response = await fetchingInstance.post(
-//         "/jobs",
-//         jobData,
-//         authHeader(), // new ! approach 1
-//       );
-//       thunkAPI.dispatch(singleJobAction.clearJobInput());
-//       return response.data;
-//     } catch (error) {
-//       if (error.response.status === 401) {
-//         thunkAPI.dispatch(userActions.logoutUser());
-//         return thunkAPI.rejectWithValue("Unauthorized! Logging Out...");
-//       }
-//       return thunkAPI.rejectWithValue(error.response.data.msg);
-//     }
-//   },
-// );
-
-// OR
 /* new no need to use headers for auth: 
    already done in axios instance request interceptor */
 

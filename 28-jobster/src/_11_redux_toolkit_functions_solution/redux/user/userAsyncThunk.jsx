@@ -32,32 +32,6 @@ const loginUser = createAsyncThunk(
   },
 );
 
-//---------------------------------------------------------------
-// const updateUser = createAsyncThunk(
-//   "user/patchUser",
-//   async (userData, thunkAPI) => {
-//     try {
-//       const response = await fetchingInstance.patch(
-//         "auth/updateUser",
-//         userData,
-//         {
-//           headers: {
-//             authorization: `Bearer ${thunkAPI.getState().userState.user.token}`,
-//           },
-//         },
-//       );
-//       return response.data;
-//     } catch (error) {
-//       if (error.response.status === 401) {
-//         thunkAPI.dispatch(userActions.logoutUser());
-//         return thunkAPI.rejectWithValue("Unauthorized! Logging Out...");
-//       }
-//       toast.error(error.response.data.msg);
-//       return thunkAPI.rejectWithValue(error.response.data.msg);
-//     }
-//   },
-// );
-
 // OR
 /* new no need to use headers for auth: 
    already done in axios instance request interceptor */
