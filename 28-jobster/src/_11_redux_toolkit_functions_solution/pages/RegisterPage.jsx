@@ -105,6 +105,19 @@ export default function Register() {
         >
           {isLoadingUser ? "Loading..." : "Submit"}
         </button>
+
+        <button
+          type="button"
+          className="btn btn-block btn-hipster"
+          disabled={isLoadingUser}
+          onClick={() =>
+            dispatch(
+              loginUser({ email: "testUser@test.com", password: "secret" }),
+            )
+          }
+        >
+          {isLoadingUser ? "Loading..." : "Log to demo"}
+        </button>
         <p>
           {" "}
           {state.isMember ? "Not a member yet ?" : "Already a member ?"}
