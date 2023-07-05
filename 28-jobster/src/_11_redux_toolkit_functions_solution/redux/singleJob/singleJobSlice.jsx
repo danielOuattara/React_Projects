@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { createJob, deleteJob, editJob } from "./singleJobAsyncThunk";
 import { getUserFromLocalStorage } from "../../../utilities";
-import { allJobsAction } from "../allJobs/allJobsSlice";
-import { getAllJobs } from "../allJobs/allJobsAsyncThunk";
 
 //----------------------------------------------------
 

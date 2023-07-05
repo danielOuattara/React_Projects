@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import links from "../../utilities/links";
+import { links } from "../../utilities";
 import { useDispatch } from "react-redux";
 import { uiActions } from "./../redux/ui/uiSlice";
 

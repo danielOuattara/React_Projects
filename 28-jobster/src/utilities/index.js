@@ -1,4 +1,5 @@
 import fetchingInstance from "./axios";
+import links from "./links";
 
 import {
   addUserToLocalStorage,
@@ -11,4 +12,5 @@ export {
   addUserToLocalStorage,
   getUserFromLocalStorage,
   removeUserFromLocalStorage,
+  links,
 };

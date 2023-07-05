@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "./../redux/modal/modalSlice";
 import { deleteJob } from "../redux/singleJob/singleJobAsyncThunk";
-import { toast } from "react-toastify";
 //-------------------------------------------------------------------------
 
 export default function Modal() {
