@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { createJob, deleteJob } from "./singleJobAsyncThunk";
+import { createJob, deleteJob, editJob } from "./singleJobAsyncThunk";
 import { getUserFromLocalStorage } from "../../../utilities";
 import { allJobsAction } from "../allJobs/allJobsSlice";
 import { getAllJobs } from "../allJobs/allJobsAsyncThunk";
@@ -39,10 +39,15 @@ const singleJobSlice = createSlice({
     getDeleteJobId: (state, action) => {
       state.deleteJobId = action.payload;
     },
+
+    setEditJob: (state, { payload }) => {
+      return { ...state, ...payload };
+    },
   },
+
   extraReducers: (builder) => {
     builder
-      // Create Job
+      // ----------------------------------------- Create Job
       .addCase(createJob.pending, (state) => {
         state.isLoadingSingleJob = true;
       })
@@ -54,7 +59,7 @@ const singleJobSlice = createSlice({
         state.isLoadingSingleJob = false;
         toast.error(payload);
       })
-      // Delete Job
+      // ----------------------------------------- Delete Job
       .addCase(deleteJob.pending, (state) => {
         state.isLoadingSingleJob = true;
       })
@@ -63,6 +68,19 @@ const singleJobSlice = createSlice({
         toast.success("Job deleted successfully !");
       })
       .addCase(deleteJob.rejected, (state, { payload }) => {
+        state.isLoadingSingleJob = false;
+        toast.error(payload);
+      })
+
+      // ----------------------------------------- Edit Job
+      .addCase(editJob.pending, (state) => {
+        state.isLoadingSingleJob = true;
+      })
+      .addCase(editJob.fulfilled, (state, { payload }) => {
+        state.isLoadingSingleJob = false;
+        toast.success("Job edited successfully !");
+      })
+      .addCase(editJob.rejected, (state, { payload }) => {
         state.isLoadingSingleJob = false;
         toast.error(payload);
       });

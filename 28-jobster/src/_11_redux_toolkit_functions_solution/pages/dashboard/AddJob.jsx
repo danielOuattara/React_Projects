@@ -4,7 +4,7 @@ import { DashboardFormPageWrapper } from "./../../../assets/styles/";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { singleJobAction } from "../../redux/singleJob/singleJobSlice";
-import { createJob } from "../../redux/singleJob/singleJobAsyncThunk";
+import { createJob, editJob } from "../../redux/singleJob/singleJobAsyncThunk";
 import { useEffect } from "react";
 
 //----------------------------------------------------
@@ -51,7 +51,18 @@ export default function AddJob() {
       return toast.error("Please Fill Out All Fields");
     }
 
-    dispatch(createJob({ position, company, jobLocation, jobType, status }));
+    if (isEditing) {
+      return dispatch(
+        editJob({
+          jobId: editJobId,
+          job: { position, company, jobLocation, jobType, status },
+        }),
+      );
+    }
+
+    return dispatch(
+      createJob({ position, company, jobLocation, jobType, status }),
+    );
   };
 
   return (

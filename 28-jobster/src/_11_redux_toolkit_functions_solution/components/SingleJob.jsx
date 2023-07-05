@@ -33,9 +33,19 @@ export default function SingleJob(props) {
             <Link
               to="/add-job"
               className="btn edit-btn"
-              onClick={() => {
-                console.log("edit job");
-              }}
+              onClick={() =>
+                dispatch(
+                  singleJobAction.setEditJob({
+                    isEditing: true,
+                    editJobId: props._id,
+                    position: props.position,
+                    company: props.company,
+                    jobLocation: props.jobLocation,
+                    jobType: props.jobType,
+                    status: props.status,
+                  }),
+                )
+              }
             >
               Edit
             </Link>
