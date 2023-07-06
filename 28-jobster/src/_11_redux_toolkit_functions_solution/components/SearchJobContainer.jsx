@@ -20,7 +20,7 @@ export default function SearchJobContainer() {
   );
 
   const handleSearch = (event) => {
-    if (isLoadingAllJobs) return;
+    // if (isLoadingAllJobs) return; // bad UX !
     dispatch(
       allJobsAction.handleChangeFilters({
         name: event.target.name,
@@ -29,9 +29,6 @@ export default function SearchJobContainer() {
     );
   };
 
-  const handleClearFilters = (event) => {
-    event.preventDefault();
-  };
   return (
     <SearchContainerWrapper>
       <form className="form">

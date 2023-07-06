@@ -34,7 +34,7 @@ const allJobsSlice = createSlice({
     },
 
     handleChangeFilters: (state, action) => {
-      // state.page = 1;
+      state.page = 1; // useful to reset page to 1 after each input change
       state[action.payload.name] = action.payload.value;
     },
 
