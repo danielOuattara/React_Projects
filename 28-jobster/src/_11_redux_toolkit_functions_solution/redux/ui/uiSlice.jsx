@@ -18,6 +18,8 @@ const uiSlice = createSlice({
     toggleShowLogout: (state) => {
       state.isShowLogoutOpen = !state.isShowLogoutOpen;
     },
+
+    resetUIStateUponLogout: () => initialUIState,
   },
 });
 

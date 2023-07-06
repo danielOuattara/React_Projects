@@ -5,7 +5,6 @@ import {
   getUserFromLocalStorage,
   removeUserFromLocalStorage,
 } from "../../../utilities";
-
 import { registerUser, loginUser, updateUser } from "./userAsyncThunk";
 
 const initialUserState = {
@@ -18,7 +17,7 @@ const userSlice = createSlice({
   name: "user-slice",
   initialState: initialUserState,
   reducers: {
-    logoutUser: (state) => {
+    logoutUser: (state, action) => {
       state.user = null;
       removeUserFromLocalStorage();
     },

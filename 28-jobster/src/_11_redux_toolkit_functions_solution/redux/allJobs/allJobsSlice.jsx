@@ -45,6 +45,8 @@ const allJobsSlice = createSlice({
     updatePageNumber: (state, action) => {
       state.page = action.payload;
     },
+
+    clearAllJobsStateUponLogout: () => initialJobsState,
   },
   extraReducers: (builder) => {
     builder

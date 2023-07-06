@@ -2,8 +2,15 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { fetchingInstance } from "../../../utilities";
 import { userActions } from "./userSlice";
-
+import { uiActions } from "../ui/uiSlice";
+import { singleJobAction } from "../singleJob/singleJobSlice";
+import { allJobsAction } from "../allJobs/allJobsSlice";
+import { handleUnauthorizedOrErrorResponse } from "../../../utilities/errorHandler";
 //---------------------------------------------------------------
+
+/* NEW: no need to use headers for auth: 
+   already done in axios instance request interceptor 
+------------------------------------------------------*/
 
 const registerUser = createAsyncThunk(
   "user/registerUser",
@@ -19,6 +26,7 @@ const registerUser = createAsyncThunk(
 );
 
 //---------------------------------------------------------------
+
 const loginUser = createAsyncThunk(
   "user/loginUser",
   async (userData, thunkAPI) => {
@@ -32,9 +40,7 @@ const loginUser = createAsyncThunk(
   },
 );
 
-// OR
-/* new no need to use headers for auth: 
-   already done in axios instance request interceptor */
+//---------------------------------------------------------------
 
 const updateUser = createAsyncThunk(
   "user/patchUser",
@@ -46,16 +52,31 @@ const updateUser = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      if (error.response.status === 401) {
-        thunkAPI.dispatch(userActions.logoutUser());
-        return thunkAPI.rejectWithValue("Unauthorized! Logging Out...");
-      }
-      toast.error(error.response.data.msg);
-      return thunkAPI.rejectWithValue(error.response.data.msg);
+      return handleUnauthorizedOrErrorResponse(error, thunkAPI);
     }
   },
 );
 
 //---------------------------------------------------------------
 
-export { registerUser, loginUser, updateUser };
+const logoutAndClearReduxState = createAsyncThunk(
+  "user/clearReduxState",
+  (value, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(singleJobAction.clearJobInput());
+      thunkAPI.dispatch(uiActions.resetUIStateUponLogout());
+      thunkAPI.dispatch(allJobsAction.clearAllJobsStateUponLogout());
+      thunkAPI.dispatch(userActions.logoutUser());
+      if (value !== 401) {
+        toast.success("Logout successfully !");
+      }
+      return Promise.resolve();
+    } catch (error) {
+      return Promise.reject();
+    }
+  },
+);
+
+//---------------------------------------------------------------
+
+export { registerUser, loginUser, updateUser, logoutAndClearReduxState };

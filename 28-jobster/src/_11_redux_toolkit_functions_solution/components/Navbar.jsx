@@ -1,23 +1,15 @@
 import { NavbarWrapper } from "../../assets/styles";
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import Logo from "./Logo";
-import { userActions } from "../redux/user/userSlice";
 import { uiActions } from "./../redux/ui/uiSlice";
+import { logoutAndClearReduxState } from "../redux/user/userAsyncThunk";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
 //------------------------------------------------------------
 
 export default function Navbar() {
   const { user } = useSelector((state) => state.userState);
   const { isShowLogoutOpen } = useSelector((state) => state.uiState);
   const dispatch = useDispatch();
-
-  const handleLogoutUser = () => {
-    dispatch(userActions.logoutUser());
-    dispatch(uiActions.closeSidebar());
-    dispatch(uiActions.toggleShowLogout());
-    return toast.success("Log out successful");
-  };
 
   return (
     <NavbarWrapper>
@@ -52,7 +44,7 @@ export default function Navbar() {
               <button
                 type="button"
                 className="dropdown-btn"
-                onClick={handleLogoutUser}
+                onClick={() => dispatch(logoutAndClearReduxState(null))}
               >
                 logout
               </button>
