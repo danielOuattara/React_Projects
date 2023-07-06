@@ -1,4 +1,4 @@
-export default function FormSelect(props) {
+export default function FormSelectRow(props) {
   return (
     <div className="form-row">
       <label htmlFor={props.name} className="form-label">
@@ -8,7 +8,7 @@ export default function FormSelect(props) {
         className="form-select"
         id={props.name}
         name={props.name}
-        value={props.initialValue}
+        value={props.value}
         onChange={props.handleChange}
       >
         {props.options.map((item, index) => {

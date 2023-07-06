@@ -1,6 +1,6 @@
 import { EyePassword } from "./index";
 
-export default function FormRow(props) {
+export default function FormRowInput(props) {
   return (
     <div className="form-row">
       <label htmlFor={props.name} className="form-label">

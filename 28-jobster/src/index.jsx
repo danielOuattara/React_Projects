@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import "normalize.css";
 import "./index.css";
 import AppFunctionReduxToolkit from "./_11_redux_toolkit_functions_solution/AppFunctionReduxToolkit";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

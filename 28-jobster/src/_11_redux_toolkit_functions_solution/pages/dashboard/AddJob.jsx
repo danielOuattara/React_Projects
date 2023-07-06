@@ -98,7 +98,7 @@ export default function AddJob() {
             id="status"
             options={statusOptions}
             selected={status}
-            initialValue={status}
+            value={status}
             handleChange={handleChange}
           />
 
@@ -109,7 +109,7 @@ export default function AddJob() {
             id="jobType"
             options={jobTypeOptions}
             selected={jobType}
-            initialValue={jobType}
+            value={jobType}
             handleChange={handleChange}
           />
 

@@ -28,8 +28,18 @@ const allJobsSlice = createSlice({
     showLoadingAllJobs: (state) => {
       state.isLoadingAllJobs = true;
     },
+
     hideLoadingAllJobs: (state) => {
       state.isLoadingAllJobs = false;
+    },
+
+    handleChangeFilters: (state, action) => {
+      // state.page = 1;
+      state[action.payload.name] = action.payload.value;
+    },
+
+    clearSearchFilters: (state) => {
+      return { ...state, ...initialFiltersState };
     },
   },
   extraReducers: (builder) => {
