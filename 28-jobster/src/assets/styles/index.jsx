@@ -7,7 +7,7 @@ import JobWrapper from "./Job";
 import JobsContainerWrapper from "./JobsContainer";
 import LandingPageWrapper from "./LandingPage";
 import NavbarWrapper from "./Navbar";
-import PageBtnContainerWrapper from "./PageBtnContainer";
+import PageButtonContainerWrapper from "./PageButtonContainer";
 import RegisterPageWrapper from "./RegisterPage";
 import SearchContainerWrapper from "./SearchContainer";
 import SharedLayoutWrapper from "./SharedLayout";
@@ -25,7 +25,7 @@ export {
   JobsContainerWrapper,
   LandingPageWrapper,
   NavbarWrapper,
-  PageBtnContainerWrapper,
+  PageButtonContainerWrapper,
   RegisterPageWrapper,
   SearchContainerWrapper,
   SharedLayoutWrapper,

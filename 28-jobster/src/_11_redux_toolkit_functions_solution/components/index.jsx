@@ -12,6 +12,7 @@ import Logo from "./Logo";
 import Modal from "./Modal";
 import Navbar from "./Navbar";
 import NavLinks from "./NavLinks";
+import PageButtonsContainer from "./PageButtonsContainer";
 import SearchJobContainer from "./SearchJobContainer";
 import SingleJob from "./SingleJob";
 import SmallSidebar from "./SmallSidebar";
@@ -33,6 +34,7 @@ export {
   Modal,
   Navbar,
   NavLinks,
+  PageButtonsContainer,
   SearchJobContainer,
   SingleJob,
   SmallSidebar,
