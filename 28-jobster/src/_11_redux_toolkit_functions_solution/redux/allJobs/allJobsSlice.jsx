@@ -41,6 +41,10 @@ const allJobsSlice = createSlice({
     clearSearchFilters: (state) => {
       return { ...state, ...initialFiltersState };
     },
+
+    updatePageNumber: (state, action) => {
+      state.page = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder

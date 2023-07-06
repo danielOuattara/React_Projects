@@ -8,7 +8,13 @@ import { userActions } from "../user/userSlice";
 
 const getAllJobs = createAsyncThunk("allJobs/getJobs", async (_, thunkAPI) => {
   try {
-    const response = await fetchingInstance.get("/jobs");
+    const { page, search, searchStatus, searchType, sort } =
+      thunkAPI.getState().allJobsState;
+    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
+    if (search) {
+      url += `&search=${search}`;
+    }
+    const response = await fetchingInstance.get(url);
     return response.data;
   } catch (error) {
     if (error.response.status === 401) {

@@ -8,13 +8,21 @@ import { getAllJobs } from "../redux/allJobs/allJobsAsyncThunk";
 
 export default function JobsContainer() {
   const dispatch = useDispatch();
-  const { isLoadingAllJobs, jobs, page, totalJobs, numOfPages } = useSelector(
-    (state) => state.allJobsState,
-  );
+  const {
+    isLoadingAllJobs,
+    jobs,
+    numOfPages,
+    page,
+    search,
+    searchStatus,
+    searchType,
+    sort,
+    totalJobs,
+  } = useSelector((state) => state.allJobsState);
 
   useEffect(() => {
     dispatch(getAllJobs());
-  }, [dispatch]);
+  }, [dispatch, search, searchStatus, searchType, sort, page]);
 
   if (isLoadingAllJobs) {
     return (
