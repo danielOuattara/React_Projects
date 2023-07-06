@@ -5,6 +5,7 @@ import { singleJobAction } from "./singleJobSlice";
 import { allJobsAction } from "../allJobs/allJobsSlice";
 import { getAllJobs } from "../allJobs/allJobsAsyncThunk";
 import { modalActions } from "../modal/modalSlice";
+import { handleUnauthorizedOrErrorResponse } from "../../../utilities/errorHandler";
 
 /* new no need to use headers for auth: 
    already done in axios instance request interceptor */
@@ -12,24 +13,17 @@ import { modalActions } from "../modal/modalSlice";
 const createJob = createAsyncThunk(
   "singleJob/addJob",
   async (jobData, thunkAPI) => {
-    console.log("ADD JOB");
     try {
       const response = await fetchingInstance.post("/jobs", jobData);
       thunkAPI.dispatch(singleJobAction.clearJobInput());
       return response.data;
     } catch (error) {
-      if (error.response.status === 401) {
-        thunkAPI.dispatch(userActions.logoutUser());
-        return thunkAPI.rejectWithValue("Unauthorized! Logging Out...");
-      }
-      return thunkAPI.rejectWithValue(error.response.data.msg);
+      return handleUnauthorizedOrErrorResponse(error, thunkAPI);
     }
   },
 );
 
 //---------------------------------------------------------------
-/* New: no need to use headers for auth: 
-   already done in axios instance request interceptor */
 
 const deleteJob = createAsyncThunk(
   "singleJob/deleteJob",
@@ -41,19 +35,12 @@ const deleteJob = createAsyncThunk(
       thunkAPI.dispatch(getAllJobs());
       return response.data;
     } catch (error) {
-      thunkAPI.dispatch(allJobsAction.hideLoadingAllJobs());
-      if (error.response.status === 401) {
-        thunkAPI.dispatch(userActions.logoutUser());
-        return thunkAPI.rejectWithValue("Unauthorized! Logging Out...");
-      }
-      return thunkAPI.rejectWithValue(error.response.data.msg);
+      return handleUnauthorizedOrErrorResponse(error, thunkAPI);
     }
   },
 );
 
 //---------------------------------------------------------------
-/* New: no need to use headers for auth: 
-   already done in axios instance request interceptor */
 
 const editJob = createAsyncThunk(
   "singleJob/editJob",
@@ -63,11 +50,7 @@ const editJob = createAsyncThunk(
       thunkAPI.dispatch(singleJobAction.clearJobInput());
       return response.data;
     } catch (error) {
-      if (error.response.status === 401) {
-        thunkAPI.dispatch(userActions.logoutUser());
-        return thunkAPI.rejectWithValue("Unauthorized! Logging Out...");
-      }
-      return thunkAPI.rejectWithValue(error.response.data.msg);
+      return handleUnauthorizedOrErrorResponse(error, thunkAPI);
     }
   },
 );
