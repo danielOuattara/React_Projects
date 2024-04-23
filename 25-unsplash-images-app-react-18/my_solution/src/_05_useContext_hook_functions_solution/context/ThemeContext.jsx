@@ -1,10 +1,11 @@
 import { useContext, useState, createContext, useEffect } from "react";
 //-----------------------------------------------------------------
 
-// make sure use
-export const AppContext = createContext();
+export const ThemeContext = createContext();
 
-const getPreferredDarkMode = () => {
+//-----
+
+const getUserPreferredThemeMode = () => {
   const prefersDarkMode = window.matchMedia(
     "(prefers-color-scheme:dark)",
   ).matches;
@@ -12,13 +13,10 @@ const getPreferredDarkMode = () => {
   return storedDarkMode || prefersDarkMode;
 };
 
-export const useGlobalContext = () => {
-  return useContext(AppContext);
-};
+//---
 
-export default function AppContextProvider({ children }) {
-  const [isDarkTheme, setIsDarkTheme] = useState(getPreferredDarkMode());
-  const [searchTerm, setSearchTerm] = useState("fish");
+export default function ThemeContextProvider({ children }) {
+  const [isDarkTheme, setIsDarkTheme] = useState(getUserPreferredThemeMode());
 
   const toggleDarkTheme = () => {
     setIsDarkTheme(() => !isDarkTheme);
@@ -31,10 +29,13 @@ export default function AppContextProvider({ children }) {
   }, [isDarkTheme]);
 
   return (
-    <AppContext.Provider
-      value={{ isDarkTheme, toggleDarkTheme, searchTerm, setSearchTerm }}
-    >
+    <ThemeContext.Provider value={{ isDarkTheme, toggleDarkTheme }}>
       {children}
-    </AppContext.Provider>
+    </ThemeContext.Provider>
   );
 }
+
+//---
+
+// make sure use
+export const useThemeContext = () => useContext(ThemeContext);

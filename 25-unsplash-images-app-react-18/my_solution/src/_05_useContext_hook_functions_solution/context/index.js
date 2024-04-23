@@ -1,3 +1,8 @@
-import { useGlobalContext } from "./AppContext";
+import ThemeContextProvider from "./ThemeContext";
+import SearchContextProvider from "./SearchContext";
 
-export { useGlobalContext };
+import { useThemeContext } from "./ThemeContext";
+import { useSearchContext } from "./SearchContext";
+
+export { useSearchContext, useThemeContext };
+export { ThemeContextProvider, SearchContextProvider };
