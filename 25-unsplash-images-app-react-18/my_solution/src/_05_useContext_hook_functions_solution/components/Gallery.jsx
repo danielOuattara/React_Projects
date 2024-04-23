@@ -1,19 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { customFetch } from "./../axios";
-import { useGlobalContext } from "./../context";
+import { useSearchContext } from "./../context";
 
 export default function Gallery() {
-  const { searchTerm } = useGlobalContext();
+  const { searchTerm } = useSearchContext();
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["images", searchTerm],
     queryFn: async () => {
-      const { data } = await customFetch.get(
+      const res = await customFetch.get(
         `search/photos?client_id=${
           import.meta.env.VITE_API_CLIENT_ID
         }&query=${searchTerm}`,
       );
-      return data;
+      return res.data;
     },
   });
 
@@ -32,7 +32,7 @@ export default function Gallery() {
   if (data.results.length === 0) {
     return (
       <section className="image-container">
-        Nothing Found With tHis search term
+        Nothing found for term {searchTerm}
       </section>
     );
   }
@@ -41,7 +41,7 @@ export default function Gallery() {
       {data.results.map((item) => (
         <img
           key={item.id}
-          src={item.urls.regular}
+          src={item?.urls?.regular}
           className="img"
           alt={item.alt_description}
         />
