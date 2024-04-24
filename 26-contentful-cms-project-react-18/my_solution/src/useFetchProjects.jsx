@@ -17,8 +17,9 @@ export default function useFetchProjects() {
         const response = await client.getEntries({
           content_type: "projectsContentfulJohnSmilga",
         });
-        setProjects(response);
-        setIsLoading(false);
+
+        setProjects(() => response.items);
+        setIsLoading(() => false);
       } catch (error) {
         console.log(error);
       }

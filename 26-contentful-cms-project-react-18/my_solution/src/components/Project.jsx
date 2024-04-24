@@ -2,9 +2,6 @@ import useFetchProjects from "../useFetchProjects";
 
 export default function Project() {
   const { isLoading, projects } = useFetchProjects();
-
-  console.log(projects);
-
   if (isLoading) {
     return (
       <section className="projects">
@@ -19,7 +16,7 @@ export default function Project() {
         <div className="title-underline"></div>
       </div>
       <div className="projects-center">
-        {projects.items.map((item) => (
+        {projects.map((item) => (
           <a
             href={item.fields.url}
             className="project"
