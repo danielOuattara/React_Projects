@@ -4,10 +4,12 @@ export default function SourceCode() {
       style={{
         background: "#e7dada",
         width: "50%",
-        padding: "2rem",
+        padding: "1.5rem",
         margin: "auto",
         marginTop: "2rem",
         marginBottom: "2rem",
+        textAlign: "center",
+        fontSize: "1.25rem",
       }}
     >
       <a

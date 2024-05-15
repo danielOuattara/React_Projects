@@ -545,9 +545,9 @@ const router = createBrowserRouter([
 [API](https://www.thecocktaildb.com/)
 
 - Search cocktail by name
-  www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
+  <www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita>
 - Lookup full cocktail details by id
-  www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007
+  <www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007>
 
 #### Landing - Fetch Drinks
 
@@ -1055,7 +1055,7 @@ const router = createBrowserRouter([
 
 #### Newsletter Request
 
-const newsletterUrl = 'https://www.course-api.com/cocktails-newsletter';
+const newsletterUrl = '<https://www.course-api.com/cocktails-newsletter>';
 
 Newsletter.jsx
 
