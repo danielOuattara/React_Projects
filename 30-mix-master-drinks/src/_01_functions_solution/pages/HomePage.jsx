@@ -1,70 +1,70 @@
-// import { Link, useLoaderData } from "react-router-dom";
-// import axios from "axios";
-// import { CocktailsList, SearchForm } from "../components";
+/* 
+import { Link, useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { CocktailsList, SearchForm } from "../components";
 
-// const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
+const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
 
-//--------------------------------------------------
-// export async function loader({ request }) {
-//   // const url = new URL(request.url);
-//   // const searchTerm = url.searchParams.get("search") || "";
+//--------------
+export async function loader({ request }) {
+  const url = new URL(request.url);
+  const searchTerm = url.searchParams.get("search") || "";
+  const response = await axios.get(`${cocktailSearchUrl}${searchTerm}`);
+  return { drinks: response.data.drinks, searchTerm };
+}
 
-//   const searchTerm = request.url.split("=")[1] || "";
+//--------------
+export default function HomePage() {
+  const { drinks, searchTerm } = useLoaderData();
+  return (
+    <div>
+      <SearchForm searchTerm={searchTerm} />
+      <CocktailsList drinks={drinks} />
+    </div>
+  );
+}
+ */
+//================================================== Setting up React Query
 
-//   const response = await axios.get(`${cocktailSearchUrl}${searchTerm}`);
-//   return { drinks: response.data.drinks, searchTerm };
-// }
+/* 
+import { Link, useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { CocktailsList, SearchForm } from "../components";
+import { useQuery } from "@tanstack/react-query"; // new !
 
-//--------------------------------------------------
-// export default function HomePage() {
-//   const { drinks, searchTerm } = useLoaderData();
-//   return (
-//     <div>
-//       <SearchForm searchTerm={searchTerm} />
-//       <CocktailsList drinks={drinks} />
-//     </div>
-//   );
-// }
+const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
 
-//======================================================================
+//--------------
+const searchCocktailsQuery = (searchArg) => {
+  return {
+    queryKey: ["search", searchArg || "all"],
+    queryFn: async () => {
+      const response = await axios.get(`${cocktailSearchUrl}${searchArg}`);
+      console.log(response.data.drinks);
+      return response.data.drinks;
+    },
+  };
+};
 
-// import { Link, useLoaderData } from "react-router-dom";
-// import axios from "axios";
-// import { CocktailsList, SearchForm } from "../components";
-// import { useQuery } from "@tanstack/react-query"; // new !
+//--------------
+export async function loader({ request }) {
+  const searchTerm = request.url.split("=")[1] || "";
+  return { searchTerm };
+}
 
-// const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
+//--------------
+export default function HomePage() {
+  const { searchTerm } = useLoaderData();
+  const { data: drinks } = useQuery(searchCocktailsQuery(searchTerm));
 
-// //--------------------------------------------------
-// const searchCocktailsQuery = (searchArg) => {
-//   return {
-//     queryKey: ["search", searchArg || "all"],
-//     queryFn: async () => {
-//       const response = await axios.get(`${cocktailSearchUrl}${searchArg}`);
-//       console.log(response.data.drinks);
-//       return response.data.drinks;
-//     },
-//   };
-// };
-
-// //--------------------------------------------------
-// export async function loader({ request }) {
-//   const searchTerm = request.url.split("=")[1] || "";
-//   return { searchTerm };
-// }
-
-// //--------------------------------------------------
-// export default function HomePage() {
-//   const { searchTerm } = useLoaderData();
-//   const { data: drinks } = useQuery(searchCocktailsQuery(searchTerm));
-
-//   return (
-//     <div>
-//       <SearchForm searchTerm={searchTerm} />
-//       <CocktailsList drinks={drinks} />
-//     </div>
-//   );
-// }
+  return (
+    <div>
+      <SearchForm searchTerm={searchTerm} />
+      <CocktailsList drinks={drinks} />
+    </div>
+  );
+} 
+*/
 
 //======================================================================
 
@@ -75,7 +75,7 @@ import { useQuery } from "@tanstack/react-query"; // new !
 
 const cocktailSearchUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
 
-//--------------------------------------------------
+//--------------
 const searchCocktailsQuery = (searchArg) => {
   return {
     queryKey: ["search", searchArg || "all"],
@@ -86,7 +86,7 @@ const searchCocktailsQuery = (searchArg) => {
   };
 };
 
-//--------------------------------------------------
+//--------------
 export function loader(queryClient) {
   return async function ({ request }) {
     const searchTerm = request.url.split("=")[1] || "";
@@ -95,7 +95,7 @@ export function loader(queryClient) {
   };
 }
 
-//--------------------------------------------------
+//--------------
 export default function HomePage() {
   const { searchTerm } = useLoaderData();
   const { data: drinks } = useQuery(searchCocktailsQuery(searchTerm));
