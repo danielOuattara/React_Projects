@@ -2,8 +2,9 @@ import { Link, useOutletContext } from "react-router-dom";
 import { CocktailCardWrapper } from "../../assets/styles";
 
 export default function CocktailCard({ image, name, id, info, glass }) {
-  const context = useOutletContext(); // for info purpose only, check the docs for more
-  // console.log("context = ", context); // for info purpose only, check the docs for more
+  /* for info purpose only, check the docs for more */
+  const context = useOutletContext();
+  console.log("context = ", context);
   return (
     <CocktailCardWrapper>
       <div className="img-container">
