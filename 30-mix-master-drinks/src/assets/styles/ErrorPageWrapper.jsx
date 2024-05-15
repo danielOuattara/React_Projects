@@ -33,6 +33,13 @@ const ErrorPageWrapper = styled.div`
     color: var(--primary-500);
     text-transform: capitalize;
   }
+  a:hover {
+    border: 1px solid var(--primary-500);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: var(--primary-500);
+    color: white;
+  }
 
   @media (min-width: 768px) {
     img {
