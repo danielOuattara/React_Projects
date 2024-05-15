@@ -11,7 +11,7 @@ import { HomeLayout } from "./layout";
 import { loader as homePageLoader } from "./pages/HomePage";
 import { loader as homeLayoutLoader } from "./layout/HomeLayout";
 import { loader as singleCocktailLoader } from "./pages/SingleCocktailPage";
-import { action as neswLetterAction } from "./pages/NewsLetterPage";
+import { action as newsLetterAction } from "./pages/NewsLetterPage";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -19,7 +19,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
+      staleTime: 1000 * 60 * 5, // 5 minutes in milliseconds
     },
   },
 });
@@ -41,14 +41,14 @@ const router = createBrowserRouter([
       {
         path: "cocktail/:cocktailId",
         element: <SingleCocktailPage />,
-        loader: singleCocktailLoader(queryClient),
+        loader: singleCocktailLoader(queryClient), // loader will be invoker right away
         errorElement: <SinglePageError />,
       },
       {
         path: "newsletter",
         element: <NewsLetterPage />,
         id: "newsletter",
-        action: neswLetterAction,
+        action: newsLetterAction,
       },
       { path: "about", element: <AboutPage />, id: "about" },
     ],
