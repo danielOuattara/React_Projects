@@ -1,11 +1,11 @@
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
+import { Hero, Navbar, Skills } from "./components";
 
 export default function App() {
   return (
     <>
       <Navbar />
       <Hero />
+      <Skills />
     </>
   );
 }
