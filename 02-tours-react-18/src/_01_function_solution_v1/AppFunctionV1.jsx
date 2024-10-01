@@ -4,7 +4,7 @@ import LoadingFunction from "./LoadingFunction";
 import ResetTours from "./ResetTours";
 import Tours from "./ToursFunction";
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 export default function AppFunctionV1() {
   const [loading, setLoading] = useState(true);

@@ -1,6 +1,6 @@
 import { toursActions } from "./tours-slice";
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 export const fetchTours = () => {
   return async function (dispatch) {

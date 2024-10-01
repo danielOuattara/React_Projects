@@ -4,7 +4,7 @@ import LoadingClass from "./LoadingClass";
 import ResetTours from "./ResetTours";
 import ToursClass from "./ToursClass";
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 export default class AppClass extends Component {
   constructor(props) {

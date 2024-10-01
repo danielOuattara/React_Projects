@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export const ToursContext = React.createContext();
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 export class ToursContextProvider extends Component {
   constructor(props) {
@@ -20,18 +20,18 @@ export class ToursContextProvider extends Component {
     try {
       const res = await fetch(url);
       if (!res.ok) {
-        this.setState({isError: true});
-        this.setState({loading: false});
-        this.setState({errorMessage: `${res.status} ${res.statusText}`});
+        this.setState({ isError: true });
+        this.setState({ loading: false });
+        this.setState({ errorMessage: `${res.status} ${res.statusText}` });
         throw Error(`${res.status} ${res.statusText}`);
       }
       const data = await res.json();
-      this.setState({tours: data});
-      this.setState({loading: false});
-      this.setState({errorMessage: `${res.status} ${res.statusText}`});
+      this.setState({ tours: data });
+      this.setState({ loading: false });
+      this.setState({ errorMessage: `${res.status} ${res.statusText}` });
     } catch (err) {
-      this.setState({isError: true});
-      this.setState({loading: false});
+      this.setState({ isError: true });
+      this.setState({ loading: false });
       return err;
     }
   };
@@ -41,7 +41,7 @@ export class ToursContextProvider extends Component {
   }
 
   removeTourItem = (id) => {
-    this.setState({tours: this.state.tours.filter((item) => item.id !== id) })
+    this.setState({ tours: this.state.tours.filter((item) => item.id !== id) });
   };
 
   render() {
@@ -53,7 +53,7 @@ export class ToursContextProvider extends Component {
           errorMessage: this.state.errorMessage,
           tours: this.state.tours,
           removeTourItem: this.removeTourItem,
-          fetchTours: this.fetchTours
+          fetchTours: this.fetchTours,
         }}
       >
         {this.props.children}

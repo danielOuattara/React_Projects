@@ -1,10 +1,8 @@
-
-
 // import React, { useState, useEffect} from "react";
 
 // export const ToursContext = React.createContext();
 
-// const url = "https://course-api.com/react-tours-project";
+// const url = "https://www.course-api.com/react-tours-project";
 
 // function ToursContextProvider(props) {
 //   const [loading, setLoading] = useState(true);
@@ -42,7 +40,7 @@
 //       return tours.filter((item) => item.id !== id);
 //     });
 //   };
-  
+
 //   return (
 //     <ToursContext.Provider
 //       value={{
@@ -61,23 +59,19 @@
 
 // export default ToursContextProvider;
 
-
-
 // using an external custom hook
 //------------------------------------------------------------------------------
 
-
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import useFetchTours from "./../components/useFetchTours";
 export const ToursContext = React.createContext();
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 function ToursContextProvider(props) {
-  
-  const {loading, isError, errorMessage, tours, fetchTours, removeTourItem
-  } = useFetchTours(url)
-  
+  const { loading, isError, errorMessage, tours, fetchTours, removeTourItem } =
+    useFetchTours(url);
+
   useEffect(() => {
     fetchTours();
   }, []);
@@ -90,7 +84,7 @@ function ToursContextProvider(props) {
         errorMessage,
         tours,
         removeTourItem,
-        fetchTours
+        fetchTours,
       }}
     >
       {props.children}

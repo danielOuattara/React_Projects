@@ -2,7 +2,7 @@ import { Component, createContext } from "react";
 
 export const ToursContext = createContext();
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 export class ToursContextProvider extends Component {
   constructor(props) {

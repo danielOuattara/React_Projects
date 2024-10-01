@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 import useFetchTours from "./../customHooks/useFetchTours";
 export const ToursContext = createContext();
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 export default function ToursContextProvider(props) {
   const { loading, isError, errorMessage, tours, fetchTours, removeTourItem } =

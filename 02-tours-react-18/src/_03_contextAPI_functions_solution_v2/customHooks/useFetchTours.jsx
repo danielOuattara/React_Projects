@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 function useFetchTours() {
   const [toursState, setToursState] = useState({

@@ -2,7 +2,7 @@
 
 // export const ToursContext = createContext();
 
-// const url = "https://course-api.com/react-tours-project";
+// const url = "https://www.course-api.com/react-tours-project";
 
 // function ToursContextProvider(props) {
 //   const [loading, setLoading] = useState(true);
@@ -66,7 +66,7 @@ import { useEffect, createContext } from "react";
 import useFetchTours from "./../components/useFetchTours";
 export const ToursContext = createContext();
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 function ToursContextProvider(props) {
   const { loading, isError, errorMessage, tours, fetchTours, removeTourItem } =

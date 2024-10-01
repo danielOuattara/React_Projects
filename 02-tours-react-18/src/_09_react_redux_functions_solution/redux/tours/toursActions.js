@@ -1,4 +1,4 @@
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 const REMOVE_ONE_TOUR = "REMOVE_ONE_TOUR";
 const START_FETCH_TOURS = "START_FETCH_TOURS";

@@ -12,7 +12,7 @@ import {
 } from "./reducer/toursReducer";
 import { toursReducer } from "./reducer/toursReducer";
 
-const url = "https://course-api.com/react-tours-project";
+const url = "https://www.course-api.com/react-tours-project";
 
 const initialToursState = {
   loading: false,
